@@ -79,9 +79,12 @@ public final class DependencyInjector
 	 * @param classLoader  a class loader which {@code dependencies}
 	 *                     will be injected into.
 	 *
-	 * @throws NullPointerException if the given {@code dependencies} or any {@code Dependency} in the given
-	 *                              {@code dependencies} or the given {@code classLoader} is {@code null}.
-	 * @throws RuntimeException     if the error occured while trying to download or inject {@code Dependency}.
+	 * @throws NullPointerException     if the given {@code dependencies} or any {@code Dependency} in the given
+	 *                                  {@code dependencies} or the given {@code classLoader} is {@code null}.
+	 * @throws RuntimeException         if the error occurred while trying to download or inject {@code Dependency}.
+	 * @throws IllegalArgumentException if shorthand notation was used to create any instance of {@class Dependency}
+	 *                                  and the shorthand notation does not have all information included
+	 *                                  (group id, artifact id and version).
 	 */
 	public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader)
 	{
@@ -90,6 +93,22 @@ public final class DependencyInjector
 		{
 			injectDependency(dependency, classLoader);
 		}
+	}
+
+	/**
+	 * Injects {@code Dependency} from the maven central repository
+	 * using the given {@code shorthandNotation} into the given {@code classLoader}.
+	 *
+	 * @param shorthandNotation a shorthand notation (<group id>:<artifact id>:<version>).
+	 * @param classLoader       a class loader which {@code Dependency} will be injected into.
+	 *
+	 * @throws NullPointerException     if the given {@code shorthandNotation} or the given {@code classLoader} is {@code null}.
+	 * @throws RuntimeException         if the error occurred while trying to download or inject {@code Dependency}.
+	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not have group id, artifact id and version.
+	 */
+	public static void injectDependency(String shorthandNotation, ClassLoader classLoader)
+	{
+		injectDependency(new Dependency(shorthandNotation), classLoader);
 	}
 
 	/**
@@ -105,11 +124,27 @@ public final class DependencyInjector
 	 *
 	 * @throws NullPointerException if the given {@code groupId} or the given {@code artifactId} or the given
 	 *                              {@code version} or the given {@code classLoader} is {@code null}.
-	 * @throws RuntimeException     if the error occured while trying to download or inject {@code Dependency}.
+	 * @throws RuntimeException     if the error occurred while trying to download or inject {@code Dependency}.
 	 */
 	public static void injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader)
 	{
 		injectDependency(new Dependency(groupId, artifactId, version), classLoader);
+	}
+
+	/**
+	 * Injects {@code Dependency} from the given {@code repository}
+	 * using the given {@code shorthandNotation} into the given {@code classLoader}.
+	 *
+	 * @param shorthandNotation a shorthand notation (<group id>:<artifact id>:<version>).
+	 * @param classLoader       a class loader which {@code Dependency} will be injected into.
+	 *
+	 * @throws NullPointerException     if the given {@code shorthandNotation} or the given {@code classLoader} is {@code null}.
+	 * @throws RuntimeException         if the error occurred while trying to download or inject {@code Dependency}.
+	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not have group id, artifact id and version.
+	 */
+	public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader)
+	{
+		injectDependency(new Dependency(shorthandNotation), classLoader);
 	}
 
 	/**
@@ -127,7 +162,7 @@ public final class DependencyInjector
 	 *
 	 * @throws NullPointerException if the given {@code groupId} or the given {@code artifactId} or the given
 	 *                              {@code version} or the given {@code classLoader} is {@code null}.
-	 * @throws RuntimeException     if the error occured while trying to download or inject {@code Dependency}.
+	 * @throws RuntimeException     if the error occurred while trying to download or inject {@code Dependency}.
 	 */
 	public static void injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader)
 	{
@@ -141,8 +176,10 @@ public final class DependencyInjector
 	 * @param classLoader a class loader which the given
 	 *                    {@code dependency} will be injected into.
 	 *
-	 * @throws NullPointerException if the given {@code dependency} or the given {@code classLoader} is {@code null}.
-	 * @throws RuntimeException     if the error occured while trying to download or inject {@code depedency}.
+	 * @throws NullPointerException     if the given {@code dependency} or the given {@code classLoader} is {@code null}.
+	 * @throws RuntimeException         if the error occurred while trying to download or inject {@code depedency}.
+	 * @throws IllegalArgumentException if shorthand notation was used to create an instance of {@class Dependency}
+	 *                                  and the shorthand notation does not have group id, artifact id and version.
 	 */
 	public static void injectDependency(Dependency dependency, ClassLoader classLoader)
 	{

@@ -40,7 +40,7 @@ public final class Dependencies
 	/**
 	 * jaqobb's namemc-api dependency.
 	 */
-	public static final Dependency NAMEMC_API = new Dependency("co.jaqobb", "namemc-api", "1.2.1-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
+	public static final Dependency NAMEMC_API = new Dependency("co.jaqobb:namemc-api:1.2.1-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
 
 	/**
 	 * Useless constructor, just to make sure

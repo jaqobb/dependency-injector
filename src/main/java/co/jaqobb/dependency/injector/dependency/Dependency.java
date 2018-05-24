@@ -55,9 +55,54 @@ public final class Dependency
 	private final Repository repository;
 
 	/**
+	 * Constructs new {@code Dependency} instance with the given
+	 * {@code shorthandNotation} and maven central repository.
+	 *
+	 * @param shorthandNotation a shorthand notation (<group id>:<artifact id>:<version>).
+	 *
+	 * @throws NullPointerException     if the given {@code shorthandNotation} is {@code null}.
+	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not have group id,
+	 *                                  artifact id and version.
+	 */
+	public Dependency(String shorthandNotation)
+	{
+		this(shorthandNotation, Repositories.MAVEN_CENTRAL);
+	}
+
+	/**
+	 * Constructs new {@code Dependency} instance with,
+	 * the given {@code shorthandNotation} and the given
+	 * {@code repository}.
+	 *
+	 * @param shorthandNotation a shorthand notation (<group id>:<artifact id>:<version>).
+	 * @param repository        a repository which holds dependency with the
+	 *                          given {@code groupId}, {@code artifactId},
+	 *                          and {@code version}.
+	 *
+	 * @throws NullPointerException     if the given {@code shorthandNotation} or
+	 *                                  the given {@code repository} is {@code null}.
+	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not
+	 *                                  have group id, artifact id and version.
+	 */
+	public Dependency(String shorthandNotation, Repository repository)
+	{
+		Objects.requireNonNull(shorthandNotation, "shorthandNotation");
+		Objects.requireNonNull(repository, "repository");
+		String[] data = shorthandNotation.split(":");
+		if (data.length != 3)
+		{
+			throw new IllegalArgumentException("shorthandNotation must have group id, artifact id and version separated with ':'");
+		}
+		this.groupId = data[0];
+		this.artifactId = data[1];
+		this.version = data[2];
+		this.repository = repository;
+	}
+
+	/**
 	 * Constructs new {@code Dependency} instance with,
 	 * the given {@code groupId}, {@code artifactId},
-	 * {@code version}, and maven central repository.
+	 * {@code version} and maven central repository.
 	 *
 	 * @param groupId    a group id of the dependency.
 	 * @param artifactId an artifact id of the dependency.
@@ -75,7 +120,7 @@ public final class Dependency
 	/**
 	 * Constructs new {@code Dependency} instance with,
 	 * the given {@code groupId}, {@code artifactId},
-	 * {@code version}, and {@code repository}.
+	 * {@code version} and {@code repository}.
 	 *
 	 * @param groupId    a group id of the dependency.
 	 * @param artifactId an artifact id of the dependency.
