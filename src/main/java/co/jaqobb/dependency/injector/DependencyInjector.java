@@ -187,7 +187,8 @@ public final class DependencyInjector
 		Objects.requireNonNull(classLoader, "classLoader");
 		String dependencyName = dependency.getArtifactId() + "-" + dependency.getVersion();
 		File dependenciesFolder = new File(".dependencies");
-		File dependencyDestination = new File(dependenciesFolder, dependencyName + ".jar");
+		File dependencyFolder = new File(dependenciesFolder, dependency.getGroupId().replace(".", File.separator) + File.separator + dependency.getArtifactId() + File.separator + dependency.getVersion());
+		File dependencyDestination = new File(dependencyFolder, dependencyName + ".jar");
 		if (! dependencyDestination.exists())
 		{
 			try
