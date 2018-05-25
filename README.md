@@ -40,7 +40,7 @@ Before your whole code starts, you need to use one the accessible inject methods
 ```java
 // Injects provided dependencies into the provided class loader.
 injectDependencies(Dependency[] dependencies, ClassLoader classLoader);
-e.g.: injectDependencies(new Dependency[] {new Dependency("com.googlel.code.gson", "gson", "2.8.5"), new Dependency("co.jaqobb:namemc-api:1.2.1-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS)}, this.getClass().getClassLoader());
+e.g.: injectDependencies(new Dependency[] {new Dependency("com.google.code.gson", "gson", "2.8.5"), new Dependency("co.jaqobb:namemc-api:1.2.1-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS)}, this.getClass().getClassLoader());
 
 // Injects dependency with the provided group id, artifact id and version from maven central repository into the provided class loader.
 injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader);
@@ -52,7 +52,7 @@ e.g.: injectDependency("co.jaqobb", "namemc-api", "1.2.1-SNAPSHOT", Repositories
 
 // Injects provided dependency into the provided class loader.
 injectDependency(Dependency dependency, ClassLoader classLoader);
-e.g.: injectDependency(new Dependency("com.googlel.code.gson", "gson", "2.8.5"), this.getClass().getClassLoader());
+e.g.: injectDependency(new Dependency("com.google.code.gson", "gson", "2.8.5"), this.getClass().getClassLoader());
 e.g.: injectDependency(new Dependency("co.jaqobb:namemc-api:1.2.1-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS), this.getClass().getClassLoader());
 ```
 
@@ -88,7 +88,7 @@ or:
 ```java
 // Creates new dependency with the provided shorthand notation.
 new Dependency(String shorthandNotation);
-e.g.: new Dependency("com.google.ecode.gson:gson:2.8.5");
+e.g.: new Dependency("com.google.code.gson:gson:2.8.5");
 ```
 
 And in the DependencyInjector class you can use shorthand notation as well:
