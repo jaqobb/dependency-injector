@@ -83,7 +83,7 @@ public final class DependencyInjector
 	 *                                  {@code dependencies} or the given {@code classLoader} is {@code null}.
 	 * @throws RuntimeException         if the error occurred while trying to download or inject {@code Dependency}.
 	 * @throws IllegalArgumentException if shorthand notation was used to create any instance of {@class Dependency}
-	 *                                  and the shorthand notation does not have group id, artifact id and version.
+	 *                                  and the shorthand notation does not have group id, artifact id or version.
 	 */
 	public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader)
 	{
@@ -103,7 +103,7 @@ public final class DependencyInjector
 	 *
 	 * @throws NullPointerException     if the given {@code shorthandNotation} or the given {@code classLoader} is {@code null}.
 	 * @throws RuntimeException         if the error occurred while trying to download or inject {@code Dependency}.
-	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not have group id, artifact id and version.
+	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not have group id, artifact id or version.
 	 */
 	public static void injectDependency(String shorthandNotation, ClassLoader classLoader)
 	{
@@ -139,7 +139,7 @@ public final class DependencyInjector
 	 *
 	 * @throws NullPointerException     if the given {@code shorthandNotation} or the given {@code classLoader} is {@code null}.
 	 * @throws RuntimeException         if the error occurred while trying to download or inject {@code Dependency}.
-	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not have group id, artifact id and version.
+	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not have group id, artifact id or version.
 	 */
 	public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader)
 	{
@@ -178,7 +178,7 @@ public final class DependencyInjector
 	 * @throws NullPointerException     if the given {@code dependency} or the given {@code classLoader} is {@code null}.
 	 * @throws RuntimeException         if the error occurred while trying to download or inject {@code depedency}.
 	 * @throws IllegalArgumentException if shorthand notation was used to create an instance of {@code Dependency}
-	 *                                  and the shorthand notation does not have group id, artifact id and version.
+	 *                                  and the shorthand notation does not have group id, artifact id or version.
 	 */
 	public static void injectDependency(Dependency dependency, ClassLoader classLoader)
 	{

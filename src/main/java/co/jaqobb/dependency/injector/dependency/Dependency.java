@@ -82,7 +82,7 @@ public final class Dependency
 	 * @throws NullPointerException     if the given {@code shorthandNotation} or
 	 *                                  the given {@code repository} is {@code null}.
 	 * @throws IllegalArgumentException if the {@code shorthandNotation} does not
-	 *                                  have group id, artifact id and version.
+	 *                                  have group id, artifact id or version.
 	 */
 	public Dependency(String shorthandNotation, Repository repository)
 	{
