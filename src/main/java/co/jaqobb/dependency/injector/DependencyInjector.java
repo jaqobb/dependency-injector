@@ -202,9 +202,9 @@ public final class DependencyInjector
 					Files.copy(inputStream, dependencyDestination.toPath());
 				}
 			}
-			catch (Exception exeption)
+			catch (Exception exception)
 			{
-				throw new RuntimeException("Could not download dependency '" + dependencyName + "'", exeption);
+				throw new RuntimeException("Could not download dependency '" + dependencyName + "'", exception);
 			}
 		}
 		if (! dependencyDestination.exists())
