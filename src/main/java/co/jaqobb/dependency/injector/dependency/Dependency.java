@@ -91,7 +91,7 @@ public final class Dependency
 		String[] data = shorthandNotation.split(":");
 		if (data.length != 3)
 		{
-			throw new IllegalArgumentException("shorthandNotation must have group id, artifact id and version separated with ':'");
+			throw new IllegalArgumentException("shorthandNotation must have group id, artifact id and version separated by ':'");
 		}
 		this.groupId = data[0];
 		this.artifactId = data[1];
