@@ -84,7 +84,7 @@ You can also create a dependency class by using:
 ```java
 // Creates new dependency with the provided group id, artifact id, version and repository.
 new Dependency(String groupId, String artifactId, String version, Repository repository);
-e.g.: new Dependency("co,jaqobb", "namemc-api", "1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
+e.g.: new Dependency("co.jaqobb", "namemc-api", "1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
 ```
 or:
 ```java
