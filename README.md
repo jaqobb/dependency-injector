@@ -23,7 +23,7 @@ and add dependency:
 	<dependency>
 		<groupId>co.jaqobb</groupId>
 		<artifactId>dependency-injector</artifactId>
-		<version>1.1.2-SNAPSHOT</version>
+		<version>1.1.3-SNAPSHOT</version>
 		<scope>compile</scope>
 	</dependency>
 </dependencies>
