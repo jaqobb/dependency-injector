@@ -27,26 +27,19 @@ package co.jaqobb.dependency.injector.dependency;
 import co.jaqobb.dependency.injector.repository.Repositories;
 
 /**
- * Collection of some
- * preset dependencies.
- *
- * P.S: You can donate me to add
- * your dependency here (:D).
- *
- * @see Dependency
+ * Collection of the preset dependencies.
  */
-public final class Dependencies
-{
-	/**
-	 * jaqobb's namemc-api dependency.
-	 */
-	public static final Dependency NAMEMC_API = new Dependency("co.jaqobb:namemc-api:1.2.1-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
+public final class Dependencies {
 
-	/**
-	 * Useless constructor, just to make sure
-	 * no one will initialize this class.
-	 */
-	private Dependencies()
-	{
-	}
+  /**
+   * jaqobb's namemc-api dependency.
+   */
+  public static final Dependency NAMEMC_API = new Dependency("co.jaqobb:namemc-api:1.2.1-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
+
+  /**
+   * Useless constructor, just to make sure no one will initialize this class.
+   */
+  private Dependencies() {
+  }
+
 }

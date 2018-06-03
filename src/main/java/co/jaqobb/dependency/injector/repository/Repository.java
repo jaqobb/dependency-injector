@@ -29,79 +29,68 @@ import java.util.Objects;
 /**
  * Class that holds repository url.
  */
-public final class Repository
-{
-	/**
-	 * Url of the {@code Repository}.
-	 */
-	private final String url;
+public final class Repository {
 
-	/**
-	 * Constructs new {@code Repository}
-	 * instance with the given {@code url}.
-	 *
-	 * @param url a url.
-	 *
-	 * @throws NullPointerException if the given {@code url} is {@code null}.
-	 */
-	public Repository(String url)
-	{
-		this.url = Objects.requireNonNull(url, "url");
-	}
+  /**
+   * Url of the repository.
+   */
+  private final String url;
 
-	/**
-	 * Returns a url of this {@code Repository}.
-	 *
-	 * @return a url of this {@code Repository}.
-	 */
-	public String getUrl()
-	{
-		return this.url;
-	}
+  /**
+   * Constructs new repository instance with the given url.
+   *
+   * @param url A url.
+   * @throws NullPointerException If the given url is null.
+   */
+  public Repository(String url) {
+    this.url = Objects.requireNonNull(url, "url");
+  }
 
-	/**
-	 * Checks if the given {@code object}
-	 * is the same as this class.
-	 *
-	 * @param object an object to be checked.
-	 *
-	 * @return {@code true} if both objects
-	 * are the same, {@code false} otherwise.
-	 */
-	@Override
-	public boolean equals(Object object)
-	{
-		if (this == object)
-		{
-			return true;
-		}
-		if (object == null || this.getClass() != object.getClass())
-		{
-			return false;
-		}
-		Repository that = (Repository) object;
-		return Objects.equals(this.url, that.url);
-	}
+  /**
+   * Returns a url of this repository.
+   *
+   * @return A url of this repository.
+   */
+  public String getUrl() {
+    return this.url;
+  }
 
-	/**
-	 * Returns a hash code of this class.
-	 *
-	 * @return a hash code of this class.
-	 */
-	@Override
-	public int hashCode()
-	{
-		return Objects.hash(this.url);
-	}
+  /**
+   * Returns true if the given object is the same as this class and false otherwise.
+   *
+   * @param object An object to check.
+   * @return True if the given object is the same as this class and false otherwise.
+   */
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+    if (object == null || this.getClass() != object.getClass()) {
+      return false;
+    }
+    Repository that = (Repository) object;
+    return Objects.equals(this.url, that.url);
+  }
 
-	/**
-	 * Returns a nice looking representation of this class.
-	 *
-	 * @return a nice looking representation of this class.
-	 */
-	@Override
-	public String toString()
-	{
-		return "Repository{" + "url=" + this.url + "}";
-	}
+  /**
+   * Returns a hash code of this class.
+   *
+   * @return A hash code of this class.
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.url);
+  }
+
+  /**
+   * Returns a nice looking representation of this class.
+   *
+   * @return A nice looking representation of this class.
+   */
+  @Override
+  public String toString() {
+    return "Repository{" + "url=" + this.url + "}";
+  }
+
 }

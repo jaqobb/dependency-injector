@@ -25,34 +25,27 @@
 package co.jaqobb.dependency.injector.repository;
 
 /**
- * Collection of some
- * preset repositories.
- *
- * P.S: You can donate me to add
- * your repository here (:D).
- *
- * @see Repository
+ * Collection of the preset repositories.
  */
-public final class Repositories
-{
-	/**
-	 * Official maven repository url.
-	 */
-	public static final Repository MAVEN_CENTRAL    = new Repository("https://repo1.maven.org/maven2/");
-	/**
-	 * jaqobb's releases repository url.
-	 */
-	public static final Repository JAQOBB_RELEASES  = new Repository("https://repo.jaqobb.co/repository/maven-releases/");
-	/**
-	 * jaqobb's snapshots repository url.
-	 */
-	public static final Repository JAQOBB_SNAPSHOTS = new Repository("https://repo.jaqobb.co/repository/maven-snapshots/");
+public final class Repositories {
 
-	/**
-	 * Useless constructor, just to make sure
-	 * no one will initialize this class.
-	 */
-	private Repositories()
-	{
-	}
+  /**
+   * Official maven repository.
+   */
+  public static final Repository MAVEN_CENTRAL = new Repository("https://repo1.maven.org/maven2/");
+  /**
+   * jaqobb's releases repository.
+   */
+  public static final Repository JAQOBB_RELEASES = new Repository("https://repo.jaqobb.co/repository/maven-releases/");
+  /**
+   * jaqobb's snapshots repository.
+   */
+  public static final Repository JAQOBB_SNAPSHOTS = new Repository("https://repo.jaqobb.co/repository/maven-snapshots/");
+
+  /**
+   * Useless constructor, just to make sure no one will initialize this class.
+   */
+  private Repositories() {
+  }
+
 }
