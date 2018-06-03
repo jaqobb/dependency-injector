@@ -25,6 +25,8 @@
 package co.jaqobb.dependency.injector;
 
 import co.jaqobb.dependency.injector.dependency.Dependency;
+import co.jaqobb.dependency.injector.exception.DependencyDownloadException;
+import co.jaqobb.dependency.injector.exception.DependencyInjectException;
 import co.jaqobb.dependency.injector.repository.Repository;
 import java.io.File;
 import java.io.InputStream;
@@ -71,7 +73,8 @@ public final class DependencyInjector {
    * @param classLoader A class loader which all dependencies will be injected into.
    * @throws NullPointerException If the given dependencies or any depenendency in the array of dependency or class
    * loader is null.
-   * @throws RuntimeException If the error occurred while trying to download or inject dependency.
+   * @throws DependencyDownloadException If the error occurred while trying to download any dependency.
+   * @throws DependencyInjectException If the error occurred while trying inject any dependency.
    * @throws IllegalArgumentException If shorthand notation was used to create any dependency instance and the shorthand
    * notation does not have group id, artifact id or version.
    */
@@ -89,7 +92,8 @@ public final class DependencyInjector {
    * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
    * @param classLoader A class loader which dependency will be injected into.
    * @throws NullPointerException If the given shorthand notation or class loader is null.
-   * @throws RuntimeException If the error occurred while trying to download or inject dependency.
+   * @throws DependencyDownloadException If the error occurred while trying to download dependency.
+   * @throws DependencyInjectException If the error occurred while trying inject dependency.
    * @throws IllegalArgumentException If the shorthand notation does not have group id, artifact id or version.
    */
   public static void injectDependency(String shorthandNotation, ClassLoader classLoader) {
@@ -105,7 +109,8 @@ public final class DependencyInjector {
    * @param version A version of the version.
    * @param classLoader A class loader which dependency will be injected into.
    * @throws NullPointerException If the given group id, artifact id, version or class loader is null.
-   * @throws RuntimeException If the error occurred while trying to download or inject dependency.
+   * @throws DependencyDownloadException If the error occurred while trying to download dependency.
+   * @throws DependencyInjectException If the error occurred while trying inject dependency.
    */
   public static void injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader) {
     injectDependency(new Dependency(groupId, artifactId, version), classLoader);
@@ -117,7 +122,8 @@ public final class DependencyInjector {
    * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
    * @param classLoader A class loader which dependency will be injected into.
    * @throws NullPointerException If the given shorthand notation, or class loader is null.
-   * @throws RuntimeException If the error occurred while trying to download or inject dependency.
+   * @throws DependencyDownloadException If the error occurred while trying to download dependency.
+   * @throws DependencyInjectException If the error occurred while trying inject dependency.
    * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
    */
   public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader) {
@@ -134,7 +140,8 @@ public final class DependencyInjector {
    * @param repository A repository which holds dependency with the given group id, artifact id and version.
    * @param classLoader A class loader which dependency will be injected into.
    * @throws NullPointerException If the given group id, artifact id, version, repository or class loader is null.
-   * @throws RuntimeException If the error occurred while trying to download or inject dependency.
+   * @throws DependencyDownloadException If the error occurred while trying to download dependency.
+   * @throws DependencyInjectException If the error occurred while trying inject dependency.
    */
   public static void injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader) {
     injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
@@ -146,7 +153,8 @@ public final class DependencyInjector {
    * @param dependency A dependency to inject.
    * @param classLoader A class loader which the given dependency will be injected into.
    * @throws NullPointerException If the given dependency or class loader is null.
-   * @throws RuntimeException If the error occurred while trying to download or inject the given dependency.
+   * @throws DependencyDownloadException If the error occurred while trying to download the given dependency.
+   * @throws DependencyInjectException If the error occurred while trying inject the given dependency.
    * @throws IllegalArgumentException If shorthand notation was used to create an instance of dependency and the
    * shorthand notation does not have group id, artifact id or version.
    */
@@ -168,16 +176,16 @@ public final class DependencyInjector {
           Files.copy(inputStream, dependencyDestination.toPath());
         }
       } catch (Exception exception) {
-        throw new RuntimeException("Could not download dependency '" + dependencyName + "'", exception);
+        throw new DependencyDownloadException("Could not download dependency '" + dependencyName + "'", exception);
       }
     }
     if (!dependencyDestination.exists()) {
-      throw new RuntimeException("Could not download dependency '" + dependencyName + "'");
+      throw new DependencyDownloadException("Could not download dependency '" + dependencyName + "'");
     }
     try {
       ADD_URL_METHOD.invoke(classLoader, dependencyDestination.toURI().toURL());
     } catch (Exception exception) {
-      throw new RuntimeException("Could not inject dependency '" + dependencyName + "'", exception);
+      throw new DependencyInjectException("Could not inject dependency '" + dependencyName + "'", exception);
     }
   }
 
