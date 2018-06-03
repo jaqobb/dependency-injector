@@ -35,28 +35,28 @@ public final class DependencyInjectException extends RuntimeException {
   private static final long serialVersionUID = 6564083847102002873L;
 
   /**
-   * Constructs dependency inject exception with no message and no cause.
+   * Constructs new dependency inject exception with no message and no cause.
    */
   public DependencyInjectException() {
     super();
   }
 
   /**
-   * Constructs dependency inject exception with the given message and no cause.
+   * Constructs new dependency inject exception with the given message and no cause.
    */
   public DependencyInjectException(String message) {
     super(message);
   }
 
   /**
-   * Constructs dependency inject exception with the given message and cause.
+   * Constructs new dependency inject exception with the given message and cause.
    */
   public DependencyInjectException(String message, Throwable cause) {
     super(message, cause);
   }
 
   /**
-   * Constructs dependency inject exception with no message and the given cause.
+   * Constructs new dependency inject exception with no message and the given cause.
    */
   public DependencyInjectException(Throwable cause) {
     super(cause);

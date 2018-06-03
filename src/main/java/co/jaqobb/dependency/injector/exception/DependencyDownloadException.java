@@ -35,28 +35,28 @@ public final class DependencyDownloadException extends RuntimeException {
   private static final long serialVersionUID = 6564083847102002873L;
 
   /**
-   * Constructs dependency download exception with no message and no cause.
+   * Constructs new dependency download exception with no message and no cause.
    */
   public DependencyDownloadException() {
     super();
   }
 
   /**
-   * Constructs dependency download exception with the given message and no cause.
+   * Constructs new dependency download exception with the given message and no cause.
    */
   public DependencyDownloadException(String message) {
     super(message);
   }
 
   /**
-   * Constructs dependency download exception with the given message and cause.
+   * Constructs new dependency download exception with the given message and cause.
    */
   public DependencyDownloadException(String message, Throwable cause) {
     super(message, cause);
   }
 
   /**
-   * Constructs dependency download exception with no message and the given cause.
+   * Constructs new dependency download exception with no message and the given cause.
    */
   public DependencyDownloadException(Throwable cause) {
     super(cause);
