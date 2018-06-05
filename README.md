@@ -1,4 +1,4 @@
-## Dependency-Injector
+## Dependency Injector
 Inject dependencies directly into your Java code without increasing jar file size.
 
 ### Purposes of this project
