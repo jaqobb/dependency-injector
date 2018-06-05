@@ -121,7 +121,7 @@ e.g.: injectDependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOB
 
 If the repository is not provided, maven central repository will be used instead.
 
-Dependency-Injector also provides preset dependencies and repositories available in the Dependencies and Repositories class.
+Dependency Injector also provides preset dependencies and repositories available in the Dependencies and Repositories class.
 
 If you want me to add either a dependency or a repository, just contact me through my discord: jaqobb#6998, or through this project's issues section.
 
@@ -130,4 +130,4 @@ If you want me to add either a dependency or a repository, just contact me throu
 All downloaded dependencies are cached inside ".dependencies" folder in your user home folder. The reason they are saved like that is to prevent program to download the same library several times and to allow other projects that use this project to use already downloaded dependencies.
 
 ### End
-That's all! Thank you for using Dependency-Injector!
+That's all! Thank you for using Dependency Injector!
