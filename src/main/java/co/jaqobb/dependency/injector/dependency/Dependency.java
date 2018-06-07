@@ -72,6 +72,27 @@ public final class Dependency {
    * @throws NullPointerException If the given shorthand notation or the given repository is null.
    * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
    */
+  public Dependency(String shorthandNotation, String repository) {
+    Objects.requireNonNull(shorthandNotation, "shorthandNotation");
+    Objects.requireNonNull(repository, "repository");
+    String[] data = shorthandNotation.split(":");
+    if (data.length != 3) {
+      throw new IllegalArgumentException("shorthandNotation must have only group id, artifact id and version separated by ':'");
+    }
+    this.groupId = data[0];
+    this.artifactId = data[1];
+    this.version = data[2];
+    this.repository = new Repository(repository);
+  }
+
+  /**
+   * Constructs new dependency instance with, the given shorthand notation and the given repository.
+   *
+   * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
+   * @param repository A repository which holds dependency with the given group id, arifact id and version.
+   * @throws NullPointerException If the given shorthand notation or the given repository is null.
+   * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
+   */
   public Dependency(String shorthandNotation, Repository repository) {
     Objects.requireNonNull(shorthandNotation, "shorthandNotation");
     Objects.requireNonNull(repository, "repository");
@@ -95,6 +116,22 @@ public final class Dependency {
    */
   public Dependency(String groupId, String artifactId, String version) {
     this(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
+  }
+
+  /**
+   * Constructs new dependency instance with, the given group id, artifact id, version and repository.
+   *
+   * @param groupId A group id of the dependency.
+   * @param artifactId An artifact id of the dependency.
+   * @param version A version of the dependency.
+   * @param repository A repository which holds dependency with the given group id, artifact id and version.
+   * @throws NullPointerException If the given group id, artifact id, version or repository is null.
+   */
+  public Dependency(String groupId, String artifactId, String version, String repository) {
+    this.groupId = Objects.requireNonNull(groupId, "groupId");
+    this.artifactId = Objects.requireNonNull(artifactId, "artifactId");
+    this.version = Objects.requireNonNull(version, "version");
+    this.repository = new Repository(Objects.requireNonNull(repository, "repository"));
   }
 
   /**
