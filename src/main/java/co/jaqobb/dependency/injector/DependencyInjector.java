@@ -127,7 +127,7 @@ public final class DependencyInjector {
    * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
    */
   public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader) {
-    injectDependency(new Dependency(shorthandNotation), classLoader);
+    injectDependency(new Dependency(shorthandNotation, repository), classLoader);
   }
 
   /**
