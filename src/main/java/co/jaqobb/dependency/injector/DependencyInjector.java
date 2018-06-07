@@ -126,8 +126,39 @@ public final class DependencyInjector {
    * @throws DependencyInjectException If the error occurred while trying inject dependency.
    * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
    */
+  public static void injectDependency(String shorthandNotation, String repository, ClassLoader classLoader) {
+    injectDependency(new Dependency(shorthandNotation, repository), classLoader);
+  }
+
+  /**
+   * Injects dependency from the given repository using the given shorthand notation into the given class loader.
+   *
+   * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
+   * @param classLoader A class loader which dependency will be injected into.
+   * @throws NullPointerException If the given shorthand notation, or class loader is null.
+   * @throws DependencyDownloadException If the error occurred while trying to download dependency.
+   * @throws DependencyInjectException If the error occurred while trying inject dependency.
+   * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
+   */
   public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader) {
     injectDependency(new Dependency(shorthandNotation, repository), classLoader);
+  }
+
+  /**
+   * Injects dependency with the given group id, artifact id and version from the given repository into the given class
+   * loader.
+   *
+   * @param groupId A group id of the dependency.
+   * @param artifactId An artifact id of the dependency.
+   * @param version A version of the dependency.
+   * @param repository A repository which holds dependency with the given group id, artifact id and version.
+   * @param classLoader A class loader which dependency will be injected into.
+   * @throws NullPointerException If the given group id, artifact id, version, repository or class loader is null.
+   * @throws DependencyDownloadException If the error occurred while trying to download dependency.
+   * @throws DependencyInjectException If the error occurred while trying inject dependency.
+   */
+  public static void injectDependency(String groupId, String artifactId, String version, String repository, ClassLoader classLoader) {
+    injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
   }
 
   /**
