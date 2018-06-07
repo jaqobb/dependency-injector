@@ -34,6 +34,10 @@ public final class Repositories {
    */
   public static final Repository MAVEN_CENTRAL = new Repository("https://repo1.maven.org/maven2/");
   /**
+   * JCenter repository.
+   */
+  public static final Repository JCENTER = new Repository("https://jcenter.bintray.com");
+  /**
    * jaqobb's releases repository.
    */
   public static final Repository JAQOBB_RELEASES = new Repository("https://repo.jaqobb.co/repository/maven-releases/");
