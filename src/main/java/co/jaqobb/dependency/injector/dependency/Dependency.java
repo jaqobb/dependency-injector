@@ -24,12 +24,12 @@
 
 package co.jaqobb.dependency.injector.dependency;
 
+import co.jaqobb.dependency.injector.exception.MissingShorthandNotationInfoException;
+import co.jaqobb.dependency.injector.repository.Repositories;
+import co.jaqobb.dependency.injector.repository.Repository;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
-
-import co.jaqobb.dependency.injector.repository.Repositories;
-import co.jaqobb.dependency.injector.repository.Repository;
 
 /**
  * Class that holds dependency info like group id, artifact id etc.
@@ -58,7 +58,7 @@ public final class Dependency {
    *
    * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
    * @throws NullPointerException If the given shorthand notation is null.
-   * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
+   * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
    */
   public Dependency(String shorthandNotation) {
     this(shorthandNotation, Repositories.MAVEN_CENTRAL);
@@ -70,14 +70,14 @@ public final class Dependency {
    * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
    * @param repository A repository which holds dependency with the given group id, arifact id and version.
    * @throws NullPointerException If the given shorthand notation or the given repository is null.
-   * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
+   * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
    */
   public Dependency(String shorthandNotation, String repository) {
     Objects.requireNonNull(shorthandNotation, "shorthandNotation");
     Objects.requireNonNull(repository, "repository");
     String[] data = shorthandNotation.split(":");
     if (data.length != 3) {
-      throw new IllegalArgumentException("shorthandNotation must have only group id, artifact id and version separated by ':'");
+      throw new MissingShorthandNotationInfoException("shorthandNotation must have only group id, artifact id and version separated by ':'");
     }
     this.groupId = data[0];
     this.artifactId = data[1];
@@ -91,14 +91,15 @@ public final class Dependency {
    * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
    * @param repository A repository which holds dependency with the given group id, arifact id and version.
    * @throws NullPointerException If the given shorthand notation or the given repository is null.
-   * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
+   * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or
+   * version.
    */
   public Dependency(String shorthandNotation, Repository repository) {
     Objects.requireNonNull(shorthandNotation, "shorthandNotation");
     Objects.requireNonNull(repository, "repository");
     String[] data = shorthandNotation.split(":");
     if (data.length != 3) {
-      throw new IllegalArgumentException("shorthandNotation must have only group id, artifact id and version separated by ':'");
+      throw new MissingShorthandNotationInfoException("shorthandNotation must have only group id, artifact id and version separated by ':'");
     }
     this.groupId = data[0];
     this.artifactId = data[1];
