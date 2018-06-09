@@ -27,6 +27,7 @@ package co.jaqobb.dependency.injector;
 import co.jaqobb.dependency.injector.dependency.Dependency;
 import co.jaqobb.dependency.injector.exception.DependencyDownloadException;
 import co.jaqobb.dependency.injector.exception.DependencyInjectException;
+import co.jaqobb.dependency.injector.exception.MissingShorthandNotationInfoException;
 import co.jaqobb.dependency.injector.repository.Repository;
 import java.io.File;
 import java.io.InputStream;
@@ -75,8 +76,8 @@ public final class DependencyInjector {
    * loader is null.
    * @throws DependencyDownloadException If the error occurred while trying to download any dependency.
    * @throws DependencyInjectException If the error occurred while trying inject any dependency.
-   * @throws IllegalArgumentException If shorthand notation was used to create any dependency instance and the shorthand
-   * notation does not have group id, artifact id or version.
+   * @throws MissingShorthandNotationInfoException If shorthand notation was used to create any dependency instance and the shorthand
+   * notation is missing group id, artifact id or version.
    */
   public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader) {
     Objects.requireNonNull(dependencies, "dependencies");
@@ -94,7 +95,7 @@ public final class DependencyInjector {
    * @throws NullPointerException If the given shorthand notation or class loader is null.
    * @throws DependencyDownloadException If the error occurred while trying to download dependency.
    * @throws DependencyInjectException If the error occurred while trying inject dependency.
-   * @throws IllegalArgumentException If the shorthand notation does not have group id, artifact id or version.
+   * @throws MissingShorthandNotationInfoException If the shorthand notation is missing group id, artifact id or version.
    */
   public static void injectDependency(String shorthandNotation, ClassLoader classLoader) {
     injectDependency(new Dependency(shorthandNotation), classLoader);
@@ -124,7 +125,7 @@ public final class DependencyInjector {
    * @throws NullPointerException If the given shorthand notation, or class loader is null.
    * @throws DependencyDownloadException If the error occurred while trying to download dependency.
    * @throws DependencyInjectException If the error occurred while trying inject dependency.
-   * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
+   * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
    */
   public static void injectDependency(String shorthandNotation, String repository, ClassLoader classLoader) {
     injectDependency(new Dependency(shorthandNotation, repository), classLoader);
@@ -138,7 +139,7 @@ public final class DependencyInjector {
    * @throws NullPointerException If the given shorthand notation, or class loader is null.
    * @throws DependencyDownloadException If the error occurred while trying to download dependency.
    * @throws DependencyInjectException If the error occurred while trying inject dependency.
-   * @throws IllegalArgumentException If the given shorthand notation does not have group id, artifact id or version.
+   * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
    */
   public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader) {
     injectDependency(new Dependency(shorthandNotation, repository), classLoader);
@@ -186,8 +187,8 @@ public final class DependencyInjector {
    * @throws NullPointerException If the given dependency or class loader is null.
    * @throws DependencyDownloadException If the error occurred while trying to download the given dependency.
    * @throws DependencyInjectException If the error occurred while trying inject the given dependency.
-   * @throws IllegalArgumentException If shorthand notation was used to create an instance of dependency and the
-   * shorthand notation does not have group id, artifact id or version.
+   * @throws MissingShorthandNotationInfoException If shorthand notation was used to create an instance of dependency and the
+   * shorthand notation is missing group id, artifact id or version.
    */
   public static void injectDependency(Dependency dependency, ClassLoader classLoader) {
     Objects.requireNonNull(dependency, "dependency");
