@@ -23,7 +23,7 @@ and add dependency:
   <dependency>
     <groupId>co.jaqobb</groupId>
     <artifactId>dependency-injector</artifactId>
-    <version>1.1.5-SNAPSHOT</version>
+    <version>1.1.6-SNAPSHOT</version>
     <scope>compile</scope>
   </dependency>
 </dependencies>
@@ -42,7 +42,7 @@ repositories {
 and add dependency:
 ```
 dependencies {
-  compile "co.jaqobb:dependency-injector:1.1.4-SNAPSHOT"
+  compile "co.jaqobb:dependency-injector:1.1.6-SNAPSHOT"
 }
 ```
 You need to compile this library due to it's not shaded anywhere by default.
