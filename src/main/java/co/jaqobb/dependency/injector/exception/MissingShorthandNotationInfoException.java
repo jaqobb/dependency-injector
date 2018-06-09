@@ -11,28 +11,28 @@ public final class MissingShorthandNotationInfoException extends RuntimeExceptio
   private static final long serialVersionUID = -7204229188454436551L;
 
   /**
-   * Constructs new shorthand notation  exception with no message and no cause.
+   * Constructs new missing shorthand notation info exception with no message and no cause.
    */
   public MissingShorthandNotationInfoException() {
     super();
   }
 
   /**
-   * Constructs new shorthand notation exception with the given message and no cause.
+   * Constructs new missing shorthand notation info exception with the given message and no cause.
    */
   public MissingShorthandNotationInfoException(String message) {
     super(message);
   }
 
   /**
-   * Constructs new shorthand notation exception with the given message and cause.
+   * Constructs new missing shorthand notation info exception with the given message and cause.
    */
   public MissingShorthandNotationInfoException(String message, Throwable cause) {
     super(message, cause);
   }
 
   /**
-   * Constructs new shorthand notation exception with no message and the given cause.
+   * Constructs new missing shorthand notation info exception with no message and the given cause.
    */
   public MissingShorthandNotationInfoException(Throwable cause) {
     super(cause);
