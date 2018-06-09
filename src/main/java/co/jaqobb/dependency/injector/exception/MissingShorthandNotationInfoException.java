@@ -3,7 +3,7 @@ package co.jaqobb.dependency.injector.exception;
 /**
  * Exception that is being thrown when the used shorthand notation is missing group id, artifact id or version.
  */
-public final class ShorthandNotationException extends RuntimeException {
+public final class MissingShorthandNotationInfoException extends RuntimeException {
 
   /**
    * Serial version unique id of the exception.
@@ -13,28 +13,28 @@ public final class ShorthandNotationException extends RuntimeException {
   /**
    * Constructs new shorthand notation  exception with no message and no cause.
    */
-  public ShorthandNotationException() {
+  public MissingShorthandNotationInfoException() {
     super();
   }
 
   /**
    * Constructs new shorthand notation exception with the given message and no cause.
    */
-  public ShorthandNotationException(String message) {
+  public MissingShorthandNotationInfoException(String message) {
     super(message);
   }
 
   /**
    * Constructs new shorthand notation exception with the given message and cause.
    */
-  public ShorthandNotationException(String message, Throwable cause) {
+  public MissingShorthandNotationInfoException(String message, Throwable cause) {
     super(message, cause);
   }
 
   /**
    * Constructs new shorthand notation exception with no message and the given cause.
    */
-  public ShorthandNotationException(Throwable cause) {
+  public MissingShorthandNotationInfoException(Throwable cause) {
     super(cause);
   }
 
