@@ -77,7 +77,7 @@ public final class Dependency {
     Objects.requireNonNull(repository, "repository");
     String[] data = shorthandNotation.split(":");
     if (data.length != 3) {
-      throw new MissingShorthandNotationInfoException("shorthandNotation must have only group id, artifact id and version separated by ':'");
+      throw new MissingShorthandNotationInfoException("Shorthand notation must have only group id, artifact id and version separated by ':'");
     }
     this.groupId = data[0];
     this.artifactId = data[1];
@@ -99,7 +99,7 @@ public final class Dependency {
     Objects.requireNonNull(repository, "repository");
     String[] data = shorthandNotation.split(":");
     if (data.length != 3) {
-      throw new MissingShorthandNotationInfoException("shorthandNotation must have only group id, artifact id and version separated by ':'");
+      throw new MissingShorthandNotationInfoException("Shorthand notation must have only group id, artifact id and version separated by ':'");
     }
     this.groupId = data[0];
     this.artifactId = data[1];
