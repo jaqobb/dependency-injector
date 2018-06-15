@@ -40,6 +40,7 @@ public final class Repository
 	 * Constructs new repository instance with the given url.
 	 *
 	 * @param url A url.
+	 *
 	 * @throws NullPointerException If the given url is null.
 	 */
 	public Repository(String url)
@@ -61,6 +62,7 @@ public final class Repository
 	 * Returns true if the given object is the same as this class and false otherwise.
 	 *
 	 * @param object An object to check.
+	 *
 	 * @return True if the given object is the same as this class and false otherwise.
 	 */
 	@Override

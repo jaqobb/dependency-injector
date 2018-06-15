@@ -57,7 +57,8 @@ public final class Dependency
 	 * Constructs new dependency instance with the given shorthand notation and maven central repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
-	 * @throws NullPointerException If the given shorthand notation is null.
+	 *
+	 * @throws NullPointerException                  If the given shorthand notation is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
 	public Dependency(String shorthandNotation)
@@ -69,8 +70,9 @@ public final class Dependency
 	 * Constructs new dependency instance with, the given shorthand notation and the given repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
-	 * @param repository A repository which holds dependency with the given group id, arifact id and version.
-	 * @throws NullPointerException If the given shorthand notation or the given repository is null.
+	 * @param repository        A repository which holds dependency with the given group id, arifact id and version.
+	 *
+	 * @throws NullPointerException                  If the given shorthand notation or the given repository is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
 	public Dependency(String shorthandNotation, String repository)
@@ -92,8 +94,9 @@ public final class Dependency
 	 * Constructs new dependency instance with, the given shorthand notation and the given repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
-	 * @param repository A repository which holds dependency with the given group id, arifact id and version.
-	 * @throws NullPointerException If the given shorthand notation or the given repository is null.
+	 * @param repository        A repository which holds dependency with the given group id, arifact id and version.
+	 *
+	 * @throws NullPointerException                  If the given shorthand notation or the given repository is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
 	public Dependency(String shorthandNotation, Repository repository)
@@ -114,9 +117,10 @@ public final class Dependency
 	/**
 	 * Constructs new dependency instance with, the given group id, artfact id, version and maven central repository.
 	 *
-	 * @param groupId A group id of the dependency.
+	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
-	 * @param version A version of the dependency.
+	 * @param version    A version of the dependency.
+	 *
 	 * @throws NullPointerException If the given group id, artifact id or version is null.
 	 */
 	public Dependency(String groupId, String artifactId, String version)
@@ -127,10 +131,11 @@ public final class Dependency
 	/**
 	 * Constructs new dependency instance with, the given group id, artifact id, version and repository.
 	 *
-	 * @param groupId A group id of the dependency.
+	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
-	 * @param version A version of the dependency.
+	 * @param version    A version of the dependency.
 	 * @param repository A repository which holds dependency with the given group id, artifact id and version.
+	 *
 	 * @throws NullPointerException If the given group id, artifact id, version or repository is null.
 	 */
 	public Dependency(String groupId, String artifactId, String version, String repository)
@@ -144,10 +149,11 @@ public final class Dependency
 	/**
 	 * Constructs new dependency instance with, the given group id, artifact id, version and repository.
 	 *
-	 * @param groupId A group id of the dependency.
+	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
-	 * @param version A version of the dependency.
+	 * @param version    A version of the dependency.
 	 * @param repository A repository which holds dependency with the given group id, artifact id and version.
+	 *
 	 * @throws NullPointerException If the given group id, artifact id, version or repository is null.
 	 */
 	public Dependency(String groupId, String artifactId, String version, Repository repository)
@@ -218,6 +224,7 @@ public final class Dependency
 	 * Returns true if the given object is the same as this class and false otherwise.
 	 *
 	 * @param object An object to check.
+	 *
 	 * @return True if the given object is the same as this class and false otherwise.
 	 */
 	@Override
