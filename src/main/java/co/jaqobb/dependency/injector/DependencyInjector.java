@@ -42,7 +42,6 @@ import java.util.Objects;
  */
 public final class DependencyInjector
 {
-
 	/**
 	 * Cached add url method.
 	 */
@@ -237,5 +236,4 @@ public final class DependencyInjector
 			throw new DependencyInjectException("Could not inject dependency '" + dependencyName + "'", exception);
 		}
 	}
-
 }

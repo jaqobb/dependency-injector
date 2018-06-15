@@ -29,7 +29,6 @@ package co.jaqobb.dependency.injector.repository;
  */
 public final class Repositories
 {
-
 	/**
 	 * Official maven repository.
 	 */
@@ -53,5 +52,4 @@ public final class Repositories
 	private Repositories()
 	{
 	}
-
 }

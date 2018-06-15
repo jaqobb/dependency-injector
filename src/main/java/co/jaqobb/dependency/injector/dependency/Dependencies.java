@@ -31,7 +31,6 @@ import co.jaqobb.dependency.injector.repository.Repositories;
  */
 public final class Dependencies
 {
-
 	/**
 	 * jaqobb's namemc-api dependency.
 	 */
@@ -43,5 +42,4 @@ public final class Dependencies
 	private Dependencies()
 	{
 	}
-
 }

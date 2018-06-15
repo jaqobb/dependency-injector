@@ -36,7 +36,6 @@ import java.util.Objects;
  */
 public final class Dependency
 {
-
 	/**
 	 * Group id of the dependency
 	 */
@@ -257,5 +256,4 @@ public final class Dependency
 	{
 		return "Dependency{" + "groupId=" + this.groupId + ", artifactId=" + this.artifactId + ", version=" + this.version + ", repository=" + this.repository + "}";
 	}
-
 }

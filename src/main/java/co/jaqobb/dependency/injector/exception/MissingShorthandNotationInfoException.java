@@ -29,7 +29,6 @@ package co.jaqobb.dependency.injector.exception;
  */
 public final class MissingShorthandNotationInfoException extends RuntimeException
 {
-
 	/**
 	 * Serial version unique id of the exception.
 	 */
@@ -66,5 +65,4 @@ public final class MissingShorthandNotationInfoException extends RuntimeExceptio
 	{
 		super(cause);
 	}
-
 }

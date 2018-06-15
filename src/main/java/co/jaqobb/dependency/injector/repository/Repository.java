@@ -31,7 +31,6 @@ import java.util.Objects;
  */
 public final class Repository
 {
-
 	/**
 	 * Url of the repository.
 	 */
@@ -100,5 +99,4 @@ public final class Repository
 	{
 		return "Repository{" + "url=" + this.url + "}";
 	}
-
 }
