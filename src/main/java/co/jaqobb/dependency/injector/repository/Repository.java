@@ -29,7 +29,8 @@ import java.util.Objects;
 /**
  * Class that holds repository url.
  */
-public final class Repository {
+public final class Repository
+{
 
 	/**
 	 * Url of the repository.
@@ -42,7 +43,8 @@ public final class Repository {
 	 * @param url A url.
 	 * @throws NullPointerException If the given url is null.
 	 */
-	public Repository(String url) {
+	public Repository(String url)
+	{
 		this.url = Objects.requireNonNull(url, "url");
 	}
 
@@ -51,7 +53,8 @@ public final class Repository {
 	 *
 	 * @return A url of this repository.
 	 */
-	public String getUrl() {
+	public String getUrl()
+	{
 		return this.url;
 	}
 
@@ -62,11 +65,14 @@ public final class Repository {
 	 * @return True if the given object is the same as this class and false otherwise.
 	 */
 	@Override
-	public boolean equals(Object object) {
-		if (this == object) {
+	public boolean equals(Object object)
+	{
+		if (this == object)
+		{
 			return true;
 		}
-		if (object == null || this.getClass() != object.getClass()) {
+		if (object == null || this.getClass() != object.getClass())
+		{
 			return false;
 		}
 		Repository that = (Repository) object;
@@ -79,7 +85,8 @@ public final class Repository {
 	 * @return A hash code of this class.
 	 */
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		return Objects.hash(this.url);
 	}
 
@@ -89,7 +96,8 @@ public final class Repository {
 	 * @return A nice looking representation of this class.
 	 */
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "Repository{" + "url=" + this.url + "}";
 	}
 

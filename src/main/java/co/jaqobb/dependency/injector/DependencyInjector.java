@@ -40,7 +40,8 @@ import java.util.Objects;
 /**
  * Main class used to inject dependencies.
  */
-public final class DependencyInjector {
+public final class DependencyInjector
+{
 
 	/**
 	 * Cached add url method.
@@ -52,11 +53,15 @@ public final class DependencyInjector {
 	 *
 	 * @throws InternalError If the error occured while trying to cache add url method.
 	 */
-	static {
-		try {
+	static
+	{
+		try
+		{
 			ADD_URL_METHOD = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
 			ADD_URL_METHOD.setAccessible(true);
-		} catch (NoSuchMethodException exception) {
+		}
+		catch (NoSuchMethodException exception)
+		{
 			throw new InternalError("Could not cache add url method", exception);
 		}
 	}
@@ -64,7 +69,8 @@ public final class DependencyInjector {
 	/**
 	 * Useless constructor, just to make sure no one will initialize this class.
 	 */
-	private DependencyInjector() {
+	private DependencyInjector()
+	{
 	}
 
 	/**
@@ -77,9 +83,11 @@ public final class DependencyInjector {
 	 * @throws DependencyInjectException If the error occurred while trying inject any dependency.
 	 * @throws MissingShorthandNotationInfoException If shorthand notation was used to create any dependency instance and the shorthand notation is missing group id, artifact id or version.
 	 */
-	public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader) {
+	public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader)
+	{
 		Objects.requireNonNull(dependencies, "dependencies");
-		for (Dependency dependency : dependencies) {
+		for (Dependency dependency : dependencies)
+		{
 			injectDependency(dependency, classLoader);
 		}
 	}
@@ -94,7 +102,8 @@ public final class DependencyInjector {
 	 * @throws DependencyInjectException If the error occurred while trying inject dependency.
 	 * @throws MissingShorthandNotationInfoException If the shorthand notation is missing group id, artifact id or version.
 	 */
-	public static void injectDependency(String shorthandNotation, ClassLoader classLoader) {
+	public static void injectDependency(String shorthandNotation, ClassLoader classLoader)
+	{
 		injectDependency(new Dependency(shorthandNotation), classLoader);
 	}
 
@@ -109,7 +118,8 @@ public final class DependencyInjector {
 	 * @throws DependencyDownloadException If the error occurred while trying to download dependency.
 	 * @throws DependencyInjectException If the error occurred while trying inject dependency.
 	 */
-	public static void injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader) {
+	public static void injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader)
+	{
 		injectDependency(new Dependency(groupId, artifactId, version), classLoader);
 	}
 
@@ -123,7 +133,8 @@ public final class DependencyInjector {
 	 * @throws DependencyInjectException If the error occurred while trying inject dependency.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
-	public static void injectDependency(String shorthandNotation, String repository, ClassLoader classLoader) {
+	public static void injectDependency(String shorthandNotation, String repository, ClassLoader classLoader)
+	{
 		injectDependency(new Dependency(shorthandNotation, repository), classLoader);
 	}
 
@@ -137,7 +148,8 @@ public final class DependencyInjector {
 	 * @throws DependencyInjectException If the error occurred while trying inject dependency.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
-	public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader) {
+	public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader)
+	{
 		injectDependency(new Dependency(shorthandNotation, repository), classLoader);
 	}
 
@@ -153,7 +165,8 @@ public final class DependencyInjector {
 	 * @throws DependencyDownloadException If the error occurred while trying to download dependency.
 	 * @throws DependencyInjectException If the error occurred while trying inject dependency.
 	 */
-	public static void injectDependency(String groupId, String artifactId, String version, String repository, ClassLoader classLoader) {
+	public static void injectDependency(String groupId, String artifactId, String version, String repository, ClassLoader classLoader)
+	{
 		injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
@@ -169,7 +182,8 @@ public final class DependencyInjector {
 	 * @throws DependencyDownloadException If the error occurred while trying to download dependency.
 	 * @throws DependencyInjectException If the error occurred while trying inject dependency.
 	 */
-	public static void injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader) {
+	public static void injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader)
+	{
 		injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
@@ -183,7 +197,8 @@ public final class DependencyInjector {
 	 * @throws DependencyInjectException If the error occurred while trying inject the given dependency.
 	 * @throws MissingShorthandNotationInfoException If shorthand notation was used to create an instance of dependency and the shorthand notation is missing group id, artifact id or version.
 	 */
-	public static void injectDependency(Dependency dependency, ClassLoader classLoader) {
+	public static void injectDependency(Dependency dependency, ClassLoader classLoader)
+	{
 		Objects.requireNonNull(dependency, "dependency");
 		Objects.requireNonNull(classLoader, "classLoader");
 		String dependencyGroupId = dependency.getGroupId();
@@ -194,22 +209,31 @@ public final class DependencyInjector {
 		File dependenciesFolder = new File(".dependencies");
 		File dependencyFolder = new File(dependenciesFolder, dependencyPath);
 		File dependencyDestination = new File(dependencyFolder, dependencyName + ".jar");
-		if (!dependencyDestination.exists()) {
-			try {
+		if (!dependencyDestination.exists())
+		{
+			try
+			{
 				URL url = dependency.getDownloadUrl();
-				try (InputStream inputStream = url.openStream()) {
+				try (InputStream inputStream = url.openStream())
+				{
 					Files.copy(inputStream, dependencyDestination.toPath());
 				}
-			} catch (Exception exception) {
+			}
+			catch (Exception exception)
+			{
 				throw new DependencyDownloadException("Could not download dependency '" + dependencyName + "'", exception);
 			}
 		}
-		if (!dependencyDestination.exists()) {
+		if (!dependencyDestination.exists())
+		{
 			throw new DependencyDownloadException("Could not download dependency '" + dependencyName + "'");
 		}
-		try {
+		try
+		{
 			ADD_URL_METHOD.invoke(classLoader, dependencyDestination.toURI().toURL());
-		} catch (Exception exception) {
+		}
+		catch (Exception exception)
+		{
 			throw new DependencyInjectException("Could not inject dependency '" + dependencyName + "'", exception);
 		}
 	}

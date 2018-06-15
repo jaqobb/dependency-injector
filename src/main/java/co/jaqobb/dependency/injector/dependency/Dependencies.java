@@ -29,7 +29,8 @@ import co.jaqobb.dependency.injector.repository.Repositories;
 /**
  * Collection of the preset dependencies.
  */
-public final class Dependencies {
+public final class Dependencies
+{
 
 	/**
 	 * jaqobb's namemc-api dependency.
@@ -39,7 +40,8 @@ public final class Dependencies {
 	/**
 	 * Useless constructor, just to make sure no one will initialize this class.
 	 */
-	private Dependencies() {
+	private Dependencies()
+	{
 	}
 
 }
