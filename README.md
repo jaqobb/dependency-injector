@@ -30,24 +30,7 @@ and add dependency:
 ```
 You need to compile this library due to it's not shaded anywhere by default.
 
-### How to use (Gradle)
-You need to add repository to your project's build.gradle:
-```
-repositories {
-  maven {
-    url "https://repo.jaqobb.co/repository/maven-snapshots/"
-  }
-}
-```
-and add dependency:
-```
-dependencies {
-  compile "co.jaqobb:dependency-injector:1.1.6-SNAPSHOT"
-}
-```
-You need to compile this library due to it's not shaded anywhere by default.
-
-### How to use (No Maven/Gradle)
+### How to use (No Maven)
 Simply download source and add it to your current project.
 
 ### API
