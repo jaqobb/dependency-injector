@@ -5,7 +5,7 @@ Inject dependencies directly into your Java code without increasing jar file siz
 Purpose of this projects is actually really simple: to use dependencies in your program without increasing final jar size due to dependency shading.
 
 ### Requirements
-All you need is Java 8 and optionally Maven/Gradle if you don't want to download sources on your own.
+All you need is Java 8 and optionally Maven if you don't want to download sources on your own.
 
 ### How to use (Maven)
 You need to add repository to your project's pom.xml:
