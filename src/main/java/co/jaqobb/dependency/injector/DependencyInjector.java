@@ -24,11 +24,6 @@
 
 package co.jaqobb.dependency.injector;
 
-import co.jaqobb.dependency.injector.dependency.Dependency;
-import co.jaqobb.dependency.injector.exception.DependencyDownloadException;
-import co.jaqobb.dependency.injector.exception.DependencyInjectException;
-import co.jaqobb.dependency.injector.exception.MissingShorthandNotationInfoException;
-import co.jaqobb.dependency.injector.repository.Repository;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -36,6 +31,12 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.util.Objects;
+
+import co.jaqobb.dependency.injector.dependency.Dependency;
+import co.jaqobb.dependency.injector.exception.DependencyDownloadException;
+import co.jaqobb.dependency.injector.exception.DependencyInjectException;
+import co.jaqobb.dependency.injector.exception.MissingShorthandNotationInfoException;
+import co.jaqobb.dependency.injector.repository.Repository;
 
 /**
  * Main class used to inject dependencies.
