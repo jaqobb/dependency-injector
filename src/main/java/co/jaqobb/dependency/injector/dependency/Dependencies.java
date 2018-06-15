@@ -31,15 +31,15 @@ import co.jaqobb.dependency.injector.repository.Repositories;
  */
 public final class Dependencies {
 
-  /**
-   * jaqobb's namemc-api dependency.
-   */
-  public static final Dependency NAMEMC_API = new Dependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
+	/**
+	 * jaqobb's namemc-api dependency.
+	 */
+	public static final Dependency NAMEMC_API = new Dependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
 
-  /**
-   * Useless constructor, just to make sure no one will initialize this class.
-   */
-  private Dependencies() {
-  }
+	/**
+	 * Useless constructor, just to make sure no one will initialize this class.
+	 */
+	private Dependencies() {
+	}
 
 }

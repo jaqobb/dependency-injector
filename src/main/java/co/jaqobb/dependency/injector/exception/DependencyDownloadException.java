@@ -29,37 +29,37 @@ package co.jaqobb.dependency.injector.exception;
  */
 public final class DependencyDownloadException extends RuntimeException {
 
-  /**
-   * Serial version unique id of the exception.
-   */
-  private static final long serialVersionUID = 6564083847102002873L;
+	/**
+	 * Serial version unique id of the exception.
+	 */
+	private static final long serialVersionUID = 6564083847102002873L;
 
-  /**
-   * Constructs new dependency download exception with no message and no cause.
-   */
-  public DependencyDownloadException() {
-    super();
-  }
+	/**
+	 * Constructs new dependency download exception with no message and no cause.
+	 */
+	public DependencyDownloadException() {
+		super();
+	}
 
-  /**
-   * Constructs new dependency download exception with the given message and no cause.
-   */
-  public DependencyDownloadException(String message) {
-    super(message);
-  }
+	/**
+	 * Constructs new dependency download exception with the given message and no cause.
+	 */
+	public DependencyDownloadException(String message) {
+		super(message);
+	}
 
-  /**
-   * Constructs new dependency download exception with the given message and cause.
-   */
-  public DependencyDownloadException(String message, Throwable cause) {
-    super(message, cause);
-  }
+	/**
+	 * Constructs new dependency download exception with the given message and cause.
+	 */
+	public DependencyDownloadException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-  /**
-   * Constructs new dependency download exception with no message and the given cause.
-   */
-  public DependencyDownloadException(Throwable cause) {
-    super(cause);
-  }
+	/**
+	 * Constructs new dependency download exception with no message and the given cause.
+	 */
+	public DependencyDownloadException(Throwable cause) {
+		super(cause);
+	}
 
 }

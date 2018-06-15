@@ -29,37 +29,37 @@ package co.jaqobb.dependency.injector.exception;
  */
 public final class DependencyInjectException extends RuntimeException {
 
-  /**
-   * Serial version unique id of the exception.
-   */
-  private static final long serialVersionUID = 6564083847102002873L;
+	/**
+	 * Serial version unique id of the exception.
+	 */
+	private static final long serialVersionUID = 6564083847102002873L;
 
-  /**
-   * Constructs new dependency inject exception with no message and no cause.
-   */
-  public DependencyInjectException() {
-    super();
-  }
+	/**
+	 * Constructs new dependency inject exception with no message and no cause.
+	 */
+	public DependencyInjectException() {
+		super();
+	}
 
-  /**
-   * Constructs new dependency inject exception with the given message and no cause.
-   */
-  public DependencyInjectException(String message) {
-    super(message);
-  }
+	/**
+	 * Constructs new dependency inject exception with the given message and no cause.
+	 */
+	public DependencyInjectException(String message) {
+		super(message);
+	}
 
-  /**
-   * Constructs new dependency inject exception with the given message and cause.
-   */
-  public DependencyInjectException(String message, Throwable cause) {
-    super(message, cause);
-  }
+	/**
+	 * Constructs new dependency inject exception with the given message and cause.
+	 */
+	public DependencyInjectException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-  /**
-   * Constructs new dependency inject exception with no message and the given cause.
-   */
-  public DependencyInjectException(Throwable cause) {
-    super(cause);
-  }
+	/**
+	 * Constructs new dependency inject exception with no message and the given cause.
+	 */
+	public DependencyInjectException(Throwable cause) {
+		super(cause);
+	}
 
 }
