@@ -11,21 +11,21 @@ All you need is Java 8 and optionally Maven if you don't want to download source
 You need to add repository to your project's pom.xml:
 ```xml
 <repositories>
-  <repository>
-    <id>jaqobb-repo</id>
-    <url>https://repo.jaqobb.co/repository/maven-snapshots/</url>
-  </repository>
+	<repository>
+		<id>jaqobb-repo</id>
+		<url>https://repo.jaqobb.co/repository/maven-snapshots/</url>
+	</repository>
 </repositories>
 ```
 and add dependency:
 ```xml
 <dependencies>
-  <dependency>
-    <groupId>co.jaqobb</groupId>
-    <artifactId>dependency-injector</artifactId>
-    <version>1.1.6-SNAPSHOT</version>
-    <scope>compile</scope>
-  </dependency>
+	<dependency>
+		<groupId>co.jaqobb</groupId>
+		<artifactId>dependency-injector</artifactId>
+		<version>1.1.6-SNAPSHOT</version>
+		<scope>compile</scope>
+	</dependency>
 </dependencies>
 ```
 You need to compile this library due to it's not shaded anywhere by default.
