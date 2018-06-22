@@ -34,7 +34,11 @@ public final class Dependencies
 	/**
 	 * jaqobb's namemc-api dependency.
 	 */
-	public static final Dependency NAMEMC_API = new Dependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
+	public static final Dependency NAMEMC_API   = new Dependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
+	/**
+	 * jaqobb's bukkit-utils dependency.
+	 */
+	public static final Dependency BUKKIT_UTILS = new Dependency("co.jaqobb:bukkit-utils:1.0.7-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
 
 	/**
 	 * Useless constructor, just to make sure no one will initialize this class.
