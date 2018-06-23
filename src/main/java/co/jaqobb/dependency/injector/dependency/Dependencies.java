@@ -38,7 +38,7 @@ public final class Dependencies
 	/**
 	 * jaqobb's bukkit-utils dependency.
 	 */
-	public static final Dependency BUKKIT_UTILS = new Dependency("co.jaqobb:bukkit-utils:1.0.7-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
+	public static final Dependency BUKKIT_UTILS = new Dependency("co.jaqobb:bukkit-utils:1.1-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
 
 	/**
 	 * Useless constructor, just to make sure no one will initialize this class.
