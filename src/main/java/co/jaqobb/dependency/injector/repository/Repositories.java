@@ -30,7 +30,7 @@ package co.jaqobb.dependency.injector.repository;
 public final class Repositories
 {
 	/**
-	 * Official maven repository.
+	 * Official Maven repository.
 	 */
 	public static final Repository MAVEN_CENTRAL    = new Repository("https://repo1.maven.org/maven2/");
 	/**

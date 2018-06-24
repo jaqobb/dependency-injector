@@ -55,7 +55,7 @@ public final class Dependency
 	private final Repository repository;
 
 	/**
-	 * Constructs a new Dependency class instance with the given shorthand notation and Maven central repository.
+	 * Constructs a new Dependency class instance with the given shorthand notation. Maven central repository will be used as a repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
 	 *
@@ -71,7 +71,7 @@ public final class Dependency
 	 * Constructs a new Dependency class instance with the given shorthand notation and repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
-	 * @param repository        A repository which holds dependency with the given group id, arifact id and version.
+	 * @param repository        A repository which holds dependency with the given group id, arifact id, and version.
 	 *
 	 * @throws NullPointerException                  If the given shorthand notation or repository is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
@@ -95,7 +95,7 @@ public final class Dependency
 	 * Constructs a new Dependency class instance with, the given shorthand notation and repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
-	 * @param repository        A repository which holds dependency with the given group id, arifact id and version.
+	 * @param repository        A repository which holds dependency with the given group id, arifact id, and version.
 	 *
 	 * @throws NullPointerException                  If the given shorthand notation or repository is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
@@ -116,7 +116,7 @@ public final class Dependency
 	}
 
 	/**
-	 * Constructs a new Dependency class instance with, the given group id, artfact id, version and Maven central repository.
+	 * Constructs a new Dependency class instance with, the given group id, artfact id, and version. Maven central repository will be used as a repository.
 	 *
 	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
@@ -130,12 +130,12 @@ public final class Dependency
 	}
 
 	/**
-	 * Constructs a new Dependency class instance with the given group id, artifact id, version and repository.
+	 * Constructs a new Dependency class instance with the given group id, artifact id, version, and repository.
 	 *
 	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
 	 * @param version    A version of the dependency.
-	 * @param repository A repository which holds dependency with the given group id, artifact id and version.
+	 * @param repository A repository which holds dependency with the given group id, artifact id, and version.
 	 *
 	 * @throws NullPointerException If the given group id, artifact id, version or repository is null.
 	 */
@@ -145,12 +145,12 @@ public final class Dependency
 	}
 
 	/**
-	 * Constructs a new Dependency class instance with, the given group id, artifact id, version and repository.
+	 * Constructs a new Dependency class instance with, the given group id, artifact id, version, and repository.
 	 *
 	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
 	 * @param version    A version of the dependency.
-	 * @param repository A repository which holds dependency with the given group id, artifact id and version.
+	 * @param repository A repository which holds dependency with the given group id, artifact id, and version.
 	 *
 	 * @throws NullPointerException If the given group id, artifact id, version or repository is null.
 	 */
@@ -219,11 +219,11 @@ public final class Dependency
 	}
 
 	/**
-	 * Returns true if the given object is the same as this class and false otherwise.
+	 * Returns true if the given object is the same as this class, and false otherwise.
 	 *
 	 * @param object An object to check.
 	 *
-	 * @return True if the given object is the same as this class and false otherwise.
+	 * @return True if the given object is the same as this class, and false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object)

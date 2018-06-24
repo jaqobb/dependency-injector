@@ -59,11 +59,11 @@ public final class Repository
 	}
 
 	/**
-	 * Returns true if the given object is the same as this class and false otherwise.
+	 * Returns true if the given object is the same as this class, and false otherwise.
 	 *
 	 * @param object An object to check.
 	 *
-	 * @return True if the given object is the same as this class and false otherwise.
+	 * @return True if the given object is the same as this class, and false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object)

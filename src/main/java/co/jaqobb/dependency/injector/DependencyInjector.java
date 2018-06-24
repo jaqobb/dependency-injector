@@ -110,7 +110,7 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Injects a dependency with the given group id, artifact id and version from the Maven central repository into the given class loader.
+	 * Injects a dependency with the given group id, artifact id, and version from the Maven central repository into the given class loader.
 	 *
 	 * @param groupId     An group id of the dependency.
 	 * @param artifactId  An artifact id of the dependency.
@@ -159,7 +159,7 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Injects a dependency with the given group id, artifact id and version from the given repository into the given class loader.
+	 * Injects a dependency with the given group id, artifact id, and version from the given repository into the given class loader.
 	 *
 	 * @param groupId     A group id of the dependency.
 	 * @param artifactId  An artifact id of the dependency.
@@ -177,7 +177,7 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Injects a dependency with the given group id, artifact id and version from the given repository into the given class loader.
+	 * Injects a dependency with the given group id, artifact id, and version from the given repository into the given class loader.
 	 *
 	 * @param groupId     A group id of the dependency.
 	 * @param artifactId  An artifact id of the dependency.
