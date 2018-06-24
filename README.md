@@ -2,13 +2,13 @@
 Inject dependencies directly into your Java code without increasing jar file size.
 
 ### Purposes of this project
-Purpose of this projects is actually really simple: to use dependencies in your program without increasing final jar size due to dependency shading.
+This project is supposed to give a possibility to use external dependencies in your programs without increasing final jar size due to dependency shading.
 
 ### Requirements
 All you need is Java 8 and optionally Maven if you don't want to download sources on your own.
 
 ### How to use (Maven)
-You need to add repository to your project's pom.xml:
+You need to add repository to your project pom.xml file:
 ```xml
 <repositories>
 	<repository>
@@ -17,13 +17,13 @@ You need to add repository to your project's pom.xml:
 	</repository>
 </repositories>
 ```
-and add dependency:
+and then add dependency:
 ```xml
 <dependencies>
 	<dependency>
 		<groupId>co.jaqobb</groupId>
 		<artifactId>dependency-injector</artifactId>
-		<version>1.1.6-SNAPSHOT</version>
+		<version>1.1.7-SNAPSHOT</version>
 		<scope>compile</scope>
 	</dependency>
 </dependencies>
@@ -34,79 +34,67 @@ You need to compile this library due to it's not shaded anywhere by default.
 Simply download source and add it to your current project.
 
 ### API
-Everything you should care about is the DependencyInjector class, everything starts in this class.
+Everything starts in the DependencyInjector class.
 
-Before your whole code starts, you need to use one the accessible inject methods:
+Before your whole code starts, you need to use one of the some accessible inject methods:
 ```java
 // Injects provided dependencies into the provided class loader.
 injectDependencies(Dependency[] dependencies, ClassLoader classLoader);
-e.g.: injectDependencies(new Dependency[] {new Dependency("com.google.code.gson", "gson", "2.8.5"), new Dependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS)}, this.getClass().getClassLoader());
 
-// Injects dependency with the provided group id, artifact id and version from maven central repository into the provided class loader.
+// Injects dependency with the provided group id, artifact id and version from Maven central repository into the provided class loader.
 injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader);
-e.g.: injectDependency("com.google.code.gson", "gson", "2.8.5", this.getClass().getClassLoader());
 
 // Injects dependency with the provided group id, artifact id and version from the provided repository into the provided class loader.
 injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader);
-e.g.: injectDependency("co.jaqobb", "namemc-api", "1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS, this.getClass().getClassLoader());
 
 // Injects provided dependency into the provided class loader.
 injectDependency(Dependency dependency, ClassLoader classLoader);
-e.g.: injectDependency(new Dependency("com.google.code.gson", "gson", "2.8.5"), this.getClass().getClassLoader());
-e.g.: injectDependency(new Dependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS), this.getClass().getClassLoader());
 ```
 
 You can create a repository class by using:
 ```java
 // Creates new repository with the provided url.
 new Repository(String url);
-e.g.: new Repository("https://repo.your-name.com/repository/maven-snapshots/");
 ```
 
 You can also create a dependency class by using:
 ```java
 // Creates new dependency with the provided group id, artifact id, version and repository.
 new Dependency(String groupId, String artifactId, String version, Repository repository);
-e.g.: new Dependency("co.jaqobb", "namemc-api", "1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
 ```
 or:
 ```java
 // Creates new dependency with the provided group id, artifact id, version.
 new Dependency(String groupId, String artifactId, String version);
-e.g.: new Dependency("com.google.code.gson", "gson", "2.8.5");
 ```
 
-Since version 1.1-SNAPSHOT, you can use shorthand notation to create/inject dependencies. Shorthand notation is just a shortened form of writing group id, artifact id and version (\<group id\>:\<artifact id\>:\<version\>).
+Since the 1.1-SNAPSHOT version you can use shorthand notation to create/inject dependencies. Shorthand notation is just a shortened form of writing group id, artifact id and version (\<group id\>:\<artifact id\>:\<version\>).
 
-You can create dependency class with shorthand notation using:
+You can create a dependency class with shorthand notation using:
 ```java
 // Creates new dependency with the provided shorthand notation and repository.
 new Dependency(String shorthandNotation, Repository repository);
-e.g.: new Dependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS);
 ```
 or:
 ```java
 // Creates new dependency with the provided shorthand notation.
 new Dependency(String shorthandNotation);
-e.g.: new Dependency("com.google.code.gson:gson:2.8.5");
 ```
 
 And in the DependencyInjector class you can use shorthand notation as well:
 ```java
-// Injects dependency with the provided shorthand notation from maven central repository into the provided class loader.
+// Injects dependency with the provided shorthand notation from Maven central repository into the provided class loader.
 injectDependency(String shorthandNotation, ClassLoader classLoader);
-e.g.: injectDependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", this.getClass().getClassLoader());
 
 // Injects dependency with the provided shorthand notation from the provided repository into the provided class loader.
 injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader);
-e.g.: injectDependency("co.jaqobb:namemc-api:1.2.3-SNAPSHOT", Repositories.JAQOBB_SNAPSHOTS, this.getClass().getClassLoader());
 ```
 
-If the repository is not provided, maven central repository will be used instead.
+If the repository is not provided, Maven central repository will be used instead.
 
-Dependency-Injector also provides preset dependencies and repositories available in the Dependencies and Repositories class.
+Dependency-Injector also provides repositories available in the Repositories class.
 
-If you want me to add either a dependency or a repository, just contact me through my discord: jaqobb#6998, or through this project's issues section.
+If you want me to add a repository, just contact me through my Discord: jaqobb#6998 or through this project issues section.
 
 ### Important
 
