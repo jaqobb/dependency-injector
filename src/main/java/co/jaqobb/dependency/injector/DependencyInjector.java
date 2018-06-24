@@ -67,7 +67,7 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Useless constructor, just to make sure no one will initialize this class.
+	 * Private constructor to make sure no one will initialize this class.
 	 */
 	private DependencyInjector()
 	{
@@ -76,13 +76,13 @@ public final class DependencyInjector
 	/**
 	 * Injects the given dependencies into the given class loader.
 	 *
-	 * @param dependencies An array of dependency to inject.
+	 * @param dependencies An array of dependencies to inject.
 	 * @param classLoader  A class loader which all dependencies will be injected into.
 	 *
-	 * @throws NullPointerException                  If the given dependencies or any depenendency in the array of dependency or class loader is null.
+	 * @throws NullPointerException                  If the given dependencies or any depenendency or class loader is null.
 	 * @throws DependencyDownloadException           If the error occurred while trying to download any dependency.
 	 * @throws DependencyInjectException             If the error occurred while trying inject any dependency.
-	 * @throws MissingShorthandNotationInfoException If shorthand notation was used to create any dependency instance and the shorthand notation is missing group id, artifact id or version.
+	 * @throws MissingShorthandNotationInfoException If shorthand notation was used to create any dependency and the shorthand notation is missing group id, artifact id or version.
 	 */
 	public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader)
 	{
@@ -94,7 +94,7 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Injects dependency from the maven central repository using the given shorthand notation into the given class loader.
+	 * Injects a dependency from the Maven central repository using the given shorthand notation into the given class loader.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
 	 * @param classLoader       A class loader which dependency will be injected into.
@@ -110,7 +110,7 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Injects dependency with the given group id, artifact id and version from the maven central repository into the given class loader.
+	 * Injects a dependency with the given group id, artifact id and version from the Maven central repository into the given class loader.
 	 *
 	 * @param groupId     An group id of the dependency.
 	 * @param artifactId  An artifact id of the dependency.
@@ -132,7 +132,7 @@ public final class DependencyInjector
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
 	 * @param classLoader       A class loader which dependency will be injected into.
 	 *
-	 * @throws NullPointerException                  If the given shorthand notation, or class loader is null.
+	 * @throws NullPointerException                  If the given shorthand notation or class loader is null.
 	 * @throws DependencyDownloadException           If the error occurred while trying to download dependency.
 	 * @throws DependencyInjectException             If the error occurred while trying inject dependency.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
@@ -143,12 +143,12 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Injects dependency from the given repository using the given shorthand notation into the given class loader.
+	 * Injects a dependency from the given repository using the given shorthand notation into the given class loader.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
 	 * @param classLoader       A class loader which dependency will be injected into.
 	 *
-	 * @throws NullPointerException                  If the given shorthand notation, or class loader is null.
+	 * @throws NullPointerException                  If the given shorthand notation or class loader is null.
 	 * @throws DependencyDownloadException           If the error occurred while trying to download dependency.
 	 * @throws DependencyInjectException             If the error occurred while trying inject dependency.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
@@ -159,7 +159,7 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Injects dependency with the given group id, artifact id and version from the given repository into the given class loader.
+	 * Injects a dependency with the given group id, artifact id and version from the given repository into the given class loader.
 	 *
 	 * @param groupId     A group id of the dependency.
 	 * @param artifactId  An artifact id of the dependency.
@@ -177,7 +177,7 @@ public final class DependencyInjector
 	}
 
 	/**
-	 * Injects dependency with the given group id, artifact id and version from the given repository into the given class loader.
+	 * Injects a dependency with the given group id, artifact id and version from the given repository into the given class loader.
 	 *
 	 * @param groupId     A group id of the dependency.
 	 * @param artifactId  An artifact id of the dependency.
@@ -203,7 +203,7 @@ public final class DependencyInjector
 	 * @throws NullPointerException                  If the given dependency or class loader is null.
 	 * @throws DependencyDownloadException           If the error occurred while trying to download the given dependency.
 	 * @throws DependencyInjectException             If the error occurred while trying inject the given dependency.
-	 * @throws MissingShorthandNotationInfoException If shorthand notation was used to create an instance of dependency and the shorthand notation is missing group id, artifact id or version.
+	 * @throws MissingShorthandNotationInfoException If a shorthand notation was used to create the given dependency and the shorthand notation is missing group id, artifact id or version.
 	 */
 	public static void injectDependency(Dependency dependency, ClassLoader classLoader)
 	{
