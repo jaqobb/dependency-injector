@@ -27,7 +27,7 @@ package co.jaqobb.dependency.injector.repository;
 import java.util.Objects;
 
 /**
- * Class that holds repository url.
+ * Class that represents a repository.
  */
 public final class Repository
 {
@@ -37,7 +37,7 @@ public final class Repository
 	private final String url;
 
 	/**
-	 * Constructs new repository instance with the given url.
+	 * Constructs a new Repository class instance with the given url.
 	 *
 	 * @param url A url.
 	 *
@@ -49,9 +49,9 @@ public final class Repository
 	}
 
 	/**
-	 * Returns a url of this repository.
+	 * Returns this repository url.
 	 *
-	 * @return A url of this repository.
+	 * @return This repository url.
 	 */
 	public String getUrl()
 	{
