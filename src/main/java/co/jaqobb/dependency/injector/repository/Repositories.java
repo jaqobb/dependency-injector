@@ -38,16 +38,16 @@ public final class Repositories
 	 */
 	public static final Repository JCENTER          = new Repository("https://jcenter.bintray.com");
 	/**
-	 * jaqobb's releases repository.
+	 * jaqobb releases repository.
 	 */
 	public static final Repository JAQOBB_RELEASES  = new Repository("https://repo.jaqobb.co/repository/maven-releases/");
 	/**
-	 * jaqobb's snapshots repository.
+	 * jaqobb snapshots repository.
 	 */
 	public static final Repository JAQOBB_SNAPSHOTS = new Repository("https://repo.jaqobb.co/repository/maven-snapshots/");
 
 	/**
-	 * Useless constructor, just to make sure no one will initialize this class.
+	 * Private constructor to make sure no one will initialize this class.
 	 */
 	private Repositories()
 	{
