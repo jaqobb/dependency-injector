@@ -33,7 +33,7 @@ import co.jaqobb.dependency.injector.repository.Repositories;
 import co.jaqobb.dependency.injector.repository.Repository;
 
 /**
- * Class that holds dependency info like group id, artifact id etc.
+ * Class that represents a dependency.
  */
 public final class Dependency
 {
@@ -55,7 +55,7 @@ public final class Dependency
 	private final Repository repository;
 
 	/**
-	 * Constructs new dependency instance with the given shorthand notation and maven central repository.
+	 * Constructs a new Dependency class instance with the given shorthand notation and Maven central repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
 	 *
@@ -68,12 +68,12 @@ public final class Dependency
 	}
 
 	/**
-	 * Constructs new dependency instance with, the given shorthand notation and the given repository.
+	 * Constructs a new Dependency class instance with the given shorthand notation and repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
 	 * @param repository        A repository which holds dependency with the given group id, arifact id and version.
 	 *
-	 * @throws NullPointerException                  If the given shorthand notation or the given repository is null.
+	 * @throws NullPointerException                  If the given shorthand notation or repository is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
 	public Dependency(String shorthandNotation, String repository)
@@ -92,12 +92,12 @@ public final class Dependency
 	}
 
 	/**
-	 * Constructs new dependency instance with, the given shorthand notation and the given repository.
+	 * Constructs a new Dependency class instance with, the given shorthand notation and repository.
 	 *
 	 * @param shorthandNotation A shorthand notation (<group id>:<artifact id>:<version>).
 	 * @param repository        A repository which holds dependency with the given group id, arifact id and version.
 	 *
-	 * @throws NullPointerException                  If the given shorthand notation or the given repository is null.
+	 * @throws NullPointerException                  If the given shorthand notation or repository is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
 	public Dependency(String shorthandNotation, Repository repository)
@@ -116,7 +116,7 @@ public final class Dependency
 	}
 
 	/**
-	 * Constructs new dependency instance with, the given group id, artfact id, version and maven central repository.
+	 * Constructs a new Dependency class instance with, the given group id, artfact id, version and Maven central repository.
 	 *
 	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
@@ -130,7 +130,7 @@ public final class Dependency
 	}
 
 	/**
-	 * Constructs new dependency instance with, the given group id, artifact id, version and repository.
+	 * Constructs a new Dependency class instance with the given group id, artifact id, version and repository.
 	 *
 	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
@@ -141,14 +141,11 @@ public final class Dependency
 	 */
 	public Dependency(String groupId, String artifactId, String version, String repository)
 	{
-		this.groupId = Objects.requireNonNull(groupId, "groupId");
-		this.artifactId = Objects.requireNonNull(artifactId, "artifactId");
-		this.version = Objects.requireNonNull(version, "version");
-		this.repository = new Repository(Objects.requireNonNull(repository, "repository"));
+		this(groupId, artifactId, version, new Repository(repository));
 	}
 
 	/**
-	 * Constructs new dependency instance with, the given group id, artifact id, version and repository.
+	 * Constructs a new Dependency class instance with, the given group id, artifact id, version and repository.
 	 *
 	 * @param groupId    A group id of the dependency.
 	 * @param artifactId An artifact id of the dependency.
@@ -166,9 +163,9 @@ public final class Dependency
 	}
 
 	/**
-	 * Returns a group id of this dependency.
+	 * Returns this dependency group id.
 	 *
-	 * @return A group id of this dependency.
+	 * @return This dependency group id.
 	 */
 	public String getGroupId()
 	{
@@ -176,9 +173,9 @@ public final class Dependency
 	}
 
 	/**
-	 * Returns an artifact id of this dependency.
+	 * Returns this dependency artifact id.
 	 *
-	 * @return An artifact id of this deependency.
+	 * @return This dependency artifact id.
 	 */
 	public String getArtifactId()
 	{
@@ -186,9 +183,9 @@ public final class Dependency
 	}
 
 	/**
-	 * Returns a version id of this dependency.
+	 * Returns this dependency version.
 	 *
-	 * @return A version id of this dependency.
+	 * @return This dependency version.
 	 */
 	public String getVersion()
 	{
@@ -196,9 +193,9 @@ public final class Dependency
 	}
 
 	/**
-	 * Returns a repository id of this dependency.
+	 * Returns this dependency repository.
 	 *
-	 * @return A repository id of this dependency.
+	 * @return This dependency repository.
 	 */
 	public Repository getRepository()
 	{
@@ -206,9 +203,9 @@ public final class Dependency
 	}
 
 	/**
-	 * Returns a download url id of this dependency.
+	 * Returns this dependency download url.
 	 *
-	 * @return A download url id of this dependency.
+	 * @return This dependency download url.
 	 */
 	public URL getDownloadUrl() throws MalformedURLException
 	{
