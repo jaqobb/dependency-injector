@@ -45,6 +45,8 @@ public final class DependencyInjectException extends RuntimeException
 
 	/**
 	 * Constructs new dependency inject exception with the given message and no cause.
+	 *
+	 * @param message A message of the expection.
 	 */
 	public DependencyInjectException(String message)
 	{
@@ -53,6 +55,9 @@ public final class DependencyInjectException extends RuntimeException
 
 	/**
 	 * Constructs new dependency inject exception with the given message and cause.
+	 *
+	 * @param meessage A message of the exception.
+	 * @param cause A cause of the exception.
 	 */
 	public DependencyInjectException(String message, Throwable cause)
 	{
@@ -61,6 +66,8 @@ public final class DependencyInjectException extends RuntimeException
 
 	/**
 	 * Constructs new dependency inject exception with no message and the given cause.
+	 *
+	 * @param cause A cause of the exception.
 	 */
 	public DependencyInjectException(Throwable cause)
 	{

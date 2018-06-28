@@ -45,6 +45,8 @@ public final class MissingShorthandNotationInfoException extends RuntimeExceptio
 
 	/**
 	 * Constructs new missing shorthand notation info exception with the given message and no cause.
+	 *
+	 * @param message A message of the expection.
 	 */
 	public MissingShorthandNotationInfoException(String message)
 	{
@@ -53,6 +55,9 @@ public final class MissingShorthandNotationInfoException extends RuntimeExceptio
 
 	/**
 	 * Constructs new missing shorthand notation info exception with the given message and cause.
+	 *
+	 * @param meessage A message of the exception.
+	 * @param cause A cause of the exception.
 	 */
 	public MissingShorthandNotationInfoException(String message, Throwable cause)
 	{
@@ -61,6 +66,8 @@ public final class MissingShorthandNotationInfoException extends RuntimeExceptio
 
 	/**
 	 * Constructs new missing shorthand notation info exception with no message and the given cause.
+	 *
+	 * @param cause A cause of the exception.
 	 */
 	public MissingShorthandNotationInfoException(Throwable cause)
 	{
