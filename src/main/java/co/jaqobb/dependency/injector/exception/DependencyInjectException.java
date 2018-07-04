@@ -28,8 +28,7 @@ package co.jaqobb.dependency.injector.exception;
 /**
  * Exception that is being thrown when the dependency failed to inject.
  */
-public final class DependencyInjectException extends RuntimeException
-{
+public final class DependencyInjectException extends RuntimeException {
 	/**
 	 * Serial version unique id of the exception.
 	 */
@@ -38,8 +37,7 @@ public final class DependencyInjectException extends RuntimeException
 	/**
 	 * Constructs new dependency inject exception with no message and no cause.
 	 */
-	public DependencyInjectException()
-	{
+	public DependencyInjectException() {
 		super();
 	}
 
@@ -48,8 +46,7 @@ public final class DependencyInjectException extends RuntimeException
 	 *
 	 * @param message A message of the expection.
 	 */
-	public DependencyInjectException(String message)
-	{
+	public DependencyInjectException(String message) {
 		super(message);
 	}
 
@@ -59,8 +56,7 @@ public final class DependencyInjectException extends RuntimeException
 	 * @param meessage A message of the exception.
 	 * @param cause A cause of the exception.
 	 */
-	public DependencyInjectException(String message, Throwable cause)
-	{
+	public DependencyInjectException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
@@ -69,8 +65,7 @@ public final class DependencyInjectException extends RuntimeException
 	 *
 	 * @param cause A cause of the exception.
 	 */
-	public DependencyInjectException(Throwable cause)
-	{
+	public DependencyInjectException(Throwable cause) {
 		super(cause);
 	}
 }

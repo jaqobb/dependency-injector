@@ -36,8 +36,7 @@ import co.jaqobb.dependency.injector.repository.Repository;
 /**
  * Class that represents a dependency.
  */
-public final class Dependency
-{
+public final class Dependency {
 	/**
 	 * Group id of the dependency
 	 */
@@ -63,8 +62,7 @@ public final class Dependency
 	 * @throws NullPointerException If the given shorthand notation is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
-	public Dependency(String shorthandNotation)
-	{
+	public Dependency(String shorthandNotation) {
 		this(shorthandNotation, Repositories.MAVEN_CENTRAL);
 	}
 
@@ -77,13 +75,11 @@ public final class Dependency
 	 * @throws NullPointerException If the given shorthand notation or repository is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
-	public Dependency(String shorthandNotation, String repository)
-	{
+	public Dependency(String shorthandNotation, String repository) {
 		Objects.requireNonNull(shorthandNotation, "shorthandNotation");
 		Objects.requireNonNull(repository, "repository");
 		String[] data = shorthandNotation.split(":");
-		if (data.length != 3)
-		{
+		if (data.length != 3) {
 			throw new MissingShorthandNotationInfoException("Shorthand notation must have only group id, artifact id and version separated by ':'");
 		}
 		this.groupId = data[0];
@@ -101,13 +97,11 @@ public final class Dependency
 	 * @throws NullPointerException If the given shorthand notation or repository is null.
 	 * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id or version.
 	 */
-	public Dependency(String shorthandNotation, Repository repository)
-	{
+	public Dependency(String shorthandNotation, Repository repository) {
 		Objects.requireNonNull(shorthandNotation, "shorthandNotation");
 		Objects.requireNonNull(repository, "repository");
 		String[] data = shorthandNotation.split(":");
-		if (data.length != 3)
-		{
+		if (data.length != 3) {
 			throw new MissingShorthandNotationInfoException("Shorthand notation must have only group id, artifact id and version separated by ':'");
 		}
 		this.groupId = data[0];
@@ -125,8 +119,7 @@ public final class Dependency
 	 *
 	 * @throws NullPointerException If the given group id, artifact id or version is null.
 	 */
-	public Dependency(String groupId, String artifactId, String version)
-	{
+	public Dependency(String groupId, String artifactId, String version) {
 		this(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
 	}
 
@@ -140,8 +133,7 @@ public final class Dependency
 	 *
 	 * @throws NullPointerException If the given group id, artifact id, version or repository is null.
 	 */
-	public Dependency(String groupId, String artifactId, String version, String repository)
-	{
+	public Dependency(String groupId, String artifactId, String version, String repository) {
 		this(groupId, artifactId, version, new Repository(repository));
 	}
 
@@ -155,8 +147,7 @@ public final class Dependency
 	 *
 	 * @throws NullPointerException If the given group id, artifact id, version or repository is null.
 	 */
-	public Dependency(String groupId, String artifactId, String version, Repository repository)
-	{
+	public Dependency(String groupId, String artifactId, String version, Repository repository) {
 		this.groupId = Objects.requireNonNull(groupId, "groupId");
 		this.artifactId = Objects.requireNonNull(artifactId, "artifactId");
 		this.version = Objects.requireNonNull(version, "version");
@@ -168,8 +159,7 @@ public final class Dependency
 	 *
 	 * @return This dependency group id.
 	 */
-	public String getGroupId()
-	{
+	public String getGroupId() {
 		return this.groupId;
 	}
 
@@ -178,8 +168,7 @@ public final class Dependency
 	 *
 	 * @return This dependency artifact id.
 	 */
-	public String getArtifactId()
-	{
+	public String getArtifactId() {
 		return this.artifactId;
 	}
 
@@ -188,8 +177,7 @@ public final class Dependency
 	 *
 	 * @return This dependency version.
 	 */
-	public String getVersion()
-	{
+	public String getVersion() {
 		return this.version;
 	}
 
@@ -198,8 +186,7 @@ public final class Dependency
 	 *
 	 * @return This dependency repository.
 	 */
-	public Repository getRepository()
-	{
+	public Repository getRepository() {
 		return this.repository;
 	}
 
@@ -208,11 +195,9 @@ public final class Dependency
 	 *
 	 * @return This dependency download url.
 	 */
-	public URL getDownloadUrl() throws MalformedURLException
-	{
+	public URL getDownloadUrl() throws MalformedURLException {
 		String url = this.repository.getUrl();
-		if (!url.endsWith("/"))
-		{
+		if (!url.endsWith("/")) {
 			url += "/";
 		}
 		String groupId = this.groupId.replace(".", "/");
@@ -227,14 +212,11 @@ public final class Dependency
 	 * @return True if the given object is the same as this class, and false otherwise.
 	 */
 	@Override
-	public boolean equals(Object object)
-	{
-		if (this == object)
-		{
+	public boolean equals(Object object) {
+		if (this == object) {
 			return true;
 		}
-		if (object == null || this.getClass() != object.getClass())
-		{
+		if (object == null || this.getClass() != object.getClass()) {
 			return false;
 		}
 		Dependency that = (Dependency) object;
@@ -247,8 +229,7 @@ public final class Dependency
 	 * @return A hash code of this class.
 	 */
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		return Objects.hash(this.groupId, this.artifactId, this.version, this.repository);
 	}
 
@@ -258,8 +239,7 @@ public final class Dependency
 	 * @return A nice looking representation of this class.
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return "Dependency{" + "groupId=" + this.groupId + ", artifactId=" + this.artifactId + ", version=" + this.version + ", repository=" + this.repository + "}";
 	}
 }

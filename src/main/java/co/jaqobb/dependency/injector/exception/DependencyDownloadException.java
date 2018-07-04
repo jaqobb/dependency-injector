@@ -28,8 +28,7 @@ package co.jaqobb.dependency.injector.exception;
 /**
  * Exception that is being thrown when the dependency failed to download.
  */
-public final class DependencyDownloadException extends RuntimeException
-{
+public final class DependencyDownloadException extends RuntimeException {
 	/**
 	 * Serial version unique id of the exception.
 	 */
@@ -38,8 +37,7 @@ public final class DependencyDownloadException extends RuntimeException
 	/**
 	 * Constructs new dependency download exception with no message and no cause.
 	 */
-	public DependencyDownloadException()
-	{
+	public DependencyDownloadException() {
 		super();
 	}
 
@@ -48,8 +46,7 @@ public final class DependencyDownloadException extends RuntimeException
 	 *
 	 * @param message A message of the expection.
 	 */
-	public DependencyDownloadException(String message)
-	{
+	public DependencyDownloadException(String message) {
 		super(message);
 	}
 
@@ -59,8 +56,7 @@ public final class DependencyDownloadException extends RuntimeException
 	 * @param meessage A message of the exception.
 	 * @param cause A cause of the exception.
 	 */
-	public DependencyDownloadException(String message, Throwable cause)
-	{
+	public DependencyDownloadException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
@@ -69,8 +65,7 @@ public final class DependencyDownloadException extends RuntimeException
 	 *
 	 * @param cause A cause of the exception.
 	 */
-	public DependencyDownloadException(Throwable cause)
-	{
+	public DependencyDownloadException(Throwable cause) {
 		super(cause);
 	}
 }

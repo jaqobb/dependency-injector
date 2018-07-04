@@ -28,8 +28,7 @@ package co.jaqobb.dependency.injector.repository;
 /**
  * Collection of the preset repositories.
  */
-public final class Repositories
-{
+public final class Repositories {
 	/**
 	 * Official Maven repository.
 	 */
@@ -50,7 +49,6 @@ public final class Repositories
 	/**
 	 * Private constructor to make sure no one will initialize this class.
 	 */
-	private Repositories()
-	{
+	private Repositories() {
 	}
 }
