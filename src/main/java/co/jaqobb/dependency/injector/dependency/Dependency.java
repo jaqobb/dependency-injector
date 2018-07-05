@@ -1,12 +1,11 @@
 package co.jaqobb.dependency.injector.dependency;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Objects;
-
 import co.jaqobb.dependency.injector.exception.MissingShorthandNotationInfoException;
 import co.jaqobb.dependency.injector.repository.Repositories;
 import co.jaqobb.dependency.injector.repository.Repository;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Objects;
 
 /**
  * Class that represents a dependency.
