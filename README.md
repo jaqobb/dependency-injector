@@ -1,3 +1,6 @@
+# Project end
+This project is no longer maintained by me. If someone want to take care of this project, please contact me via Discord: jaqobb#6998.
+
 ## Dependency-Injector
 Inject dependencies directly into your Java code without increasing jar file size.
 
