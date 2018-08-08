@@ -54,7 +54,7 @@ public final class DependencyInjectorTest {
         // Inject other library to the main class loader using shorthand notation.
         // In this case this dependency isn't available in the Maven central repository.
         // We need to use custom url instead.
-        DependencyInjector.injectDependency("some.dependency:coolname:1.2.3", "https://link.to.this.dependency.repository");
+        DependencyInjector.injectDependency("some.dependency:coolname:1.2.3", "https://link.to.this.dependency.repository", this.getClass().getClassLoader());
         
         // Everything is done. You can use these libraries as before.
         // The only change is you don't have to shade them into your jar file.
