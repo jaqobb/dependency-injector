@@ -50,12 +50,12 @@ public final class Dependency {
     }
 
     /**
-     * Constructs a new {@code Dependency} object with the given shorthand notation and repository.
+     * Constructs a new {@code Dependency} object with the given shorthand notation and {@link Repository}.
      *
      * @param shorthandNotation The shorthand notation (group id:artifact id:version)
      * @param repository The repository which holds the {@code Dependency} with the given group id, artifact id, and version
      *
-     * @throws NullPointerException If the given shorthand notation or repository is {@code null}
+     * @throws NullPointerException If the given shorthand notation or {@link Repository} is {@code null}
      * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id, or version
      */
     public Dependency(String shorthandNotation, Repository repository) {
@@ -103,14 +103,14 @@ public final class Dependency {
     }
 
     /**
-     * Constructs a new {@code Dependency} object with the given group id, artifact id, version, and repository.
+     * Constructs a new {@code Dependency} object with the given group id, artifact id, version, and {@link Repository}.
      *
      * @param groupId A group id of the {@code Dependency}
      * @param artifactId An artifact id of the {@code Dependency}
      * @param version A version of the {@code Dependency}
      * @param repository A repository which holds the {@code Dependency} with the given group id, artifact id, and version
      *
-     * @throws NullPointerException If the given group id, artifact id, version or repository is {@code null}
+     * @throws NullPointerException If the given group id, artifact id, version or {@link Repository} is {@code null}
      */
     public Dependency(String groupId, String artifactId, String version, Repository repository) {
         this.groupId = Objects.requireNonNull(groupId, "groupId");

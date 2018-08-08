@@ -116,7 +116,7 @@ public final class DependencyInjector {
      * @param shorthandNotation The shorthand notation (group id:artifact id:version)
      * @param classLoader The {@link ClassLoader} into which the {@link Dependency} will be injected
      *
-     * @throws NullPointerException If the given shorthand notation or {@link ClassLoader} is {@code null}
+     * @throws NullPointerException If the given shorthand notation, {@link Repository}, or {@link ClassLoader} is {@code null}
      * @throws DependencyDownloadException If the error occurred while trying to download the {@link Dependency}
      * @throws DependencyInjectException If the error occurred while trying inject the {@link Dependency}
      * @throws MissingShorthandNotationInfoException If the given shorthand notation is missing group id, artifact id, or version
