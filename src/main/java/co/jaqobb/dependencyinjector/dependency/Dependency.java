@@ -162,9 +162,11 @@ public final class Dependency {
      */
     public URL getDownloadUrl() throws MalformedURLException {
         String url = this.repository.getUrl();
+
         if (!url.endsWith("/")) {
             url += "/";
         }
+
         String groupId = this.groupId.replace(".", "/");
         return new URL(url + groupId + "/" + this.artifactId + "/" + this.version + "/" + this.artifactId + "-" + this.version + ".jar");
     }
