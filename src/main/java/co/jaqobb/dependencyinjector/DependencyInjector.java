@@ -1,3 +1,7 @@
+/*
+ * This file is a part of DependencyInjector, licensed under the MIT License (MIT).
+ * See the LICENSE.txt file at the root of this project for more details.
+ */
 package co.jaqobb.dependencyinjector;
 
 import java.io.File;
