@@ -1,4 +1,4 @@
-package co.jaqobb.dependency.injector.exception;
+package co.jaqobb.dependencyinjector.exception;
 
 /**
  * Exception that is being thrown when the used shorthand notation is missing group id, artifact id or version.

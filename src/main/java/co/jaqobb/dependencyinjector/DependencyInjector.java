@@ -1,10 +1,10 @@
-package co.jaqobb.dependency.injector;
+package co.jaqobb.dependencyinjector;
 
-import co.jaqobb.dependency.injector.dependency.Dependency;
-import co.jaqobb.dependency.injector.exception.DependencyDownloadException;
-import co.jaqobb.dependency.injector.exception.DependencyInjectException;
-import co.jaqobb.dependency.injector.exception.MissingShorthandNotationInfoException;
-import co.jaqobb.dependency.injector.repository.Repository;
+import co.jaqobb.dependencyinjector.dependency.Dependency;
+import co.jaqobb.dependencyinjector.exception.DependencyDownloadException;
+import co.jaqobb.dependencyinjector.exception.DependencyInjectException;
+import co.jaqobb.dependencyinjector.exception.MissingShorthandNotationInfoException;
+import co.jaqobb.dependencyinjector.repository.Repository;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Method;

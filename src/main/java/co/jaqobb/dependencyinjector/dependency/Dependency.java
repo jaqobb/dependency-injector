@@ -1,8 +1,8 @@
-package co.jaqobb.dependency.injector.dependency;
+package co.jaqobb.dependencyinjector.dependency;
 
-import co.jaqobb.dependency.injector.exception.MissingShorthandNotationInfoException;
-import co.jaqobb.dependency.injector.repository.Repositories;
-import co.jaqobb.dependency.injector.repository.Repository;
+import co.jaqobb.dependencyinjector.exception.MissingShorthandNotationInfoException;
+import co.jaqobb.dependencyinjector.repository.Repository;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;

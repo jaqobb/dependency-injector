@@ -1,4 +1,4 @@
-package co.jaqobb.dependency.injector.repository;
+package co.jaqobb.dependencyinjector.repository;
 
 import java.util.Objects;
 

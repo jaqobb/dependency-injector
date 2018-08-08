@@ -1,4 +1,4 @@
-package co.jaqobb.dependency.injector.exception;
+package co.jaqobb.dependencyinjector.exception;
 
 /**
  * Exception that is being thrown when the dependency failed to inject.
