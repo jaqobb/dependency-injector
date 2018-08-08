@@ -1,0 +1,11 @@
+plugins {
+    id "java"
+}
+
+defaultTasks "clean", "build", "sourcesJar"
+
+task sourcesJar(type : Jar) {
+    from sourceSets.main.allJava
+
+    classifier = "sources"
+}
