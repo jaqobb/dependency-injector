@@ -2,7 +2,7 @@
 Inject dependencies directly into your Java code without increasing jar file size.
 
 ### Purposes of this project
-This project gives the possibility to use external dependencies in your applications without increasing final jar size due to dependency shading.
+This project gives the possibility to use external dependencies in your applications without increasing the final jar size due to dependency shading.
 
 ### Requirements
 All you need is Java 8 and optionally Maven or Gradle if you don't want to download sources on your own.
@@ -28,12 +28,14 @@ dependencies {
 }
 ```
 
-### How to use (No Maven)
+### How to use (No Maven or Gradle)
 You need to download the source code and add it to your current project.
 
 ### Example usage
 ```java
 package co.jaqobb.dependencyinjector.test;
+
+import co.jaqobb.dependencyinjector.DependencyInjector;
 
 public final class DependencyInjectorTest {
     
