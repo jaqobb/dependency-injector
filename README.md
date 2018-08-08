@@ -1,11 +1,8 @@
-# Project end
-This project is no longer maintained by me. If someone want to take care of the project, please contact me via Discord: jaqobb#6998.
-
-## Dependency-Injector
+## DependencyInjector
 Inject dependencies directly into your Java code without increasing jar file size.
 
 ### Purposes of this project
-This project is supposed to give a possibility to use external dependencies in your programs without increasing final jar size due to dependency shading.
+This project gives the possibility to use external dependencies in your applications without increasing final jar size due to dependency shading.
 
 ### Requirements
 All you need is Java 8 and optionally Maven if you don't want to download sources on your own.
