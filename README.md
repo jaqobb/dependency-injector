@@ -5,100 +5,64 @@ Inject dependencies directly into your Java code without increasing jar file siz
 This project gives the possibility to use external dependencies in your applications without increasing final jar size due to dependency shading.
 
 ### Requirements
-All you need is Java 8 and optionally Maven if you don't want to download sources on your own.
+All you need is Java 8 and optionally Maven or Gradle if you don't want to download sources on your own.
 
 ### How to use (Maven)
-You need to add repository to your project pom.xml file:
-```xml
-<repositories>
-	<repository>
-		<id>jaqobb-repo</id>
-		<url>https://repo.jaqobb.co/repository/maven-snapshots/</url>
-	</repository>
-</repositories>
-```
-and then add dependency:
+You need to add the dependency to your project pom.xml file:
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>co.jaqobb</groupId>
-		<artifactId>dependency-injector</artifactId>
-		<version>1.1.7-SNAPSHOT</version>
-		<scope>compile</scope>
-	</dependency>
+    <dependency>
+        <groupId>co.jaqobb</groupId>
+        <artifactId>dependencyinjector</artifactId>
+        <version>2.0.0</version>
+        <scope>compile</scope>
+    </dependency>
 </dependencies>
 ```
-You need to compile this library due to it's not shaded anywhere by default.
+
+### How to use (Gradle)
+You need to add the dependency to your project build.gradle file:
+```gradle
+dependencies {
+    compile "co.jaqobb:dependencyinjector:2.0.0"
+}
+```
 
 ### How to use (No Maven)
-Simply download source and add it to your current project.
+You need to download the source code and add it to your current project.
 
-### API
-Everything starts in the DependencyInjector class.
-
-Before your whole code starts, you need to use one of the some accessible inject methods:
+### Example usage
 ```java
-// Injects provided dependencies into the provided class loader.
-injectDependencies(Dependency[] dependencies, ClassLoader classLoader);
+package co.jaqobb.dependencyinjector.test;
 
-// Injects dependency with the provided group id, artifact id and version from Maven central repository into the provided class loader.
-injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader);
-
-// Injects dependency with the provided group id, artifact id and version from the provided repository into the provided class loader.
-injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader);
-
-// Injects provided dependency into the provided class loader.
-injectDependency(Dependency dependency, ClassLoader classLoader);
+public final class DependencyInjectorTest {
+    
+    private DependencyInjectorTest() {
+    }
+    
+    public static void main(String[] arguments) {
+        // Inject Google Guice Library to the main class loader using shorthand notation.
+        // No need to specify the repository because it's available in the Maven central one.
+        DependencyInjector.injectDependency("com.google.inject:guice:4.0", this.getClass().getClassLoader());
+        
+        // Inject Google Guava Library to the main class loader using old notation.
+        // No need to specify the repository because it's available in the Maven central one.
+        DependencyInjector.injectDependency("com.google.guava", "guava", "19.0", this.getClass().getClassLoader());
+        
+        // Inject other library to the main class loader using shorthand notation.
+        // In this case this dependency isn't available in the Maven central repository.
+        // We need to use custom url instead.
+        DependencyInjector.injectDependency("some.dependency:coolname:1.2.3", "https://link.to.this.dependency.repository");
+        
+        // Everything is done. You can use these libraries as before.
+        // The only change is you don't have to shade them into your jar file.
+    }
+    
+}
 ```
-
-You can create a repository class by using:
-```java
-// Creates new repository with the provided url.
-new Repository(String url);
-```
-
-You can also create a dependency class by using:
-```java
-// Creates new dependency with the provided group id, artifact id, version and repository.
-new Dependency(String groupId, String artifactId, String version, Repository repository);
-```
-or:
-```java
-// Creates new dependency with the provided group id, artifact id, version.
-new Dependency(String groupId, String artifactId, String version);
-```
-
-Since the 1.1-SNAPSHOT version you can use shorthand notation to create/inject dependencies. Shorthand notation is just a shortened form of writing group id, artifact id and version (\<group id\>:\<artifact id\>:\<version\>).
-
-You can create a dependency class with shorthand notation using:
-```java
-// Creates new dependency with the provided shorthand notation and repository.
-new Dependency(String shorthandNotation, Repository repository);
-```
-or:
-```java
-// Creates new dependency with the provided shorthand notation.
-new Dependency(String shorthandNotation);
-```
-
-And in the DependencyInjector class you can use shorthand notation as well:
-```java
-// Injects dependency with the provided shorthand notation from Maven central repository into the provided class loader.
-injectDependency(String shorthandNotation, ClassLoader classLoader);
-
-// Injects dependency with the provided shorthand notation from the provided repository into the provided class loader.
-injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader);
-```
-
-If the repository is not provided, Maven central repository will be used instead.
-
-Dependency-Injector also provides repositories available in the Repositories class.
-
-If you want me to add a repository, just contact me through my Discord: jaqobb#6998 or through this project issues section.
 
 ### Important
-
-All downloaded dependencies are cached inside ".dependencies" folder in your user home folder. The reason they are saved like that is to prevent program to download the same library several times and to allow other projects that use this project to use already downloaded dependencies.
+All downloaded dependencies are cached inside ".dependencies" folder in your user home director. This is used to prevent applications to download the same library several times and to allow other projects that use this project to use already downloaded dependencies.
 
 ### End
-That's all! Thank you for using Dependency-Injector!
+That's all! Thank you for using DependencyInjector!
