@@ -43,7 +43,4 @@ public final class DependencyInjectorTest {
 ```
 
 ### Important
-All downloaded dependencies are cached inside ".dependencies" folder in your user home director. This is used to prevent applications to download the same library several times and to allow other projects that use this project to use already downloaded dependencies.
-
-### End
-That's all! Thank you for using DependencyInjector!
+All downloaded dependencies are cached inside `.dependencies` folder in your user home director. This is used to prevent applications to download the same library several times and to allow other projects that use this library to use already downloaded dependencies.
