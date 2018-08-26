@@ -2,10 +2,18 @@ plugins {
     id "java"
 }
 
+group "co.jaqobb"
+version "2.0.0"
+
+description "A library to inject dependencies directly into your Java code without increasing jar file size"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 defaultTasks "clean", "build", "sourcesJar"
 
 task sourcesJar(type : Jar) {
-    from sourceSets.main.allJava
-
     classifier = "sources"
+
+    from sourceSets.main.allJava
 }

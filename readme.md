@@ -1,7 +1,7 @@
-## DependencyInjector
-Inject dependencies directly into your Java code without increasing jar file size.
+## Dependency Injector
+A library to inject dependencies directly into your Java code without increasing jar file size.
 
-### Purposes of this project
+### Idea of the project
 This project gives the possibility to use external dependencies in your applications without increasing the final jar size due to dependency shading.
 
 ### Requirements
