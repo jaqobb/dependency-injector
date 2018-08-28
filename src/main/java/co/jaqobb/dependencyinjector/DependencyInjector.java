@@ -12,89 +12,105 @@ import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.util.Objects;
 
-public final class DependencyInjector {
-
+public final class DependencyInjector
+{
     private static final Method ADD_URL_METHOD;
 
-    static {
-        try {
+    static
+    {
+        try
+        {
             ADD_URL_METHOD = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
             ADD_URL_METHOD.setAccessible(true);
-        } catch (NoSuchMethodException exception) {
+        }
+        catch (NoSuchMethodException exception)
+        {
             throw new InternalError("Unable to cache add url method", exception);
         }
     }
 
-    private DependencyInjector() {
+    private DependencyInjector()
+    {
     }
 
-    public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader) {
+    public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader)
+    {
         Objects.requireNonNull(dependencies, "dependencies");
-
-        for (Dependency dependency : dependencies) {
+        for (Dependency dependency : dependencies)
+        {
             injectDependency(dependency, classLoader);
         }
     }
 
-    public static void injectDependency(String shorthandNotation, ClassLoader classLoader) {
+    public static void injectDependency(String shorthandNotation, ClassLoader classLoader)
+    {
         injectDependency(new Dependency(shorthandNotation), classLoader);
     }
 
-    public static void injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader) {
+    public static void injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader)
+    {
         injectDependency(new Dependency(groupId, artifactId, version), classLoader);
     }
 
-    public static void injectDependency(String shorthandNotation, String repository, ClassLoader classLoader) {
+    public static void injectDependency(String shorthandNotation, String repository, ClassLoader classLoader)
+    {
         injectDependency(new Dependency(shorthandNotation, repository), classLoader);
     }
 
-    public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader) {
+    public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader)
+    {
         injectDependency(new Dependency(shorthandNotation, repository), classLoader);
     }
 
-    public static void injectDependency(String groupId, String artifactId, String version, String repository, ClassLoader classLoader) {
+    public static void injectDependency(String groupId, String artifactId, String version, String repository, ClassLoader classLoader)
+    {
         injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
     }
 
-    public static void injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader) {
+    public static void injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader)
+    {
         injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
     }
 
-    public static void injectDependency(Dependency dependency, ClassLoader classLoader) {
+    public static void injectDependency(Dependency dependency, ClassLoader classLoader)
+    {
         Objects.requireNonNull(dependency, "dependency");
         Objects.requireNonNull(classLoader, "classLoader");
-
         String dependencyGroupId = dependency.getGroupId();
         String dependencyArtifactId = dependency.getArtifactId();
         String dependencyVersion = dependency.getVersion();
         String dependencyName = dependencyArtifactId + "-" + dependencyVersion;
         String dependencyPath = dependencyGroupId.replace(".", File.separator) + File.separator + dependencyArtifactId + File.separator + dependencyVersion;
-
         File dependenciesFolder = new File(".dependencies");
         File dependencyFolder = new File(dependenciesFolder, dependencyPath);
         File dependencyDestination = new File(dependencyFolder, dependencyName + ".jar");
-
-        if (!dependencyDestination.exists()) {
-            try {
+        if (!dependencyDestination.exists())
+        {
+            try
+            {
                 URL url = dependency.getDownloadUrl();
 
-                try (InputStream inputStream = url.openStream()) {
+                try (InputStream inputStream = url.openStream())
+                {
                     Files.copy(inputStream, dependencyDestination.toPath());
                 }
-            } catch (Exception exception) {
+            }
+            catch (Exception exception)
+            {
                 throw new DependencyDownloadException("Unable to download dependency '" + dependencyName + "'", exception);
             }
         }
-
-        if (!dependencyDestination.exists()) {
+        if (!dependencyDestination.exists())
+        {
             throw new DependencyDownloadException("Unable to download dependency '" + dependencyName + "'");
         }
-
-        try {
+        try
+        {
             ADD_URL_METHOD.invoke(classLoader, dependencyDestination.toURI().toURL());
-        } catch (Exception exception) {
+        }
+        catch (Exception exception)
+        {
             throw new DependencyInjectException("Unable to inject dependency '" + dependencyName + "'", exception);
         }
     }
-
 }
