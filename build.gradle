@@ -7,8 +7,8 @@ version "2.0.0"
 
 description "A library to inject dependencies directly into your Java code without increasing jar file size"
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_1_10
+targetCompatibility = JavaVersion.VERSION_1_10
 
 defaultTasks "clean", "build", "sourcesJar"
 
