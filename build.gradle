@@ -10,9 +10,4 @@ description "A library to inject dependencies directly into your Java code witho
 sourceCompatibility = JavaVersion.VERSION_1_10
 targetCompatibility = JavaVersion.VERSION_1_10
 
-defaultTasks "clean", "build", "sourcesJar"
-
-task sourcesJar(type : Jar) {
-    classifier = "sources"
-    from sourceSets.main.allJava
-}
+defaultTasks "clean", "build"
