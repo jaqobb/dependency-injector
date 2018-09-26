@@ -12,9 +12,9 @@ You need to download the source code and add it to your current project.
 
 ### Example usage
 ```java
-package co.jaqobb.dependencyinjector.test;
+package co.jaqobb.dependency_injector.test;
 
-import co.jaqobb.dependencyinjector.DependencyInjector;
+import co.jaqobb.dependency_injector.DependencyInjector;
 
 public final class DependencyInjectorTest {
     

@@ -21,29 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependencyinjector.exception;
+package co.jaqobb.dependency_injector.repository;
 
-public final class DependencyDownloadException extends RuntimeException
+public final class Repositories
 {
-    private static final long serialVersionUID = 945863300106644187L;
+    public static final Repository MAVEN_CENTRAL = new Repository("https://repo1.maven.org/maven2/");
 
-    public DependencyDownloadException()
-    {
-        super();
-    }
+    public static final Repository JCENTER = new Repository("https://jcenter.bintray.com");
 
-    public DependencyDownloadException(String message)
+    private Repositories()
     {
-        super(message);
-    }
-
-    public DependencyDownloadException(String message, Throwable cause)
-    {
-        super(message, cause);
-    }
-
-    public DependencyDownloadException(Throwable cause)
-    {
-        super(cause);
     }
 }

@@ -21,15 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependencyinjector.dependency;
+package co.jaqobb.dependency_injector.dependency;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
-import co.jaqobb.dependencyinjector.exception.MissingShorthandNotationInfoException;
-import co.jaqobb.dependencyinjector.repository.Repositories;
-import co.jaqobb.dependencyinjector.repository.Repository;
+import co.jaqobb.dependency_injector.exception.MissingShorthandNotationInfoException;
+import co.jaqobb.dependency_injector.repository.Repositories;
+import co.jaqobb.dependency_injector.repository.Repository;
 
 public final class Dependency
 {

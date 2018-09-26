@@ -21,15 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependencyinjector.repository;
+package co.jaqobb.dependency_injector.repository;
 
-public final class Repositories
+import java.util.Objects;
+
+public final class Repository
 {
-    public static final Repository MAVEN_CENTRAL = new Repository("https://repo1.maven.org/maven2/");
+    private final String url;
 
-    public static final Repository JCENTER = new Repository("https://jcenter.bintray.com");
-
-    private Repositories()
+    public Repository(String url)
     {
+        this.url = Objects.requireNonNull(url, "url");
+    }
+
+    public String getUrl()
+    {
+        return this.url;
+    }
+
+    @Override
+    public boolean equals(Object object)
+    {
+        if (this == object)
+        {
+            return true;
+        }
+        if (object == null || this.getClass() != object.getClass())
+        {
+            return false;
+        }
+        Repository that = (Repository) object;
+        return Objects.equals(this.url, that.url);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(this.url);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Repository{" + "url=" + this.url + "}";
     }
 }

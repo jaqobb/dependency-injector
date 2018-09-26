@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependencyinjector.exception;
+package co.jaqobb.dependency_injector.exception;
 
 public final class MissingShorthandNotationInfoException extends RuntimeException
 {

@@ -21,48 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependencyinjector.repository;
+package co.jaqobb.dependency_injector.exception;
 
-import java.util.Objects;
-
-public final class Repository
+public final class DependencyDownloadException extends RuntimeException
 {
-    private final String url;
+    private static final long serialVersionUID = 945863300106644187L;
 
-    public Repository(String url)
+    public DependencyDownloadException()
     {
-        this.url = Objects.requireNonNull(url, "url");
+        super();
     }
 
-    public String getUrl()
+    public DependencyDownloadException(String message)
     {
-        return this.url;
+        super(message);
     }
 
-    @Override
-    public boolean equals(Object object)
+    public DependencyDownloadException(String message, Throwable cause)
     {
-        if (this == object)
-        {
-            return true;
-        }
-        if (object == null || this.getClass() != object.getClass())
-        {
-            return false;
-        }
-        Repository that = (Repository) object;
-        return Objects.equals(this.url, that.url);
+        super(message, cause);
     }
 
-    @Override
-    public int hashCode()
+    public DependencyDownloadException(Throwable cause)
     {
-        return Objects.hash(this.url);
-    }
-
-    @Override
-    public String toString()
-    {
-        return "Repository{" + "url=" + this.url + "}";
+        super(cause);
     }
 }
