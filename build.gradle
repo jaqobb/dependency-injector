@@ -4,7 +4,7 @@ plugins {
 }
 
 group "co.jaqobb"
-version "2.0.0"
+version "2.0.1"
 
 description "A library to inject dependencies directly into your Java code without increasing jar file size"
 
