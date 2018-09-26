@@ -25,7 +25,7 @@ package co.jaqobb.dependency_injector.exception;
 
 public final class DependencyDownloadException extends RuntimeException
 {
-    private static final long serialVersionUID = 945863300106644187L;
+    private static final long serialVersionUID = 8226132361048630899L;
 
     public DependencyDownloadException()
     {

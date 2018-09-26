@@ -23,13 +23,12 @@
  */
 package co.jaqobb.dependency_injector.dependency;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Objects;
-
 import co.jaqobb.dependency_injector.exception.MissingShorthandNotationInfoException;
 import co.jaqobb.dependency_injector.repository.Repositories;
 import co.jaqobb.dependency_injector.repository.Repository;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Objects;
 
 public final class Dependency
 {
