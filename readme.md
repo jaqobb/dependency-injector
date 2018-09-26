@@ -17,28 +17,23 @@ package co.jaqobb.dependency_injector.test;
 import co.jaqobb.dependency_injector.DependencyInjector;
 
 public final class DependencyInjectorTest {
-    
     private DependencyInjectorTest() {
     }
     
     public static void main(String[] arguments) {
         // Inject Google Guice Library to the main class loader using shorthand notation.
         // No need to specify the repository because this dependency is available in the Maven central repository.
-        DependencyInjector.injectDependency("com.google.inject:guice:4.0", this.getClass().getClassLoader());
-        
+        DependencyInjector.injectDependency("com.google.inject:guice:4.0", getClass().getClassLoader());
         // Inject Google Guava Library to the main class loader using old notation.
         // No need to specify the repository because this dependency is available in the Maven central repository.
-        DependencyInjector.injectDependency("com.google.guava", "guava", "19.0", this.getClass().getClassLoader());
-        
+        DependencyInjector.injectDependency("com.google.guava", "guava", "19.0", getClass().getClassLoader());
         // Inject other library to the main class loader using shorthand notation.
         // In this case this dependency isn't available in the Maven central repository.
         // We need to use the custom url instead.
-        DependencyInjector.injectDependency("some.dependency:coolname:1.2.3", "https://link.to.this.dependency.repository", this.getClass().getClassLoader());
-        
+        DependencyInjector.injectDependency("some.dependency:coolname:1.2.3", "https://link.to.this.dependency.repository", getClass().getClassLoader());
         // Everything is done. You can use libraries above as before.
         // The only change is you don't have to shade them into your jar file.
     }
-    
 }
 ```
 
