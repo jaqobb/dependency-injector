@@ -49,9 +49,9 @@ public final class Dependency {
         return new Dependency(groupId, artifactId, version, repository);
     }
 
-    private final String groupId;
-    private final String artifactId;
-    private final String version;
+    private final String     groupId;
+    private final String     artifactId;
+    private final String     version;
     private final Repository repository;
 
     private Dependency(String groupId, String artifactId, String version, Repository repository) {
@@ -104,6 +104,6 @@ public final class Dependency {
 
     @Override
     public String toString() {
-        return "Dependency]" + "groupId=" + groupId + ", artifactId=" + artifactId + ", version=" + version + ", repository=" + repository + "]";
+        return "Dependency[" + "groupId=" + groupId + ", artifactId=" + artifactId + ", version=" + version + ", repository=" + repository + "]";
     }
 }

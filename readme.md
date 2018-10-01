@@ -5,7 +5,7 @@ A library to inject dependencies directly into your Java code without increasing
 This project gives the possibility to use external dependencies in your applications without increasing the final jar size due to dependency shading.
 
 ### Requirements
-All you need is Java 8.
+All you need is Java 11.
 
 ### How to use
 You need to download the source code and add it to your current project.
