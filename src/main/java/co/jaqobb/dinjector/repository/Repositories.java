@@ -30,7 +30,7 @@ public final class Repositories {
   /**
    * The JCenter repository.
    */
-  public static final Repository JCENTER = Repository.of("https://jcenter.bintray.com");
+  public static final Repository JCENTER = Repository.of("https://jcenter.bintray.com/");
   /**
    * The Maven Central repository.
    */

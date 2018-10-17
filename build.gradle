@@ -13,19 +13,18 @@ targetCompatibility = JavaVersion.VERSION_11
 
 defaultTasks 'clean', 'build', 'javadocJar', 'sourcesJar'
 
+license {
+  header project.file('header.txt')
+  include '**/*.java'
+  newLine false
+}
+
 repositories {
   mavenCentral()
 }
 
 dependencies {
   compile 'org.jetbrains:annotations:16.0.3'
-  testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
-}
-
-license {
-  header project.file('header.txt')
-  include '**/*.java'
-  newLine false
 }
 
 task javadocJar(type: Jar) {
