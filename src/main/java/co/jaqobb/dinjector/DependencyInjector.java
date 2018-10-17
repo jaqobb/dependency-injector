@@ -90,7 +90,7 @@ public final class DependencyInjector {
     injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
   }
 
-  private static void injectDependency(final @NotNull Dependency dependency, final @NotNull ClassLoader classLoader) {
+  public static void injectDependency(final @NotNull Dependency dependency, final @NotNull ClassLoader classLoader) {
     final String groupId = dependency.getGroupId();
     final String artifactId = dependency.getArtifactId();
     final String version = dependency.getVersion();
