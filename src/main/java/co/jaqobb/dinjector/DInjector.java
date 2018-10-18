@@ -36,8 +36,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
 
-public final class DependencyInjector {
-  private static File dependenciesFolder = new File(".dependencies");
+public final class DInjector {
   private static final Method ADD_URL_METHOD;
 
   static {
@@ -49,53 +48,104 @@ public final class DependencyInjector {
     }
   }
 
-  private DependencyInjector() {
+  private DInjector() {
   }
 
-  public static File getDependenciesFolder() {
-    return dependenciesFolder;
-  }
-
-  public static void setDependenciesFolder(final File dependenciesFolder) {
-    DependencyInjector.dependenciesFolder = dependenciesFolder;
-  }
-
+  /**
+   * Injects dependencies to class loader.
+   *
+   * @param dependencies the dependencies to inject
+   * @param classLoader the class loader where the dependencies will be injected
+   */
   public static void injectDependencies(final @NotNull Dependency[] dependencies, final @NotNull ClassLoader classLoader) {
     for(final Dependency dependency : dependencies) {
       injectDependency(dependency, classLoader);
     }
   }
 
+  /**
+   * Injects dependency to class loader.
+   *
+   * @param shorthandNotation the dependency shorthand notation
+   * @param classLoader the class loader where the dependency will be injected
+   */
   public static void injectDependency(final @NotNull String shorthandNotation, final @NotNull ClassLoader classLoader) {
     injectDependency(Dependency.of(shorthandNotation), classLoader);
   }
 
+  /**
+   * Injects dependency to class loader.
+   *
+   * @param groupId the dependency group id
+   * @param artifactId the dependency artifact id
+   * @param version the dependency version
+   * @param classLoader the class loader where the dependency will be injected
+   */
   public static void injectDependency(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull ClassLoader classLoader) {
     injectDependency(Dependency.of(groupId, artifactId, version), classLoader);
   }
 
+  /**
+   * Injects dependency to class loader.
+   *
+   * @param shorthandNotation the dependency shorthand notation
+   * @param repository the dependency repository
+   * @param classLoader the class loader where the dependency will be injected
+   */
   public static void injectDependency(final @NotNull String shorthandNotation, final @NotNull String repository, final @NotNull ClassLoader classLoader) {
     injectDependency(Dependency.of(shorthandNotation, repository), classLoader);
   }
 
+  /**
+   * Injects dependency to class loader.
+   *
+   * @param shorthandNotation the dependency shorthand notation
+   * @param repository the dependency repository
+   * @param classLoader the class loader where the dependency will be injected
+   */
   public static void injectDependency(final @NotNull String shorthandNotation, final @NotNull Repository repository, final @NotNull ClassLoader classLoader) {
     injectDependency(Dependency.of(shorthandNotation, repository), classLoader);
   }
 
+  /**
+   * Injects dependency to class loader.
+   *
+   * @param groupId the dependency group id
+   * @param artifactId the dependency artifact id
+   * @param version the dependency version
+   * @param repository the dependency repository
+   * @param classLoader the class loader where the dependency will be injected
+   */
   public static void injectDependency(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull String repository, final @NotNull ClassLoader classLoader) {
     injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
   }
 
+  /**
+   * Injects dependency to class loader.
+   *
+   * @param groupId the dependency group id
+   * @param artifactId the dependency artifact id
+   * @param version the dependency version
+   * @param repository the dependency repository
+   * @param classLoader the class loader where the dependency will be injected
+   */
   public static void injectDependency(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull Repository repository, final @NotNull ClassLoader classLoader) {
     injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
   }
 
+  /**
+   * Injects dependency to class loader.
+   *
+   * @param dependency the dependency
+   * @param classLoader the class loader where the dependency will be injected
+   */
   public static void injectDependency(final @NotNull Dependency dependency, final @NotNull ClassLoader classLoader) {
     final String groupId = dependency.getGroupId();
     final String artifactId = dependency.getArtifactId();
     final String version = dependency.getVersion();
     final String name = artifactId + "-" + version;
     final String path = groupId.replace(".", File.separator) + File.separator + artifactId + File.separator + version;
+    final File dependenciesFolder = new File(".dependencies");
     final File folder = new File(dependenciesFolder, path);
     final File destination = new File(folder, name + ".jar");
     if(!destination.exists()) {
