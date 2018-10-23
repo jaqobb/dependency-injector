@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-  compile 'org.jetbrains:annotations:16.0.3'
+  compileOnly 'org.jetbrains:annotations:16.0.3'
 }
 
 task javadocJar(type: Jar) {
