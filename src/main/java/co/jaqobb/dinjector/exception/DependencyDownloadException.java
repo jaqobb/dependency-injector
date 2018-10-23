@@ -1,5 +1,5 @@
 /*
- * This file is part of dinjector, licensed under the MIT License.
+ * This file is a part of dinjector, licensed under the MIT License.
  *
  * Copyright (c) Jakub Zagórski (jaqobb)
  *
