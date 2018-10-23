@@ -138,6 +138,8 @@ public final class DInjector {
    *
    * @param dependency the dependency
    * @param classLoader the class loader where the dependency will be injected
+   * @throws DependencyDownloadException if the dependency failed to download
+   * @throws DependencyInjectException if the dependency failed to inject
    */
   public static void injectDependency(final @NotNull Dependency dependency, final @NotNull ClassLoader classLoader) {
     final String groupId = dependency.getGroupId();
