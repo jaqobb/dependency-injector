@@ -64,6 +64,7 @@ public final class Dependency {
    * @param shorthandNotation the dependency in shorthand notation
    * @param repository the repository to the dependency
    * @return the dependency
+   * @throws MissingShorthandNotationInfoException if the shorthand notation is missing something
    */
   public static Dependency of(final @NotNull String shorthandNotation, final @NotNull Repository repository) {
     final String[] data = shorthandNotation.split(":");
