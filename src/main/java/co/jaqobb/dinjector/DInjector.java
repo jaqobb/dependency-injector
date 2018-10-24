@@ -27,7 +27,6 @@ import co.jaqobb.dinjector.dependency.Dependency;
 import co.jaqobb.dinjector.exception.DependencyDownloadException;
 import co.jaqobb.dinjector.exception.DependencyInjectException;
 import co.jaqobb.dinjector.repository.Repository;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.InputStream;
@@ -44,104 +43,53 @@ public final class DInjector {
       ADD_URL_METHOD = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
       ADD_URL_METHOD.setAccessible(true);
     } catch(final NoSuchMethodException exception) {
-      throw new InternalError("Unable to cache add url method", exception);
+      throw new InternalError("Could not cache addURL method", exception);
     }
   }
 
   private DInjector() {
   }
 
-  /**
-   * Injects dependencies to class loader.
-   *
-   * @param dependencies the dependencies to inject
-   * @param classLoader the class loader where the dependencies will be injected
-   */
-  public static void injectDependencies(final @NotNull Dependency[] dependencies, final @NotNull ClassLoader classLoader) {
+  public static void injectDependencies(final Dependency[] dependencies, final ClassLoader classLoader) {
+    if(dependencies == null) {
+      throw new NullPointerException("Dependencies cannot be null");
+    }
     for(final Dependency dependency : dependencies) {
       injectDependency(dependency, classLoader);
     }
   }
 
-  /**
-   * Injects dependency to class loader.
-   *
-   * @param shorthandNotation the dependency shorthand notation
-   * @param classLoader the class loader where the dependency will be injected
-   */
-  public static void injectDependency(final @NotNull String shorthandNotation, final @NotNull ClassLoader classLoader) {
+  public static void injectDependency(final String shorthandNotation, final ClassLoader classLoader) {
     injectDependency(Dependency.of(shorthandNotation), classLoader);
   }
 
-  /**
-   * Injects dependency to class loader.
-   *
-   * @param groupId the dependency group id
-   * @param artifactId the dependency artifact id
-   * @param version the dependency version
-   * @param classLoader the class loader where the dependency will be injected
-   */
-  public static void injectDependency(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull ClassLoader classLoader) {
+  public static void injectDependency(final String groupId, final String artifactId, final String version, final ClassLoader classLoader) {
     injectDependency(Dependency.of(groupId, artifactId, version), classLoader);
   }
 
-  /**
-   * Injects dependency to class loader.
-   *
-   * @param shorthandNotation the dependency shorthand notation
-   * @param repository the dependency repository
-   * @param classLoader the class loader where the dependency will be injected
-   */
-  public static void injectDependency(final @NotNull String shorthandNotation, final @NotNull String repository, final @NotNull ClassLoader classLoader) {
+  public static void injectDependency(final String shorthandNotation, final String repository, final ClassLoader classLoader) {
     injectDependency(Dependency.of(shorthandNotation, repository), classLoader);
   }
 
-  /**
-   * Injects dependency to class loader.
-   *
-   * @param shorthandNotation the dependency shorthand notation
-   * @param repository the dependency repository
-   * @param classLoader the class loader where the dependency will be injected
-   */
-  public static void injectDependency(final @NotNull String shorthandNotation, final @NotNull Repository repository, final @NotNull ClassLoader classLoader) {
+  public static void injectDependency(final String shorthandNotation, final Repository repository, final ClassLoader classLoader) {
     injectDependency(Dependency.of(shorthandNotation, repository), classLoader);
   }
 
-  /**
-   * Injects dependency to class loader.
-   *
-   * @param groupId the dependency group id
-   * @param artifactId the dependency artifact id
-   * @param version the dependency version
-   * @param repository the dependency repository
-   * @param classLoader the class loader where the dependency will be injected
-   */
-  public static void injectDependency(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull String repository, final @NotNull ClassLoader classLoader) {
+  public static void injectDependency(final String groupId, final String artifactId, final String version, final String repository, final ClassLoader classLoader) {
     injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
   }
 
-  /**
-   * Injects dependency to class loader.
-   *
-   * @param groupId the dependency group id
-   * @param artifactId the dependency artifact id
-   * @param version the dependency version
-   * @param repository the dependency repository
-   * @param classLoader the class loader where the dependency will be injected
-   */
-  public static void injectDependency(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull Repository repository, final @NotNull ClassLoader classLoader) {
+  public static void injectDependency(final String groupId, final String artifactId, final String version, final Repository repository, final ClassLoader classLoader) {
     injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
   }
 
-  /**
-   * Injects dependency to class loader.
-   *
-   * @param dependency the dependency
-   * @param classLoader the class loader where the dependency will be injected
-   * @throws DependencyDownloadException if the dependency failed to download
-   * @throws DependencyInjectException if the dependency failed to inject
-   */
-  public static void injectDependency(final @NotNull Dependency dependency, final @NotNull ClassLoader classLoader) {
+  public static void injectDependency(final Dependency dependency, final ClassLoader classLoader) {
+    if(dependency == null) {
+      throw new NullPointerException("Dependency cannot be null");
+    }
+    if(classLoader == null) {
+      throw new NullPointerException("Class loader cannot be null");
+    }
     final String groupId = dependency.getGroupId();
     final String artifactId = dependency.getArtifactId();
     final String version = dependency.getVersion();
@@ -157,16 +105,16 @@ public final class DInjector {
           Files.copy(inputStream, destination.toPath());
         }
       } catch(final Exception exception) {
-        throw new DependencyDownloadException("Unable to download dependency '" + name + "'", exception);
+        throw new DependencyDownloadException("Could not download dependency '" + name + "'", exception);
       }
     }
     if(!destination.exists()) {
-      throw new DependencyDownloadException("Unable to download dependency '" + name + "'");
+      throw new DependencyDownloadException("Could not download dependency '" + name + "'");
     }
     try {
       ADD_URL_METHOD.invoke(classLoader, destination.toURI().toURL());
     } catch(final Exception exception) {
-      throw new DependencyInjectException("Unable to inject dependency '" + name + "'", exception);
+      throw new DependencyInjectException("Could not inject dependency '" + name + "'", exception);
     }
   }
 }

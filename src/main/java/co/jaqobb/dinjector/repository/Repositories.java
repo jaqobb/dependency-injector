@@ -23,17 +23,8 @@
  */
 package co.jaqobb.dinjector.repository;
 
-/**
- * A collection of popular repositories.
- */
 public final class Repositories {
-  /**
-   * The JCenter repository.
-   */
   public static final Repository JCENTER = Repository.of("https://jcenter.bintray.com/");
-  /**
-   * The Maven Central repository.
-   */
   public static final Repository MAVEN_CENTRAL = Repository.of("https://repo1.maven.org/maven2/");
 
   private Repositories() {

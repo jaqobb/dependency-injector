@@ -23,45 +23,28 @@
  */
 package co.jaqobb.dinjector.repository;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.Objects;
 
-/**
- * A repository.
- */
 public final class Repository {
-  /**
-   * Creates a repository with url.
-   *
-   * @param url the repository url
-   * @return the repository
-   */
-  public static Repository of(final @NotNull String url) {
+  public static Repository of(final String url) {
+    if(url == null) {
+      throw new NullPointerException("Url cannot be null");
+    }
     return new Repository(url);
   }
 
-  /**
-   * The url.
-   */
-  private final @NotNull String url;
+  private final String url;
 
-  private Repository(final @NotNull String url) {
+  private Repository(final String url) {
     this.url = url;
   }
 
-  /**
-   * Gets the repository url.
-   *
-   * @return the repository url
-   */
-  public @NotNull String getUrl() {
+  public String getUrl() {
     return this.url;
   }
 
   @Override
-  public boolean equals(final @Nullable Object object) {
+  public boolean equals(final Object object) {
     if(this == object) {
       return true;
     }

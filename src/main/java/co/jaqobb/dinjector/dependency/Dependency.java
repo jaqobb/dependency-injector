@@ -26,47 +26,27 @@ package co.jaqobb.dinjector.dependency;
 import co.jaqobb.dinjector.exception.MissingShorthandNotationInfoException;
 import co.jaqobb.dinjector.repository.Repositories;
 import co.jaqobb.dinjector.repository.Repository;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
-/**
- * A dependency.
- */
 public final class Dependency {
-  /**
-   * Creates a dependency with shorthand notation.
-   *
-   * @param shorthandNotation the dependency in shorthand notation
-   * @return the dependency
-   */
-  public static Dependency of(final @NotNull String shorthandNotation) {
+  public static Dependency of(final String shorthandNotation) {
     return of(shorthandNotation, Repositories.MAVEN_CENTRAL);
   }
 
-  /**
-   * Creates a dependency with shorthand notation and repository.
-   *
-   * @param shorthandNotation the dependency in shorthand notation
-   * @param repository the repository to the dependency
-   * @return the dependency
-   */
-  public static Dependency of(final @NotNull String shorthandNotation, final @NotNull String repository) {
+  public static Dependency of(final String shorthandNotation, final String repository) {
     return of(shorthandNotation, Repository.of(repository));
   }
 
-  /**
-   * Creates a dependency with shorthand notation and repository.
-   *
-   * @param shorthandNotation the dependency in shorthand notation
-   * @param repository the repository to the dependency
-   * @return the dependency
-   * @throws MissingShorthandNotationInfoException if the shorthand notation is missing some info
-   */
-  public static Dependency of(final @NotNull String shorthandNotation, final @NotNull Repository repository) {
+  public static Dependency of(final String shorthandNotation, final Repository repository) {
+    if(shorthandNotation == null) {
+      throw new NullPointerException("Shorthand notation cannot be null");
+    }
+    if(repository == null) {
+      throw new NullPointerException("Repository cannot be null");
+    }
     final String[] data = shorthandNotation.split(":");
     if(data.length != 3) {
       throw new MissingShorthandNotationInfoException("Shorthand notation must have only group id, artifact id and version separated with ':'");
@@ -74,111 +54,59 @@ public final class Dependency {
     return of(data[0], data[1], data[2], repository);
   }
 
-  /**
-   * Creates a dependency with group id, artifact id, and version.
-   *
-   * @param groupId the dependency group id
-   * @param artifactId the dependency artifact id
-   * @param version the dependency version
-   * @return the dependency
-   */
-  public static Dependency of(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version) {
+  public static Dependency of(final String groupId, final String artifactId, final String version) {
     return of(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
   }
 
-  /**
-   * Creates a dependency with group id, artifact id, version, and repository.
-   *
-   * @param groupId the dependency group id
-   * @param artifactId the dependency artifact id
-   * @param version the dependency version
-   * @param repository the repository to the dependency
-   * @return the dependency
-   */
-  public static Dependency of(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull String repository) {
+  public static Dependency of(final String groupId, final String artifactId, final String version, final String repository) {
     return of(groupId, artifactId, version, Repository.of(repository));
   }
 
-  /**
-   * Creates a dependency with group id, artifact id, version, and repository.
-   *
-   * @param groupId the dependency group id
-   * @param artifactId the dependency artifact id
-   * @param version the dependency version
-   * @param repository the repository to the dependency
-   * @return the dependency
-   */
-  public static Dependency of(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull Repository repository) {
+  public static Dependency of(final String groupId, final String artifactId, final String version, final Repository repository) {
+    if(groupId == null) {
+      throw new NullPointerException("Group id cannot be null");
+    }
+    if(artifactId == null) {
+      throw new NullPointerException("Artifact id cannot be null");
+    }
+    if(version == null) {
+      throw new NullPointerException("Version cannot be null");
+    }
+    if(repository == null) {
+      throw new NullPointerException("Repository cannot be null");
+    }
     return new Dependency(groupId, artifactId, version, repository);
   }
 
-  /**
-   * The group id.
-   */
-  private final @NotNull String groupId;
-  /**
-   * The artifact id.
-   */
-  private final @NotNull String artifactId;
-  /**
-   * The version.
-   */
-  private final @NotNull String version;
-  /**
-   * The repository.
-   */
-  private final @NotNull Repository repository;
+  private final String groupId;
+  private final String artifactId;
+  private final String version;
+  private final Repository repository;
 
-  private Dependency(final @NotNull String groupId, final @NotNull String artifactId, final @NotNull String version, final @NotNull Repository repository) {
+  private Dependency(final String groupId, final String artifactId, final String version, final Repository repository) {
     this.groupId = groupId;
     this.artifactId = artifactId;
     this.version = version;
     this.repository = repository;
   }
 
-  /**
-   * Gets the dependency group id.
-   *
-   * @return the dependency group id
-   */
-  public @NotNull String getGroupId() {
+  public String getGroupId() {
     return this.groupId;
   }
 
-  /**
-   * Gets the dependency artifact id.
-   *
-   * @return the dependency artifact id
-   */
-  public @NotNull String getArtifactId() {
+  public String getArtifactId() {
     return this.artifactId;
   }
 
-  /**
-   * Gets the dependency version.
-   *
-   * @return the dependency version
-   */
-  public @NotNull String getVersion() {
+  public String getVersion() {
     return this.version;
   }
 
-  /**
-   * Gets the dependency repository.
-   *
-   * @return the dependency repository
-   */
-  public @NotNull Repository getRepository() {
+  public Repository getRepository() {
     return this.repository;
   }
 
-  /**
-   * Gets the dependency download url.
-   *
-   * @return the dependency download url
-   * @throws MalformedURLException if the dependency download url is malformed
-   */
-  public @NotNull URL getDownloadUrl() throws MalformedURLException {
+  public URL getDownloadUrl() throws MalformedURLException {
     String url = this.repository.getUrl();
     if(!url.endsWith("/")) {
       url += "/";
@@ -187,7 +115,7 @@ public final class Dependency {
   }
 
   @Override
-  public boolean equals(final @Nullable Object object) {
+  public boolean equals(final Object object) {
     if(this == object) {
       return true;
     }

@@ -6,7 +6,7 @@ plugins {
 group 'co.jaqobb'
 version '2.2.0'
 
-description 'A Java dependency injector'
+description 'A jar dependency injector'
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
@@ -17,14 +17,6 @@ license {
   header project.file('header.txt')
   include '**/*.java'
   newLine false
-}
-
-repositories {
-  mavenCentral()
-}
-
-dependencies {
-  compileOnly 'org.jetbrains:annotations:16.0.3'
 }
 
 task javadocJar(type: Jar) {

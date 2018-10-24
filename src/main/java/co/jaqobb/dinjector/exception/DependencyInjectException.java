@@ -23,9 +23,6 @@
  */
 package co.jaqobb.dinjector.exception;
 
-/**
- * Thrown to indicate that the dependency failed to inject.
- */
 public final class DependencyInjectException extends RuntimeException {
   private static final long serialVersionUID = -203028534307178106L;
 

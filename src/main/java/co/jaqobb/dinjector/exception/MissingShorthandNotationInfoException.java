@@ -23,9 +23,6 @@
  */
 package co.jaqobb.dinjector.exception;
 
-/**
- * Thrown to indicate that the shorthand notation is missing something.
- */
 public final class MissingShorthandNotationInfoException extends RuntimeException {
   private static final long serialVersionUID = 476681630249212702L;
 
