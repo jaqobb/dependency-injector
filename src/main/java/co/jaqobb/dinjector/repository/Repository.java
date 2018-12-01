@@ -33,7 +33,7 @@ public final class Repository {
     return new Repository(url);
   }
 
-  private String url;
+  private final String url;
 
   private Repository(String url) {
     this.url = url;

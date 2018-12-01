@@ -78,10 +78,10 @@ public final class Dependency {
     return new Dependency(groupId, artifactId, version, repository);
   }
 
-  private String groupId;
-  private String artifactId;
-  private String version;
-  private Repository repository;
+  private final String groupId;
+  private final String artifactId;
+  private final String version;
+  private final Repository repository;
 
   private Dependency(String groupId, String artifactId, String version, Repository repository) {
     this.groupId = groupId;
