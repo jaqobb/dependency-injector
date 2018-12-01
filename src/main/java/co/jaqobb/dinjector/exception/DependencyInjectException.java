@@ -30,15 +30,15 @@ public final class DependencyInjectException extends RuntimeException {
     super();
   }
 
-  public DependencyInjectException(final String message) {
+  public DependencyInjectException(String message) {
     super(message);
   }
 
-  public DependencyInjectException(final String message, final Throwable cause) {
+  public DependencyInjectException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  public DependencyInjectException(final Throwable cause) {
+  public DependencyInjectException(Throwable cause) {
     super(cause);
   }
 }

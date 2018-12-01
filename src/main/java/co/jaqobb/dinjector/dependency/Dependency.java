@@ -32,58 +32,58 @@ import java.net.URL;
 import java.util.Objects;
 
 public final class Dependency {
-  public static Dependency of(final String shorthandNotation) {
+  public static Dependency of(String shorthandNotation) {
     return of(shorthandNotation, Repositories.MAVEN_CENTRAL);
   }
 
-  public static Dependency of(final String shorthandNotation, final String repository) {
+  public static Dependency of(String shorthandNotation, String repository) {
     return of(shorthandNotation, Repository.of(repository));
   }
 
-  public static Dependency of(final String shorthandNotation, final Repository repository) {
+  public static Dependency of(String shorthandNotation, Repository repository) {
     if(shorthandNotation == null) {
-      throw new NullPointerException("Shorthand notation cannot be null");
+      throw new NullPointerException("shorthandNotation cannot be null");
     }
     if(repository == null) {
-      throw new NullPointerException("Repository cannot be null");
+      throw new NullPointerException("repository cannot be null");
     }
-    final String[] data = shorthandNotation.split(":");
+    String[] data = shorthandNotation.split(":");
     if(data.length != 3) {
       throw new MissingShorthandNotationInfoException("Shorthand notation must have only group id, artifact id and version separated with ':'");
     }
     return of(data[0], data[1], data[2], repository);
   }
 
-  public static Dependency of(final String groupId, final String artifactId, final String version) {
+  public static Dependency of(String groupId, String artifactId, String version) {
     return of(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
   }
 
-  public static Dependency of(final String groupId, final String artifactId, final String version, final String repository) {
+  public static Dependency of(String groupId, String artifactId, String version, String repository) {
     return of(groupId, artifactId, version, Repository.of(repository));
   }
 
-  public static Dependency of(final String groupId, final String artifactId, final String version, final Repository repository) {
+  public static Dependency of(String groupId, String artifactId, String version, Repository repository) {
     if(groupId == null) {
-      throw new NullPointerException("Group id cannot be null");
+      throw new NullPointerException("groupId cannot be null");
     }
     if(artifactId == null) {
-      throw new NullPointerException("Artifact id cannot be null");
+      throw new NullPointerException("artifactId cannot be null");
     }
     if(version == null) {
-      throw new NullPointerException("Version cannot be null");
+      throw new NullPointerException("version cannot be null");
     }
     if(repository == null) {
-      throw new NullPointerException("Repository cannot be null");
+      throw new NullPointerException("repository cannot be null");
     }
     return new Dependency(groupId, artifactId, version, repository);
   }
 
-  private final String groupId;
-  private final String artifactId;
-  private final String version;
-  private final Repository repository;
+  private String groupId;
+  private String artifactId;
+  private String version;
+  private Repository repository;
 
-  private Dependency(final String groupId, final String artifactId, final String version, final Repository repository) {
+  private Dependency(String groupId, String artifactId, String version, Repository repository) {
     this.groupId = groupId;
     this.artifactId = artifactId;
     this.version = version;
@@ -106,8 +106,8 @@ public final class Dependency {
     return this.repository;
   }
 
-  public URL getDownloadUrl() throws MalformedURLException {
-    String url = this.repository.getUrl();
+  public URL getDownloadURL() throws MalformedURLException {
+    String url = this.repository.getURL();
     if(!url.endsWith("/")) {
       url += "/";
     }
@@ -115,14 +115,14 @@ public final class Dependency {
   }
 
   @Override
-  public boolean equals(final Object object) {
+  public boolean equals(Object object) {
     if(this == object) {
       return true;
     }
     if(object == null || this.getClass() != object.getClass()) {
       return false;
     }
-    final Dependency that = (Dependency) object;
+    Dependency that = (Dependency) object;
     return Objects.equals(this.groupId, that.groupId) && Objects.equals(this.artifactId, that.artifactId) && Objects.equals(this.version, that.version) && Objects.equals(this.repository, that.repository);
   }
 

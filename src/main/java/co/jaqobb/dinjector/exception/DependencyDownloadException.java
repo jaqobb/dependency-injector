@@ -30,15 +30,15 @@ public final class DependencyDownloadException extends RuntimeException {
     super();
   }
 
-  public DependencyDownloadException(final String message) {
+  public DependencyDownloadException(String message) {
     super(message);
   }
 
-  public DependencyDownloadException(final String message, final Throwable cause) {
+  public DependencyDownloadException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  public DependencyDownloadException(final Throwable cause) {
+  public DependencyDownloadException(Throwable cause) {
     super(cause);
   }
 }

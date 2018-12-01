@@ -26,32 +26,32 @@ package co.jaqobb.dinjector.repository;
 import java.util.Objects;
 
 public final class Repository {
-  public static Repository of(final String url) {
+  public static Repository of(String url) {
     if(url == null) {
-      throw new NullPointerException("Url cannot be null");
+      throw new NullPointerException("url cannot be null");
     }
     return new Repository(url);
   }
 
-  private final String url;
+  private String url;
 
-  private Repository(final String url) {
+  private Repository(String url) {
     this.url = url;
   }
 
-  public String getUrl() {
+  public String getURL() {
     return this.url;
   }
 
   @Override
-  public boolean equals(final Object object) {
+  public boolean equals(Object object) {
     if(this == object) {
       return true;
     }
     if(object == null || this.getClass() != object.getClass()) {
       return false;
     }
-    final Repository that = (Repository) object;
+    Repository that = (Repository) object;
     return Objects.equals(this.url, that.url);
   }
 

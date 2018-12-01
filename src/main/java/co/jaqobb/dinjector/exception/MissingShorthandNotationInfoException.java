@@ -30,15 +30,15 @@ public final class MissingShorthandNotationInfoException extends RuntimeExceptio
     super();
   }
 
-  public MissingShorthandNotationInfoException(final String message) {
+  public MissingShorthandNotationInfoException(String message) {
     super(message);
   }
 
-  public MissingShorthandNotationInfoException(final String message, final Throwable cause) {
+  public MissingShorthandNotationInfoException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  public MissingShorthandNotationInfoException(final Throwable cause) {
+  public MissingShorthandNotationInfoException(Throwable cause) {
     super(cause);
   }
 }
