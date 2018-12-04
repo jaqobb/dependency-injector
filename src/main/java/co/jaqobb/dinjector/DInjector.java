@@ -87,8 +87,8 @@ public final class DInjector {
     if(dependency == null) {
       throw new NullPointerException("dependency cannot be null");
     }
-    if(classLoader == null) {
-      throw new NullPointerException("classLoader cannot be null");
+    if(!(classLoader instanceof URLClassLoader)) {
+      throw new IllegalArgumentException("classLoader is not an instance of URLClassLoader");
     }
     String groupId = dependency.getGroupId();
     String artifactId = dependency.getArtifactId();
