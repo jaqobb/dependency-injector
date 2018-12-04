@@ -26,6 +26,7 @@ package co.jaqobb.dinjector;
 import co.jaqobb.dinjector.dependency.Dependency;
 import co.jaqobb.dinjector.exception.DependencyDownloadException;
 import co.jaqobb.dinjector.exception.DependencyInjectException;
+import co.jaqobb.dinjector.java.JavaHelper;
 import co.jaqobb.dinjector.repository.Repository;
 
 import java.io.File;
@@ -36,10 +37,13 @@ import java.net.URLClassLoader;
 import java.nio.file.Files;
 
 public final class DInjector {
+  private static final Method GET_PLATFORM_CLASS_LOADER_METHOD;
   private static final Method ADD_URL_METHOD;
 
   static {
     try {
+      GET_PLATFORM_CLASS_LOADER_METHOD = ClassLoader.class.getMethod("getPlatformClassLoader");
+      GET_PLATFORM_CLASS_LOADER_METHOD.setAccessible(true);
       ADD_URL_METHOD = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
       ADD_URL_METHOD.setAccessible(true);
     } catch(NoSuchMethodException exception) {
@@ -50,45 +54,55 @@ public final class DInjector {
   private DInjector() {
   }
 
-  public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader) {
+  public static void injectDependencies(Dependency[] dependencies) {
     if(dependencies == null) {
       throw new NullPointerException("dependencies cannot be null");
     }
     for(Dependency dependency : dependencies) {
-      injectDependency(dependency, classLoader);
+      injectDependency(dependency);
     }
   }
 
-  public static void injectDependency(String shorthandNotation, ClassLoader classLoader) {
-    injectDependency(Dependency.of(shorthandNotation), classLoader);
+  public static void injectDependency(String shorthandNotation) {
+    injectDependency(Dependency.of(shorthandNotation));
   }
 
-  public static void injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader) {
-    injectDependency(Dependency.of(groupId, artifactId, version), classLoader);
+  public static void injectDependency(String groupId, String artifactId, String version) {
+    injectDependency(Dependency.of(groupId, artifactId, version));
   }
 
-  public static void injectDependency(String shorthandNotation, String repository, ClassLoader classLoader) {
-    injectDependency(Dependency.of(shorthandNotation, repository), classLoader);
+  public static void injectDependency(String shorthandNotation, String repository) {
+    injectDependency(Dependency.of(shorthandNotation, repository));
   }
 
-  public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader) {
-    injectDependency(Dependency.of(shorthandNotation, repository), classLoader);
+  public static void injectDependency(String shorthandNotation, Repository repository) {
+    injectDependency(Dependency.of(shorthandNotation, repository));
   }
 
-  public static void injectDependency(String groupId, String artifactId, String version, String repository, ClassLoader classLoader) {
-    injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
+  public static void injectDependency(String groupId, String artifactId, String version, String repository) {
+    injectDependency(Dependency.of(groupId, artifactId, version, repository));
   }
 
-  public static void injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader) {
-    injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
+  public static void injectDependency(String groupId, String artifactId, String version, Repository repository) {
+    injectDependency(Dependency.of(groupId, artifactId, version, repository));
   }
 
-  public static void injectDependency(Dependency dependency, ClassLoader classLoader) {
+  public static void injectDependency(Dependency dependency) {
     if(dependency == null) {
       throw new NullPointerException("dependency cannot be null");
     }
-    if(!(classLoader instanceof URLClassLoader)) {
-      throw new IllegalArgumentException("classLoader is not an instance of URLClassLoader");
+    ClassLoader classLoader;
+    boolean isPlatform;
+    try {
+      if(JavaHelper.getJavaVersion() <= 52.0F) {
+        classLoader = Thread.currentThread().getContextClassLoader();
+        isPlatform = false;
+      } else {
+        classLoader = (ClassLoader) GET_PLATFORM_CLASS_LOADER_METHOD.invoke(null);
+        isPlatform = true;
+      }
+    } catch(Exception exception) {
+      throw new RuntimeException("Could not get ClassLoader");
     }
     String groupId = dependency.getGroupId();
     String artifactId = dependency.getArtifactId();
@@ -112,6 +126,9 @@ public final class DInjector {
       throw new DependencyDownloadException("Could not download dependency '" + name + "'");
     }
     try {
+      if(isPlatform) {
+        classLoader = new URLClassLoader(new URL[]{destination.toURI().toURL()}, classLoader);
+      }
       ADD_URL_METHOD.invoke(classLoader, destination.toURI().toURL());
     } catch(Exception exception) {
       throw new DependencyInjectException("Could not inject dependency '" + name + "'", exception);
