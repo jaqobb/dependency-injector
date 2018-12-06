@@ -11,20 +11,10 @@ description "A jar dependency injector"
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-defaultTasks "clean", "build", "javadocJar", "sourcesJar"
+defaultTasks "clean", "build"
 
 license {
   header project.file("header.txt")
   include "**/*.java"
   newLine false
-}
-
-task javadocJar(type: Jar) {
-  classifier "javadoc"
-  from javadoc
-}
-
-task sourcesJar(type: Jar) {
-  classifier = "sources"
-  from sourceSets.main.allJava
 }
