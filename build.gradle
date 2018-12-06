@@ -15,6 +15,6 @@ defaultTasks "clean", "build"
 
 license {
   header project.file("header.txt")
-  include "**/*.java"
   newLine false
+  include "**/*.java"
 }
