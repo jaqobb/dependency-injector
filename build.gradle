@@ -3,11 +3,6 @@ plugins {
   id "net.minecrell.licenser" version "0.4.1"
 }
 
-group "co.jaqobb"
-version "2.2.1"
-
-description "A jar dependency injector"
-
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
