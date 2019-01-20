@@ -31,7 +31,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
-public final class Dependency {
+public class Dependency {
 	private final String groupId;
 	private final String artifactId;
 	private final String version;
