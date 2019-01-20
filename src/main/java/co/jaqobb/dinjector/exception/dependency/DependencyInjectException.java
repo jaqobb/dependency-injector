@@ -21,24 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dinjector.exception;
+package co.jaqobb.dinjector.exception.dependency;
 
-public final class MissingShorthandNotationInfoException extends RuntimeException {
-  private static final long serialVersionUID = 476681630249212702L;
+public final class DependencyInjectException extends RuntimeException {
+	private static final long serialVersionUID = -203028534307178106L;
 
-  public MissingShorthandNotationInfoException() {
-    super();
-  }
+	public DependencyInjectException() {
+		super();
+	}
 
-  public MissingShorthandNotationInfoException(String message) {
-    super(message);
-  }
+	public DependencyInjectException(String message) {
+		super(message);
+	}
 
-  public MissingShorthandNotationInfoException(String message, Throwable cause) {
-    super(message, cause);
-  }
+	public DependencyInjectException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-  public MissingShorthandNotationInfoException(Throwable cause) {
-    super(cause);
-  }
+	public DependencyInjectException(Throwable cause) {
+		super(cause);
+	}
 }

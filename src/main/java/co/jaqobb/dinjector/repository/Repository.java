@@ -25,38 +25,39 @@ package co.jaqobb.dinjector.repository;
 
 import java.util.Objects;
 
-public final class Repository {
-  public static Repository of(String url) {
-    if(url == null) {
-      throw new NullPointerException("url cannot be null");
-    }
-    return new Repository(url);
-  }
+public class Repository {
+	private final String url;
 
-  private final String url;
+	public Repository(String url) {
+		if (url == null) {
+			throw new NullPointerException("url cannot be null");
+		}
+		this.url = url;
+	}
 
-  private Repository(String url) {
-    this.url = url;
-  }
+	public String getURL() {
+		return this.url;
+	}
 
-  public String getURL() {
-    return this.url;
-  }
+	@Override
+	public boolean equals(Object object) {
+		if (this == object) {
+			return true;
+		}
+		if (object == null || this.getClass() != object.getClass()) {
+			return false;
+		}
+		Repository that = (Repository) object;
+		return Objects.equals(this.url, that.url);
+	}
 
-  @Override
-  public boolean equals(Object object) {
-    if(this == object) {
-      return true;
-    }
-    if(object == null || this.getClass() != object.getClass()) {
-      return false;
-    }
-    Repository that = (Repository) object;
-    return Objects.equals(this.url, that.url);
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.url);
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(this.url);
-  }
+	@Override
+	public String toString() {
+		return "Repository{" + "url='" + this.url + "'" + "}";
+	}
 }

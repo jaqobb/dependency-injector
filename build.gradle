@@ -1,6 +1,6 @@
 plugins {
-  id "java"
-  id "net.minecrell.licenser" version "0.4.1"
+	id "java"
+	id "net.minecrell.licenser" version "0.4.1"
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -9,7 +9,7 @@ targetCompatibility = JavaVersion.VERSION_1_8
 defaultTasks "clean", "build"
 
 license {
-  header project.file("header.txt")
-  newLine false
-  include "**/*.java"
+	header project.file("header.txt")
+	newLine false
+	include "**/*.java"
 }

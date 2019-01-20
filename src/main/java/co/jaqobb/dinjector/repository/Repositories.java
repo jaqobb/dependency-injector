@@ -24,9 +24,9 @@
 package co.jaqobb.dinjector.repository;
 
 public final class Repositories {
-  public static final Repository MAVEN_CENTRAL = Repository.of("https://repo1.maven.org/maven2/");
-  public static final Repository JCENTER = Repository.of("https://jcenter.bintray.com/");
+	public static final Repository MAVEN_CENTRAL = new Repository("https://repo1.maven.org/maven2/");
+	public static final Repository JCENTER = new Repository("https://jcenter.bintray.com/");
 
-  private Repositories() {
-  }
+	private Repositories() {
+	}
 }

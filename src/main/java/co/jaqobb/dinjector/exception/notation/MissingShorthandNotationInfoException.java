@@ -21,24 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dinjector.exception;
+package co.jaqobb.dinjector.exception.notation;
 
-public final class DependencyDownloadException extends RuntimeException {
-  private static final long serialVersionUID = -2362037442229682104L;
+public final class MissingShorthandNotationInfoException extends RuntimeException {
+	private static final long serialVersionUID = 476681630249212702L;
 
-  public DependencyDownloadException() {
-    super();
-  }
+	public MissingShorthandNotationInfoException() {
+		super();
+	}
 
-  public DependencyDownloadException(String message) {
-    super(message);
-  }
+	public MissingShorthandNotationInfoException(String message) {
+		super(message);
+	}
 
-  public DependencyDownloadException(String message, Throwable cause) {
-    super(message, cause);
-  }
+	public MissingShorthandNotationInfoException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-  public DependencyDownloadException(Throwable cause) {
-    super(cause);
-  }
+	public MissingShorthandNotationInfoException(Throwable cause) {
+		super(cause);
+	}
 }
