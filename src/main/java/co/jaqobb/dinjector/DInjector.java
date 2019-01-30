@@ -50,7 +50,7 @@ public final class DInjector {
 	private DInjector() {
 	}
 
-	public static void injectDependencies(Dependency[] dependencies, ClassLoader classLoader) {
+	public static void injectDependencies(Dependency[] dependencies, URLClassLoader classLoader) {
 		if (dependencies == null) {
 			throw new NullPointerException("dependencies cannot be null");
 		}
@@ -59,36 +59,33 @@ public final class DInjector {
 		}
 	}
 
-	public static void injectDependency(String shorthandNotation, ClassLoader classLoader) {
+	public static void injectDependency(String shorthandNotation, URLClassLoader classLoader) {
 		DInjector.injectDependency(new Dependency(shorthandNotation), classLoader);
 	}
 
-	public static void injectDependency(String groupId, String artifactId, String version, ClassLoader classLoader) {
+	public static void injectDependency(String groupId, String artifactId, String version, URLClassLoader classLoader) {
 		DInjector.injectDependency(new Dependency(groupId, artifactId, version), classLoader);
 	}
 
-	public static void injectDependency(String shorthandNotation, String repository, ClassLoader classLoader) {
+	public static void injectDependency(String shorthandNotation, String repository, URLClassLoader classLoader) {
 		DInjector.injectDependency(new Dependency(shorthandNotation, repository), classLoader);
 	}
 
-	public static void injectDependency(String shorthandNotation, Repository repository, ClassLoader classLoader) {
+	public static void injectDependency(String shorthandNotation, Repository repository, URLClassLoader classLoader) {
 		DInjector.injectDependency(new Dependency(shorthandNotation, repository), classLoader);
 	}
 
-	public static void injectDependency(String groupId, String artifactId, String version, String repository, ClassLoader classLoader) {
+	public static void injectDependency(String groupId, String artifactId, String version, String repository, URLClassLoader classLoader) {
 		DInjector.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
-	public static void injectDependency(String groupId, String artifactId, String version, Repository repository, ClassLoader classLoader) {
+	public static void injectDependency(String groupId, String artifactId, String version, Repository repository, URLClassLoader classLoader) {
 		DInjector.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
-	public static void injectDependency(Dependency dependency, ClassLoader classLoader) {
+	public static void injectDependency(Dependency dependency, URLClassLoader classLoader) {
 		if (dependency == null) {
 			throw new NullPointerException("dependency cannot be null");
-		}
-		if (!(classLoader instanceof URLClassLoader)) {
-			throw new IllegalArgumentException("classLoader must be an instance of URLClassLoader");
 		}
 		String groupId = dependency.getGroupId();
 		String artifactId = dependency.getArtifactId();
