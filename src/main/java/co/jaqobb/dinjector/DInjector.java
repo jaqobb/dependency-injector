@@ -87,6 +87,9 @@ public final class DInjector {
 		if (dependency == null) {
 			throw new NullPointerException("dependency cannot be null");
 		}
+		if(classLoader == null){
+			throw new NullPointerException("classLoader cannot be null");
+		}
 		String groupId = dependency.getGroupId();
 		String artifactId = dependency.getArtifactId();
 		String version = dependency.getVersion();
