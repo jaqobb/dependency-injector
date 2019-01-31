@@ -1,1 +1,1 @@
-## dinjector
+## dependency-injector

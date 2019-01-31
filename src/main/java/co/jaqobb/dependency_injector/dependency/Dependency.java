@@ -1,5 +1,5 @@
 /*
- * This file is a part of dinjector, licensed under the MIT License.
+ * This file is a part of dependency-injector, licensed under the MIT License.
  *
  * Copyright (c) Jakub Zagórski (jaqobb)
  *
@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dinjector.dependency;
+package co.jaqobb.dependency_injector.dependency;
 
-import co.jaqobb.dinjector.exception.notation.MissingShorthandNotationInfoException;
-import co.jaqobb.dinjector.repository.Repositories;
-import co.jaqobb.dinjector.repository.Repository;
+import co.jaqobb.dependency_injector.exception.notation.MissingShorthandNotationDataException;
+import co.jaqobb.dependency_injector.repository.Repositories;
+import co.jaqobb.dependency_injector.repository.Repository;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -54,7 +54,7 @@ public class Dependency {
 		}
 		String[] data = shorthandNotation.split(":");
 		if (data.length != 3) {
-			throw new MissingShorthandNotationInfoException("Shorthand notation must have only group id, artifact id and version separated with ':'");
+			throw new MissingShorthandNotationDataException("Shorthand notation must have only group id, artifact id and version separated with ':'");
 		}
 		this.groupId = data[0];
 		this.artifactId = data[1];

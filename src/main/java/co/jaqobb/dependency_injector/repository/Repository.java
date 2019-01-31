@@ -1,5 +1,5 @@
 /*
- * This file is a part of dinjector, licensed under the MIT License.
+ * This file is a part of dependency-injector, licensed under the MIT License.
  *
  * Copyright (c) Jakub Zagórski (jaqobb)
  *
@@ -21,24 +21,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dinjector.exception.notation;
+package co.jaqobb.dependency_injector.repository;
 
-public class MissingShorthandNotationInfoException extends RuntimeException {
-	private static final long serialVersionUID = 476681630249212702L;
+import java.util.Objects;
 
-	public MissingShorthandNotationInfoException() {
-		super();
+public class Repository {
+	private final String url;
+
+	public Repository(String url) {
+		if (url == null) {
+			throw new NullPointerException("url cannot be null");
+		}
+		this.url = url;
 	}
 
-	public MissingShorthandNotationInfoException(String message) {
-		super(message);
+	public String getURL() {
+		return this.url;
 	}
 
-	public MissingShorthandNotationInfoException(String message, Throwable cause) {
-		super(message, cause);
+	@Override
+	public boolean equals(Object object) {
+		if (this == object) {
+			return true;
+		}
+		if (object == null || this.getClass() != object.getClass()) {
+			return false;
+		}
+		Repository that = (Repository) object;
+		return Objects.equals(this.url, that.url);
 	}
 
-	public MissingShorthandNotationInfoException(Throwable cause) {
-		super(cause);
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.url);
+	}
+
+	@Override
+	public String toString() {
+		return "Repository{" + "url='" + this.url + "'" + "}";
 	}
 }

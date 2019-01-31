@@ -1,5 +1,5 @@
 /*
- * This file is a part of dinjector, licensed under the MIT License.
+ * This file is a part of dependency-injector, licensed under the MIT License.
  *
  * Copyright (c) Jakub Zagórski (jaqobb)
  *
@@ -21,43 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dinjector.repository;
+package co.jaqobb.dependency_injector.exception.dependency;
 
-import java.util.Objects;
+public class DependencyDownloadException extends RuntimeException {
+	private static final long serialVersionUID = -2362037442229682104L;
 
-public class Repository {
-	private final String url;
-
-	public Repository(String url) {
-		if (url == null) {
-			throw new NullPointerException("url cannot be null");
-		}
-		this.url = url;
+	public DependencyDownloadException() {
+		super();
 	}
 
-	public String getURL() {
-		return this.url;
+	public DependencyDownloadException(String message) {
+		super(message);
 	}
 
-	@Override
-	public boolean equals(Object object) {
-		if (this == object) {
-			return true;
-		}
-		if (object == null || this.getClass() != object.getClass()) {
-			return false;
-		}
-		Repository that = (Repository) object;
-		return Objects.equals(this.url, that.url);
+	public DependencyDownloadException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(this.url);
-	}
-
-	@Override
-	public String toString() {
-		return "Repository{" + "url='" + this.url + "'" + "}";
+	public DependencyDownloadException(Throwable cause) {
+		super(cause);
 	}
 }

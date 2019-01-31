@@ -1,5 +1,5 @@
 /*
- * This file is a part of dinjector, licensed under the MIT License.
+ * This file is a part of dependency-injector, licensed under the MIT License.
  *
  * Copyright (c) Jakub Zagórski (jaqobb)
  *
@@ -21,24 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dinjector.exception.dependency;
+package co.jaqobb.dependency_injector.exception.notation;
 
-public class DependencyDownloadException extends RuntimeException {
-	private static final long serialVersionUID = -2362037442229682104L;
+public class MissingShorthandNotationDataException extends RuntimeException {
+	private static final long serialVersionUID = 476681630249212702L;
 
-	public DependencyDownloadException() {
+	public MissingShorthandNotationDataException() {
 		super();
 	}
 
-	public DependencyDownloadException(String message) {
+	public MissingShorthandNotationDataException(String message) {
 		super(message);
 	}
 
-	public DependencyDownloadException(String message, Throwable cause) {
+	public MissingShorthandNotationDataException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
-	public DependencyDownloadException(Throwable cause) {
+	public MissingShorthandNotationDataException(Throwable cause) {
 		super(cause);
 	}
 }

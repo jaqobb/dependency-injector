@@ -1,5 +1,5 @@
 /*
- * This file is a part of dinjector, licensed under the MIT License.
+ * This file is a part of dependency-injector, licensed under the MIT License.
  *
  * Copyright (c) Jakub Zagórski (jaqobb)
  *
@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dinjector.exception.dependency;
+package co.jaqobb.dependency_injector.exception.dependency;
 
 public class DependencyInjectException extends RuntimeException {
 	private static final long serialVersionUID = -203028534307178106L;

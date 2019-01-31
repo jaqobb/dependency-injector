@@ -1,5 +1,5 @@
 /*
- * This file is a part of dinjector, licensed under the MIT License.
+ * This file is a part of dependency-injector, licensed under the MIT License.
  *
  * Copyright (c) Jakub Zagórski (jaqobb)
  *
@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dinjector;
+package co.jaqobb.dependency_injector;
 
-import co.jaqobb.dinjector.dependency.Dependency;
-import co.jaqobb.dinjector.exception.dependency.DependencyDownloadException;
-import co.jaqobb.dinjector.exception.dependency.DependencyInjectException;
-import co.jaqobb.dinjector.repository.Repository;
+import co.jaqobb.dependency_injector.dependency.Dependency;
+import co.jaqobb.dependency_injector.exception.dependency.DependencyDownloadException;
+import co.jaqobb.dependency_injector.exception.dependency.DependencyInjectException;
+import co.jaqobb.dependency_injector.repository.Repository;
 
 import java.io.File;
 import java.io.InputStream;
@@ -35,19 +35,19 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
 
-public final class DInjector {
+public final class DependencyInjector {
 	private static Method addURLMethod;
 
 	static {
 		try {
-			DInjector.addURLMethod = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
-			DInjector.addURLMethod.setAccessible(true);
+			DependencyInjector.addURLMethod = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+			DependencyInjector.addURLMethod.setAccessible(true);
 		} catch (NoSuchMethodException exception) {
 			throw new InternalError("Could not cache addURL method", exception);
 		}
 	}
 
-	private DInjector() {
+	private DependencyInjector() {
 	}
 
 	public static void injectDependencies(Dependency[] dependencies, URLClassLoader classLoader) {
@@ -55,32 +55,32 @@ public final class DInjector {
 			throw new NullPointerException("dependencies cannot be null");
 		}
 		for (Dependency dependency : dependencies) {
-			DInjector.injectDependency(dependency, classLoader);
+			DependencyInjector.injectDependency(dependency, classLoader);
 		}
 	}
 
 	public static void injectDependency(String shorthandNotation, URLClassLoader classLoader) {
-		DInjector.injectDependency(new Dependency(shorthandNotation), classLoader);
+		DependencyInjector.injectDependency(new Dependency(shorthandNotation), classLoader);
 	}
 
 	public static void injectDependency(String groupId, String artifactId, String version, URLClassLoader classLoader) {
-		DInjector.injectDependency(new Dependency(groupId, artifactId, version), classLoader);
+		DependencyInjector.injectDependency(new Dependency(groupId, artifactId, version), classLoader);
 	}
 
 	public static void injectDependency(String shorthandNotation, String repository, URLClassLoader classLoader) {
-		DInjector.injectDependency(new Dependency(shorthandNotation, repository), classLoader);
+		DependencyInjector.injectDependency(new Dependency(shorthandNotation, repository), classLoader);
 	}
 
 	public static void injectDependency(String shorthandNotation, Repository repository, URLClassLoader classLoader) {
-		DInjector.injectDependency(new Dependency(shorthandNotation, repository), classLoader);
+		DependencyInjector.injectDependency(new Dependency(shorthandNotation, repository), classLoader);
 	}
 
 	public static void injectDependency(String groupId, String artifactId, String version, String repository, URLClassLoader classLoader) {
-		DInjector.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
+		DependencyInjector.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
 	public static void injectDependency(String groupId, String artifactId, String version, Repository repository, URLClassLoader classLoader) {
-		DInjector.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
+		DependencyInjector.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
 	public static void injectDependency(Dependency dependency, URLClassLoader classLoader) {
@@ -112,7 +112,7 @@ public final class DInjector {
 			throw new DependencyDownloadException("Could not download dependency '" + name + "'");
 		}
 		try {
-			DInjector.addURLMethod.invoke(classLoader, destination.toURI().toURL());
+			DependencyInjector.addURLMethod.invoke(classLoader, destination.toURI().toURL());
 		} catch (Exception exception) {
 			throw new DependencyInjectException("Could not inject dependency '" + name + "'", exception);
 		}
