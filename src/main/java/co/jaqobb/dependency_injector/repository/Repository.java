@@ -25,7 +25,7 @@ package co.jaqobb.dependency_injector.repository;
 
 import java.util.Objects;
 
-public class Repository {
+public final class Repository {
 	private final String url;
 
 	public Repository(String url) {

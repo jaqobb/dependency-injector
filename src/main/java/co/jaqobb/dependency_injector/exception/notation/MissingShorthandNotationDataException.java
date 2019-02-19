@@ -23,7 +23,7 @@
  */
 package co.jaqobb.dependency_injector.exception.notation;
 
-public class MissingShorthandNotationDataException extends RuntimeException {
+public final class MissingShorthandNotationDataException extends RuntimeException {
 	private static final long serialVersionUID = 476681630249212702L;
 
 	public MissingShorthandNotationDataException() {
