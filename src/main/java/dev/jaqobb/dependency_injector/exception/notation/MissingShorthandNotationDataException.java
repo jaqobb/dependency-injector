@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependency_injector.exception.notation;
+package dev.jaqobb.dependency_injector.exception.notation;
 
 public final class MissingShorthandNotationDataException extends RuntimeException {
 	private static final long serialVersionUID = 476681630249212702L;

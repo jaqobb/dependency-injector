@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependency_injector.repository;
+package dev.jaqobb.dependency_injector.repository;
 
 public final class Repositories {
 	public static final Repository MAVEN_CENTRAL = new Repository("https://repo1.maven.org/maven2/");

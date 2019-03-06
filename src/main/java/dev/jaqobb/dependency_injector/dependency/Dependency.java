@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependency_injector.dependency;
+package dev.jaqobb.dependency_injector.dependency;
 
-import co.jaqobb.dependency_injector.exception.notation.MissingShorthandNotationDataException;
-import co.jaqobb.dependency_injector.repository.Repositories;
-import co.jaqobb.dependency_injector.repository.Repository;
+import dev.jaqobb.dependency_injector.exception.notation.MissingShorthandNotationDataException;
+import dev.jaqobb.dependency_injector.repository.Repositories;
+import dev.jaqobb.dependency_injector.repository.Repository;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -54,7 +54,7 @@ public final class Dependency {
 		}
 		String[] data = shorthandNotation.split(":");
 		if (data.length != 3) {
-			throw new MissingShorthandNotationDataException("Shorthand notation must have only group id, artifact id and version separated with ':'");
+			throw new MissingShorthandNotationDataException("shorthandNotation must have only group id, artifact id and version separated with ':'");
 		}
 		this.groupId = data[0];
 		this.artifactId = data[1];

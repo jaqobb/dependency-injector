@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.jaqobb.dependency_injector;
+package dev.jaqobb.dependency_injector;
 
-import co.jaqobb.dependency_injector.dependency.Dependency;
-import co.jaqobb.dependency_injector.exception.dependency.DependencyDownloadException;
-import co.jaqobb.dependency_injector.exception.dependency.DependencyInjectException;
-import co.jaqobb.dependency_injector.repository.Repository;
+import dev.jaqobb.dependency_injector.dependency.Dependency;
+import dev.jaqobb.dependency_injector.exception.dependency.DependencyDownloadException;
+import dev.jaqobb.dependency_injector.exception.dependency.DependencyInjectException;
+import dev.jaqobb.dependency_injector.repository.Repository;
 
 import java.io.File;
 import java.io.InputStream;
