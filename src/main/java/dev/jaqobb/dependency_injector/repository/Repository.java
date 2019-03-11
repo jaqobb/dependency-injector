@@ -25,39 +25,43 @@ package dev.jaqobb.dependency_injector.repository;
 
 import java.util.Objects;
 
-public final class Repository {
-	private final String url;
+public class Repository {
+  public static Repository of(final String url) {
+    if(url == null) {
+      throw new NullPointerException("url cannot be null");
+    }
+    return new Repository(url);
+  }
 
-	public Repository(String url) {
-		if (url == null) {
-			throw new NullPointerException("url cannot be null");
-		}
-		this.url = url;
-	}
+  private final String url;
 
-	public String getURL() {
-		return this.url;
-	}
+  protected Repository(final String url) {
+    this.url = url;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (this == object) {
-			return true;
-		}
-		if (object == null || this.getClass() != object.getClass()) {
-			return false;
-		}
-		Repository that = (Repository) object;
-		return Objects.equals(this.url, that.url);
-	}
+  public String getURL() {
+    return this.url;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(this.url);
-	}
+  @Override
+  public boolean equals(final Object object) {
+    if(this == object) {
+      return true;
+    }
+    if(object == null || this.getClass() != object.getClass()) {
+      return false;
+    }
+    final Repository that = (Repository) object;
+    return Objects.equals(this.url, that.url);
+  }
 
-	@Override
-	public String toString() {
-		return "Repository{" + "url='" + this.url + "'" + "}";
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.url);
+  }
+
+  @Override
+  public String toString() {
+    return "Repository{" + "url='" + this.url + "'" + "}";
+  }
 }

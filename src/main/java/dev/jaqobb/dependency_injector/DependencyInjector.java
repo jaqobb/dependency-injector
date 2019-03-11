@@ -36,85 +36,73 @@ import java.net.URLClassLoader;
 import java.nio.file.Files;
 
 public final class DependencyInjector {
-	private static Method addURLMethod;
+  private static Method addURLMethod;
 
-	static {
-		try {
-			DependencyInjector.addURLMethod = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
-			DependencyInjector.addURLMethod.setAccessible(true);
-		} catch (NoSuchMethodException exception) {
-			throw new InternalError("Could not cache addURL method", exception);
-		}
-	}
+  static {
+    try {
+      DependencyInjector.addURLMethod = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+      DependencyInjector.addURLMethod.setAccessible(true);
+    } catch(final NoSuchMethodException exception) {
+      throw new InternalError("Could not cache addURL method", exception);
+    }
+  }
 
-	private DependencyInjector() {
-	}
+  private DependencyInjector() {
+  }
 
-	public static void injectDependencies(Dependency[] dependencies, URLClassLoader classLoader) {
-		if (dependencies == null) {
-			throw new NullPointerException("dependencies cannot be null");
-		}
-		for (Dependency dependency : dependencies) {
-			DependencyInjector.injectDependency(dependency, classLoader);
-		}
-	}
+  public static void injectDependencies(final Dependency[] dependencies, final URLClassLoader classLoader) {
+    if(dependencies == null) {
+      throw new NullPointerException("dependencies cannot be null");
+    }
+    for(final Dependency dependency : dependencies) {
+      DependencyInjector.injectDependency(dependency, classLoader);
+    }
+  }
 
-	public static void injectDependency(String shorthandNotation, URLClassLoader classLoader) {
-		DependencyInjector.injectDependency(new Dependency(shorthandNotation), classLoader);
-	}
+  public static void injectDependency(final String groupId, final String artifactId, final String version, final URLClassLoader classLoader) {
+    DependencyInjector.injectDependency(Dependency.of(groupId, artifactId, version), classLoader);
+  }
 
-	public static void injectDependency(String groupId, String artifactId, String version, URLClassLoader classLoader) {
-		DependencyInjector.injectDependency(new Dependency(groupId, artifactId, version), classLoader);
-	}
+  public static void injectDependency(final String groupId, final String artifactId, final String version, final String repository, final URLClassLoader classLoader) {
+    DependencyInjector.injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
+  }
 
-	public static void injectDependency(String shorthandNotation, String repository, URLClassLoader classLoader) {
-		DependencyInjector.injectDependency(new Dependency(shorthandNotation, repository), classLoader);
-	}
+  public static void injectDependency(final String groupId, final String artifactId, final String version, final Repository repository, final URLClassLoader classLoader) {
+    DependencyInjector.injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
+  }
 
-	public static void injectDependency(String shorthandNotation, Repository repository, URLClassLoader classLoader) {
-		DependencyInjector.injectDependency(new Dependency(shorthandNotation, repository), classLoader);
-	}
-
-	public static void injectDependency(String groupId, String artifactId, String version, String repository, URLClassLoader classLoader) {
-		DependencyInjector.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
-	}
-
-	public static void injectDependency(String groupId, String artifactId, String version, Repository repository, URLClassLoader classLoader) {
-		DependencyInjector.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
-	}
-
-	public static void injectDependency(Dependency dependency, URLClassLoader classLoader) {
-		if (dependency == null) {
-			throw new NullPointerException("dependency cannot be null");
-		}
-		if(classLoader == null){
-			throw new NullPointerException("classLoader cannot be null");
-		}
-		String groupId = dependency.getGroupId();
-		String artifactId = dependency.getArtifactId();
-		String version = dependency.getVersion();
-		String name = artifactId + "-" + version;
-		String path = groupId.replace(".", File.separator) + File.separator + artifactId + File.separator + version;
-		File dependenciesFolder = new File(".dependencies");
-		File folder = new File(dependenciesFolder, path);
-		File destination = new File(folder, name + ".jar");
-		if (!destination.exists()) {
-			try {
-				URL url = dependency.getDownloadURL();
-				try (InputStream inputStream = url.openStream()) {
-					Files.copy(inputStream, destination.toPath());
-				}
-			} catch (Exception exception) {
-				throw new DependencyDownloadException("Could not download dependency '" + name + "'", exception);
-			}
-		}
-		if (!destination.exists()) {
-			throw new DependencyDownloadException("Could not download dependency '" + name + "'");
-		}
-		try {
-			DependencyInjector.addURLMethod.invoke(classLoader, destination.toURI().toURL());
-		} catch (Exception exception) {
-			throw new DependencyInjectException("Could not inject dependency '" + name + "'", exception);
-		}
-	}
+  public static void injectDependency(final Dependency dependency, final URLClassLoader classLoader) {
+    if(dependency == null) {
+      throw new NullPointerException("dependency cannot be null");
+    }
+    if(classLoader == null) {
+      throw new NullPointerException("classLoader cannot be null");
+    }
+    final String groupId = dependency.getGroupId();
+    final String artifactId = dependency.getArtifactId();
+    final String version = dependency.getVersion();
+    final String name = artifactId + "-" + version;
+    final String path = groupId.replace(".", File.separator) + File.separator + artifactId + File.separator + version;
+    final File dependenciesFolder = new File(".dependencies");
+    final File folder = new File(dependenciesFolder, path);
+    final File destination = new File(folder, name + ".jar");
+    if(!destination.exists()) {
+      try {
+        final URL url = dependency.getDownloadURL();
+        try(final InputStream inputStream = url.openStream()) {
+          Files.copy(inputStream, destination.toPath());
+        }
+      } catch(final Exception exception) {
+        throw new DependencyDownloadException("Could not download dependency '" + name + "'", exception);
+      }
+    }
+    if(!destination.exists()) {
+      throw new DependencyDownloadException("Could not download dependency '" + name + "'");
+    }
+    try {
+      DependencyInjector.addURLMethod.invoke(classLoader, destination.toURI().toURL());
+    } catch(final Exception exception) {
+      throw new DependencyInjectException("Could not inject dependency '" + name + "'", exception);
+    }
+  }
 }

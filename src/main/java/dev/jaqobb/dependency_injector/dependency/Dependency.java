@@ -23,7 +23,6 @@
  */
 package dev.jaqobb.dependency_injector.dependency;
 
-import dev.jaqobb.dependency_injector.exception.notation.MissingShorthandNotationDataException;
 import dev.jaqobb.dependency_injector.repository.Repositories;
 import dev.jaqobb.dependency_injector.repository.Repository;
 
@@ -31,115 +30,94 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
-public final class Dependency {
-	private final String groupId;
-	private final String artifactId;
-	private final String version;
-	private final Repository repository;
+public class Dependency {
+  public static Dependency of(final String groupId, final String artifactId, final String version) {
+    return Dependency.of(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
+  }
 
-	public Dependency(String shorthandNotation) {
-		this(shorthandNotation, Repositories.MAVEN_CENTRAL);
-	}
+  public static Dependency of(final String groupId, final String artifactId, final String version, final String repository) {
+    return Dependency.of(groupId, artifactId, version, Repository.of(repository));
+  }
 
-	public Dependency(String shorthandNotation, String repository) {
-		this(shorthandNotation, new Repository(repository));
-	}
+  public static Dependency of(final String groupId, final String artifactId, final String version, final Repository repository) {
+    if(groupId == null) {
+      throw new NullPointerException("groupId cannot be null");
+    }
+    if(artifactId == null) {
+      throw new NullPointerException("artifactId cannot be null");
+    }
+    if(version == null) {
+      throw new NullPointerException("version cannot be null");
+    }
+    if(repository == null) {
+      throw new NullPointerException("repository cannot be null");
+    }
+    return new Dependency(groupId, artifactId, version, repository);
+  }
 
-	public Dependency(String shorthandNotation, Repository repository) {
-		if (shorthandNotation == null) {
-			throw new NullPointerException("shorthandNotation cannot be null");
-		}
-		if (repository == null) {
-			throw new NullPointerException("repository cannot be null");
-		}
-		String[] data = shorthandNotation.split(":");
-		if (data.length != 3) {
-			throw new MissingShorthandNotationDataException("shorthandNotation must have only group id, artifact id and version separated with ':'");
-		}
-		this.groupId = data[0];
-		this.artifactId = data[1];
-		this.version = data[2];
-		this.repository = repository;
-	}
+  private final String groupId;
+  private final String artifactId;
+  private final String version;
+  private final Repository repository;
 
-	public Dependency(String groupId, String artifactId, String version) {
-		this(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
-	}
+  protected Dependency(final String groupId, final String artifactId, final String version, final Repository repository) {
+    this.groupId = groupId;
+    this.artifactId = artifactId;
+    this.version = version;
+    this.repository = repository;
+  }
 
-	public Dependency(String groupId, String artifactId, String version, String repository) {
-		this(groupId, artifactId, version, new Repository(repository));
-	}
+  public String getGroupId() {
+    return this.groupId;
+  }
 
-	public Dependency(String groupId, String artifactId, String version, Repository repository) {
-		if (groupId == null) {
-			throw new NullPointerException("groupId cannot be null");
-		}
-		if (artifactId == null) {
-			throw new NullPointerException("artifactId cannot be null");
-		}
-		if (version == null) {
-			throw new NullPointerException("version cannot be null");
-		}
-		if (repository == null) {
-			throw new NullPointerException("repository cannot be null");
-		}
-		this.groupId = groupId;
-		this.artifactId = artifactId;
-		this.version = version;
-		this.repository = repository;
-	}
+  public String getArtifactId() {
+    return this.artifactId;
+  }
 
-	public String getGroupId() {
-		return this.groupId;
-	}
+  public String getVersion() {
+    return this.version;
+  }
 
-	public String getArtifactId() {
-		return this.artifactId;
-	}
+  public Repository getRepository() {
+    return this.repository;
+  }
 
-	public String getVersion() {
-		return this.version;
-	}
+  public URL getDownloadURL() throws MalformedURLException {
+    String url = this.repository.getURL();
+    if(!url.endsWith("/")) {
+      url += "/";
+    }
+    return new URL(url + this.groupId.replace(".", "/") + "/" + this.artifactId + "/" + this.version + "/" + this.artifactId + "-" + this.version + ".jar");
+  }
 
-	public Repository getRepository() {
-		return this.repository;
-	}
+  @Override
+  public boolean equals(final Object object) {
+    if(this == object) {
+      return true;
+    }
+    if(object == null || this.getClass() != object.getClass()) {
+      return false;
+    }
+    final Dependency that = (Dependency) object;
+    return Objects.equals(this.groupId, that.groupId) &&
+      Objects.equals(this.artifactId, that.artifactId) &&
+      Objects.equals(this.version, that.version) &&
+      Objects.equals(this.repository, that.repository);
+  }
 
-	public URL getDownloadURL() throws MalformedURLException {
-		String url = this.repository.getURL();
-		if (!url.endsWith("/")) {
-			url += "/";
-		}
-		return new URL(url + this.groupId.replace(".", "/") + "/" + this.artifactId + "/" + this.version + "/" + this.artifactId + "-" + this.version + ".jar");
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.groupId, this.artifactId, this.version, this.repository);
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (this == object) {
-			return true;
-		}
-		if (object == null || this.getClass() != object.getClass()) {
-			return false;
-		}
-		Dependency that = (Dependency) object;
-		return Objects.equals(this.groupId, that.groupId) &&
-			Objects.equals(this.artifactId, that.artifactId) &&
-			Objects.equals(this.version, that.version) &&
-			Objects.equals(this.repository, that.repository);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(this.groupId, this.artifactId, this.version, this.repository);
-	}
-
-	@Override
-	public String toString() {
-		return "Dependency{" +
-			"groupId='" + this.groupId + "'" +
-			", artifactId='" + this.artifactId + "'" +
-			", version='" + this.version + "'" +
-			", repository=" + this.repository +
-			"}";
-	}
+  @Override
+  public String toString() {
+    return "Dependency{" +
+      "groupId='" + this.groupId + "'" +
+      ", artifactId='" + this.artifactId + "'" +
+      ", version='" + this.version + "'" +
+      ", repository=" + this.repository +
+      "}";
+  }
 }

@@ -24,21 +24,21 @@
 package dev.jaqobb.dependency_injector.exception.dependency;
 
 public final class DependencyInjectException extends RuntimeException {
-	private static final long serialVersionUID = -203028534307178106L;
+  private static final long serialVersionUID = -203028534307178106L;
 
-	public DependencyInjectException() {
-		super();
-	}
+  public DependencyInjectException() {
+    super();
+  }
 
-	public DependencyInjectException(String message) {
-		super(message);
-	}
+  public DependencyInjectException(final String message) {
+    super(message);
+  }
 
-	public DependencyInjectException(String message, Throwable cause) {
-		super(message, cause);
-	}
+  public DependencyInjectException(final String message, final Throwable cause) {
+    super(message, cause);
+  }
 
-	public DependencyInjectException(Throwable cause) {
-		super(cause);
-	}
+  public DependencyInjectException(final Throwable cause) {
+    super(cause);
+  }
 }

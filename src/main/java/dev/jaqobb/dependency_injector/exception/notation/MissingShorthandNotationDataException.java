@@ -24,21 +24,21 @@
 package dev.jaqobb.dependency_injector.exception.notation;
 
 public final class MissingShorthandNotationDataException extends RuntimeException {
-	private static final long serialVersionUID = 476681630249212702L;
+  private static final long serialVersionUID = 476681630249212702L;
 
-	public MissingShorthandNotationDataException() {
-		super();
-	}
+  public MissingShorthandNotationDataException() {
+    super();
+  }
 
-	public MissingShorthandNotationDataException(String message) {
-		super(message);
-	}
+  public MissingShorthandNotationDataException(final String message) {
+    super(message);
+  }
 
-	public MissingShorthandNotationDataException(String message, Throwable cause) {
-		super(message, cause);
-	}
+  public MissingShorthandNotationDataException(final String message, final Throwable cause) {
+    super(message, cause);
+  }
 
-	public MissingShorthandNotationDataException(Throwable cause) {
-		super(cause);
-	}
+  public MissingShorthandNotationDataException(final Throwable cause) {
+    super(cause);
+  }
 }
