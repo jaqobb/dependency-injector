@@ -25,7 +25,7 @@ package dev.jaqobb.dependency_injector.repository;
 
 import java.util.Objects;
 
-public class Repository {
+public final class Repository {
   public static Repository of(final String url) {
     if(url == null) {
       throw new NullPointerException("url cannot be null");

@@ -30,7 +30,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
-public class Dependency {
+public final class Dependency {
   public static Dependency of(final String groupId, final String artifactId, final String version) {
     return Dependency.of(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
   }
