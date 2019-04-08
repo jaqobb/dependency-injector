@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'dev.jaqobb'
-version = '2.2.4'
+version = '2.2.5'
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
@@ -17,8 +17,16 @@ license {
   include '**/*.java'
 }
 
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.1'
+}
+
 task sourcesJar(type: Jar) {
-  classifier 'sources'
+  archiveClassifier.set 'sources'
   from sourceSets.main.allSource
 }
 

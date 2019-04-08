@@ -40,8 +40,8 @@ public final class DependencyInjector {
 
   static {
     try {
-      DependencyInjector.addURLMethod = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
-      DependencyInjector.addURLMethod.setAccessible(true);
+      addURLMethod = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+      addURLMethod.setAccessible(true);
     } catch(final NoSuchMethodException exception) {
       throw new InternalError("Could not cache addURL method", exception);
     }
@@ -55,20 +55,20 @@ public final class DependencyInjector {
       throw new NullPointerException("dependencies cannot be null");
     }
     for(final Dependency dependency : dependencies) {
-      DependencyInjector.injectDependency(dependency, classLoader);
+      injectDependency(dependency, classLoader);
     }
   }
 
   public static void injectDependency(final String groupId, final String artifactId, final String version, final URLClassLoader classLoader) {
-    DependencyInjector.injectDependency(Dependency.of(groupId, artifactId, version), classLoader);
+    injectDependency(Dependency.of(groupId, artifactId, version), classLoader);
   }
 
   public static void injectDependency(final String groupId, final String artifactId, final String version, final String repository, final URLClassLoader classLoader) {
-    DependencyInjector.injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
+    injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
   }
 
   public static void injectDependency(final String groupId, final String artifactId, final String version, final Repository repository, final URLClassLoader classLoader) {
-    DependencyInjector.injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
+    injectDependency(Dependency.of(groupId, artifactId, version, repository), classLoader);
   }
 
   public static void injectDependency(final Dependency dependency, final URLClassLoader classLoader) {
@@ -100,7 +100,7 @@ public final class DependencyInjector {
       throw new DependencyDownloadException("Could not download dependency '" + name + "'");
     }
     try {
-      DependencyInjector.addURLMethod.invoke(classLoader, destination.toURI().toURL());
+      addURLMethod.invoke(classLoader, destination.toURI().toURL());
     } catch(final Exception exception) {
       throw new DependencyInjectException("Could not inject dependency '" + name + "'", exception);
     }

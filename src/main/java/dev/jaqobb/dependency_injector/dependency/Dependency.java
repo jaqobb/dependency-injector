@@ -32,11 +32,11 @@ import java.util.Objects;
 
 public final class Dependency {
   public static Dependency of(final String groupId, final String artifactId, final String version) {
-    return Dependency.of(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
+    return of(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
   }
 
   public static Dependency of(final String groupId, final String artifactId, final String version, final String repository) {
-    return Dependency.of(groupId, artifactId, version, Repository.of(repository));
+    return of(groupId, artifactId, version, Repository.of(repository));
   }
 
   public static Dependency of(final String groupId, final String artifactId, final String version, final Repository repository) {
