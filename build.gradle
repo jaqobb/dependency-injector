@@ -11,14 +11,14 @@ targetCompatibility = JavaVersion.VERSION_11
 
 defaultTasks 'clean', 'build'
 
+test {
+  useJUnitPlatform()
+}
+
 license {
   header project.file('header.txt')
   newLine false
   include '**/*.java'
-}
-
-test {
-  useJUnitPlatform()
 }
 
 repositories {
