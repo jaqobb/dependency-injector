@@ -36,12 +36,12 @@ import java.net.URLClassLoader;
 import java.nio.file.Files;
 
 public final class DependencyInjector {
-  private static Method addURLMethod;
+  private static final Method ADD_URL_METHOD;
 
   static {
     try {
-      addURLMethod = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
-      addURLMethod.setAccessible(true);
+      ADD_URL_METHOD = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+      ADD_URL_METHOD.setAccessible(true);
     } catch(final NoSuchMethodException exception) {
       throw new InternalError("Could not cache addURL method", exception);
     }
@@ -100,7 +100,7 @@ public final class DependencyInjector {
       throw new DependencyDownloadException("Could not download dependency '" + name + "'");
     }
     try {
-      addURLMethod.invoke(classLoader, destination.toURI().toURL());
+      ADD_URL_METHOD.invoke(classLoader, destination.toURI().toURL());
     } catch(final Exception exception) {
       throw new DependencyInjectException("Could not inject dependency '" + name + "'", exception);
     }
