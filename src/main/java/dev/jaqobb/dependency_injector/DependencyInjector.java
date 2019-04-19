@@ -55,7 +55,7 @@ public final class DependencyInjector {
 
   public static void injectDependencies(final Dependency[] dependencies, final URLClassLoader classLoader) {
     if(dependencies == null) {
-      throw new NullPointerException("dependencies cannot be null");
+      throw new NullPointerException("dependencies");
     }
     for(final Dependency dependency : dependencies) {
       injectDependency(dependency, classLoader);
@@ -76,10 +76,10 @@ public final class DependencyInjector {
 
   public static void injectDependency(final Dependency dependency, final URLClassLoader classLoader) {
     if(dependency == null) {
-      throw new NullPointerException("dependency cannot be null");
+      throw new NullPointerException("dependency");
     }
     if(classLoader == null) {
-      throw new NullPointerException("classLoader cannot be null");
+      throw new NullPointerException("classLoader");
     }
     final String groupId = dependency.getGroupId();
     final String artifactId = dependency.getArtifactId();
@@ -91,7 +91,7 @@ public final class DependencyInjector {
     final File destination = new File(folder, name + ".jar");
     if(!destination.exists()) {
       try {
-        final URL url = dependency.getDownloadURL();
+        final URL url = dependency.getDownloadUrl();
         try(final InputStream inputStream = url.openStream()) {
           Files.copy(inputStream, destination.toPath());
         }

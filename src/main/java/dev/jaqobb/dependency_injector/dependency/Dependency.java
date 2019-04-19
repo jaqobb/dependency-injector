@@ -41,16 +41,16 @@ public final class Dependency {
 
   public static Dependency of(final String groupId, final String artifactId, final String version, final Repository repository) {
     if(groupId == null) {
-      throw new NullPointerException("groupId cannot be null");
+      throw new NullPointerException("groupId");
     }
     if(artifactId == null) {
-      throw new NullPointerException("artifactId cannot be null");
+      throw new NullPointerException("artifactId");
     }
     if(version == null) {
-      throw new NullPointerException("version cannot be null");
+      throw new NullPointerException("version");
     }
     if(repository == null) {
-      throw new NullPointerException("repository cannot be null");
+      throw new NullPointerException("repository");
     }
     return new Dependency(groupId, artifactId, version, repository);
   }
@@ -83,8 +83,8 @@ public final class Dependency {
     return this.repository;
   }
 
-  public URL getDownloadURL() throws MalformedURLException {
-    String url = this.repository.getURL();
+  public URL getDownloadUrl() throws MalformedURLException {
+    String url = this.repository.getUrl();
     if(!url.endsWith("/")) {
       url += "/";
     }

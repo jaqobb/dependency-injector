@@ -28,7 +28,7 @@ import java.util.Objects;
 public final class Repository {
   public static Repository of(final String url) {
     if(url == null) {
-      throw new NullPointerException("url cannot be null");
+      throw new NullPointerException("url");
     }
     return new Repository(url);
   }
@@ -39,7 +39,7 @@ public final class Repository {
     this.url = url;
   }
 
-  public String getURL() {
+  public String getUrl() {
     return this.url;
   }
 
