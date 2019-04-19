@@ -29,8 +29,11 @@ import dev.jaqobb.dependency_injector.exception.dependency.DependencyInjectExcep
 import dev.jaqobb.dependency_injector.repository.Repository;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
@@ -92,7 +95,7 @@ public final class DependencyInjector {
         try(final InputStream inputStream = url.openStream()) {
           Files.copy(inputStream, destination.toPath());
         }
-      } catch(final Exception exception) {
+      } catch(final IOException exception) {
         throw new DependencyDownloadException("Could not download dependency '" + name + "'", exception);
       }
     }
@@ -101,7 +104,7 @@ public final class DependencyInjector {
     }
     try {
       ADD_URL_METHOD.invoke(classLoader, destination.toURI().toURL());
-    } catch(final Exception exception) {
+    } catch(final IllegalAccessException | InvocationTargetException | MalformedURLException exception) {
       throw new DependencyInjectException("Could not inject dependency '" + name + "'", exception);
     }
   }
