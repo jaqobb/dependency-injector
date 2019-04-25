@@ -24,8 +24,8 @@
 package dev.jaqobb.dependency_injector;
 
 import dev.jaqobb.dependency_injector.dependency.Dependency;
-import dev.jaqobb.dependency_injector.exception.dependency.DependencyDownloadException;
-import dev.jaqobb.dependency_injector.exception.dependency.DependencyInjectException;
+import dev.jaqobb.dependency_injector.dependency.DependencyDownloadException;
+import dev.jaqobb.dependency_injector.dependency.DependencyInjectException;
 import dev.jaqobb.dependency_injector.repository.Repository;
 
 import java.io.File;
