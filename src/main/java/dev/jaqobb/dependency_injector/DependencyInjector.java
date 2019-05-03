@@ -88,16 +88,16 @@ public final class DependencyInjector {
           Files.copy(inputStream, destination.toPath());
         }
       } catch(final IOException exception) {
-        throw new DependencyDownloadException(String.format("Could not download dependency '%s'", name), exception);
+        throw new DependencyDownloadException(String.format("Could not download dependency %s", name), exception);
       }
     }
     if(!destination.exists()) {
-      throw new DependencyDownloadException(String.format("Could not download dependency '%s'", name));
+      throw new DependencyDownloadException(String.format("Could not download dependency %s", name));
     }
     try {
       ADD_URL_METHOD.invoke(classLoader, destination.toURI().toURL());
     } catch(final IllegalAccessException | InvocationTargetException | MalformedURLException exception) {
-      throw new DependencyInjectException(String.format("Could not inject dependency '%s'", name), exception);
+      throw new DependencyInjectException(String.format("Could not inject dependency %s", name), exception);
     }
   }
 }
