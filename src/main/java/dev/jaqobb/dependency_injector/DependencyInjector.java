@@ -26,7 +26,6 @@ package dev.jaqobb.dependency_injector;
 import dev.jaqobb.dependency_injector.dependency.Dependency;
 import dev.jaqobb.dependency_injector.dependency.DependencyDownloadException;
 import dev.jaqobb.dependency_injector.dependency.DependencyInjectException;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,7 +44,7 @@ public final class DependencyInjector {
     try {
       ADD_URL_METHOD = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
       ADD_URL_METHOD.setAccessible(true);
-    } catch(final NoSuchMethodException exception) {
+    } catch(NoSuchMethodException exception) {
       throw new InternalError("Could not cache addURL method", exception);
     }
   }
@@ -53,41 +52,41 @@ public final class DependencyInjector {
   private DependencyInjector() {
   }
 
-  public static void injectDependencies(final Dependency[] dependencies, final URLClassLoader classLoader) {
+  public static void injectDependencies(Dependency[] dependencies, URLClassLoader classLoader) {
     if(dependencies == null) {
       throw new NullPointerException("dependencies");
     }
-    for(final Dependency dependency : dependencies) {
+    for(Dependency dependency : dependencies) {
       injectDependency(dependency, classLoader);
     }
   }
 
-  public static void injectDependency(final String groupId, final String artifactId, final String version, final URLClassLoader classLoader) {
+  public static void injectDependency(String groupId, String artifactId, String version, URLClassLoader classLoader) {
     injectDependency(new Dependency(groupId, artifactId, version), classLoader);
   }
 
-  public static void injectDependency(final String groupId, final String artifactId, final String version, final String repository, final URLClassLoader classLoader) {
+  public static void injectDependency(String groupId, String artifactId, String version, String repository, URLClassLoader classLoader) {
     injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
   }
 
-  public static void injectDependency(final Dependency dependency, final URLClassLoader classLoader) {
+  public static void injectDependency(Dependency dependency, URLClassLoader classLoader) {
     Objects.requireNonNull(dependency, "dependency");
     Objects.requireNonNull(classLoader, "classLoader");
-    final String groupId = dependency.getGroupId();
-    final String artifactId = dependency.getArtifactId();
-    final String version = dependency.getVersion();
-    final String name = artifactId + "-" + version;
-    final String path = groupId.replace(".", File.separator) + File.separator + artifactId + File.separator + version;
-    final File dependenciesFolder = new File(".dependencies");
-    final File folder = new File(dependenciesFolder, path);
-    final File destination = new File(folder, name + ".jar");
+    String groupId = dependency.getGroupId();
+    String artifactId = dependency.getArtifactId();
+    String version = dependency.getVersion();
+    String name = artifactId + "-" + version;
+    String path = groupId.replace(".", File.separator) + File.separator + artifactId + File.separator + version;
+    File dependenciesFolder = new File(".dependencies");
+    File folder = new File(dependenciesFolder, path);
+    File destination = new File(folder, name + ".jar");
     if(!destination.exists()) {
       try {
-        final URL url = dependency.getDownloadUrl();
-        try(final InputStream inputStream = url.openStream()) {
+        URL url = dependency.getDownloadUrl();
+        try(InputStream inputStream = url.openStream()) {
           Files.copy(inputStream, destination.toPath());
         }
-      } catch(final IOException exception) {
+      } catch(IOException exception) {
         throw new DependencyDownloadException(String.format("Could not download dependency %s", name), exception);
       }
     }
@@ -96,7 +95,7 @@ public final class DependencyInjector {
     }
     try {
       ADD_URL_METHOD.invoke(classLoader, destination.toURI().toURL());
-    } catch(final IllegalAccessException | InvocationTargetException | MalformedURLException exception) {
+    } catch(IllegalAccessException | InvocationTargetException | MalformedURLException exception) {
       throw new DependencyInjectException(String.format("Could not inject dependency %s", name), exception);
     }
   }
