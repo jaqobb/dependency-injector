@@ -29,6 +29,7 @@ import java.net.URL;
 import java.util.Objects;
 import dev.jaqobb.dependency_injector.repository.Repositories;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class Dependency {
 
@@ -82,7 +83,7 @@ public class Dependency {
 	}
 
 	@Override
-	public boolean equals(Object object) {
+	public boolean equals(@Nullable Object object) {
 		if(this == object) {
 			return true;
 		}
