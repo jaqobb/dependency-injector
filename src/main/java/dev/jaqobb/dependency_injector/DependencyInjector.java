@@ -52,6 +52,7 @@ public final class DependencyInjector {
 	}
 
 	private DependencyInjector() {
+		throw new UnsupportedOperationException("Cannot create instance of utility class");
 	}
 
 	public static void injectDependencies(@NotNull Dependency[] dependencies, @NotNull URLClassLoader classLoader) {

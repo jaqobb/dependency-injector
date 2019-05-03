@@ -30,5 +30,6 @@ public final class Repositories {
 	public static final String JCENTER = "https://jcenter.bintray.com/";
 
 	private Repositories() {
+		throw new UnsupportedOperationException("Cannot create instance of utility class");
 	}
 }
