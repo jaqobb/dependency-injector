@@ -33,10 +33,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
-import java.util.Objects;
 import dev.jaqobb.dependency_injector.dependency.Dependency;
 import dev.jaqobb.dependency_injector.dependency.DependencyDownloadException;
 import dev.jaqobb.dependency_injector.dependency.DependencyInjectException;
+import org.jetbrains.annotations.NotNull;
 
 public final class DependencyInjector {
 
@@ -54,26 +54,21 @@ public final class DependencyInjector {
 	private DependencyInjector() {
 	}
 
-	public static void injectDependencies(Dependency[] dependencies, URLClassLoader classLoader) {
-		if(dependencies == null) {
-			throw new NullPointerException("dependencies");
-		}
+	public static void injectDependencies(@NotNull Dependency[] dependencies, @NotNull URLClassLoader classLoader) {
 		for(Dependency dependency : dependencies) {
 			injectDependency(dependency, classLoader);
 		}
 	}
 
-	public static void injectDependency(String groupId, String artifactId, String version, URLClassLoader classLoader) {
+	public static void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull URLClassLoader classLoader) {
 		injectDependency(new Dependency(groupId, artifactId, version), classLoader);
 	}
 
-	public static void injectDependency(String groupId, String artifactId, String version, String repository, URLClassLoader classLoader) {
+	public static void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull String repository, @NotNull URLClassLoader classLoader) {
 		injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
-	public static void injectDependency(Dependency dependency, URLClassLoader classLoader) {
-		Objects.requireNonNull(dependency, "dependency");
-		Objects.requireNonNull(classLoader, "classLoader");
+	public static void injectDependency(@NotNull Dependency dependency, @NotNull URLClassLoader classLoader) {
 		String groupId = dependency.getGroupId();
 		String artifactId = dependency.getArtifactId();
 		String version = dependency.getVersion();
@@ -89,16 +84,16 @@ public final class DependencyInjector {
 					Files.copy(inputStream, destination.toPath());
 				}
 			} catch(IOException exception) {
-				throw new DependencyDownloadException(String.format("Could not download dependency %s", name), exception);
+				throw new DependencyDownloadException("Could not download dependency " + name, exception);
 			}
 		}
 		if(!destination.exists()) {
-			throw new DependencyDownloadException(String.format("Could not download dependency %s", name));
+			throw new DependencyDownloadException("Could not download dependency " + name);
 		}
 		try {
 			ADD_URL_METHOD.invoke(classLoader, destination.toURI().toURL());
 		} catch(IllegalAccessException | InvocationTargetException | MalformedURLException exception) {
-			throw new DependencyInjectException(String.format("Could not inject dependency %s", name), exception);
+			throw new DependencyInjectException("Could not inject dependency " + name, exception);
 		}
 	}
 }

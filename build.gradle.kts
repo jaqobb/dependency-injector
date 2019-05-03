@@ -30,5 +30,6 @@ repositories {
 }
 
 dependencies {
+	compileOnly("org.jetbrains:annotations:17.0.0")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
 }

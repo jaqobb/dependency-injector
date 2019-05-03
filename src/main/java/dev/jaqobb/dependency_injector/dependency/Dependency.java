@@ -28,41 +28,51 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 import dev.jaqobb.dependency_injector.repository.Repositories;
+import org.jetbrains.annotations.NotNull;
 
 public class Dependency {
 
+	@NotNull
 	private String groupId;
+	@NotNull
 	private String artifactId;
+	@NotNull
 	private String version;
+	@NotNull
 	private String repository;
 
-	public Dependency(String groupId, String artifactId, String version) {
+	public Dependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version) {
 		this(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
 	}
 
-	public Dependency(String groupId, String artifactId, String version, String repository) {
-		this.groupId = Objects.requireNonNull(groupId, "groupId");
-		this.artifactId = Objects.requireNonNull(artifactId, "artifactId");
-		this.version = Objects.requireNonNull(version, "version");
-		this.repository = Objects.requireNonNull(repository, "repository");
+	public Dependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull String repository) {
+		this.groupId = groupId;
+		this.artifactId = artifactId;
+		this.version = version;
+		this.repository = repository;
 	}
 
+	@NotNull
 	public String getGroupId() {
 		return this.groupId;
 	}
 
+	@NotNull
 	public String getArtifactId() {
 		return this.artifactId;
 	}
 
+	@NotNull
 	public String getVersion() {
 		return this.version;
 	}
 
+	@NotNull
 	public String getRepository() {
 		return this.repository;
 	}
 
+	@NotNull
 	public URL getDownloadUrl() throws MalformedURLException {
 		String url = this.repository;
 		if(!url.endsWith("/")) {
