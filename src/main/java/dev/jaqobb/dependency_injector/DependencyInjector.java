@@ -46,7 +46,7 @@ public final class DependencyInjector {
 		try {
 			ADD_URL_METHOD = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
 			ADD_URL_METHOD.setAccessible(true);
-		} catch(NoSuchMethodException exception) {
+		} catch (NoSuchMethodException exception) {
 			throw new InternalError("Could not cache addURL method", exception);
 		}
 	}
@@ -56,7 +56,7 @@ public final class DependencyInjector {
 	}
 
 	public static void injectDependencies(@NotNull Dependency[] dependencies, @NotNull URLClassLoader classLoader) {
-		for(Dependency dependency : dependencies) {
+		for (Dependency dependency : dependencies) {
 			injectDependency(dependency, classLoader);
 		}
 	}
@@ -78,22 +78,22 @@ public final class DependencyInjector {
 		File dependenciesFolder = new File(".dependencies");
 		File folder = new File(dependenciesFolder, path);
 		File destination = new File(folder, name + ".jar");
-		if(!destination.exists()) {
+		if (!destination.exists()) {
 			try {
 				URL url = dependency.getDownloadUrl();
-				try(InputStream inputStream = url.openStream()) {
+				try (InputStream inputStream = url.openStream()) {
 					Files.copy(inputStream, destination.toPath());
 				}
-			} catch(IOException exception) {
+			} catch (IOException exception) {
 				throw new DependencyDownloadException("Could not download dependency " + name, exception);
 			}
 		}
-		if(!destination.exists()) {
+		if (!destination.exists()) {
 			throw new DependencyDownloadException("Could not download dependency " + name);
 		}
 		try {
 			ADD_URL_METHOD.invoke(classLoader, destination.toURI().toURL());
-		} catch(IllegalAccessException | InvocationTargetException | MalformedURLException exception) {
+		} catch (IllegalAccessException | InvocationTargetException | MalformedURLException exception) {
 			throw new DependencyInjectException("Could not inject dependency " + name, exception);
 		}
 	}

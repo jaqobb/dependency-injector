@@ -76,7 +76,7 @@ public class Dependency {
 	@NotNull
 	public URL getDownloadUrl() throws MalformedURLException {
 		String url = repository;
-		if(!url.endsWith("/")) {
+		if (!url.endsWith("/")) {
 			url += "/";
 		}
 		return new URL(url + groupId.replace(".", "/") + "/" + artifactId + "/" + version + "/" + artifactId + "-" + version + ".jar");
@@ -84,10 +84,10 @@ public class Dependency {
 
 	@Override
 	public boolean equals(@Nullable Object object) {
-		if(this == object) {
+		if (this == object) {
 			return true;
 		}
-		if(object == null || getClass() != object.getClass()) {
+		if (object == null || getClass() != object.getClass()) {
 			return false;
 		}
 		Dependency that = (Dependency) object;
