@@ -55,31 +55,31 @@ public class Dependency {
 
 	@NotNull
 	public String getGroupId() {
-		return this.groupId;
+		return groupId;
 	}
 
 	@NotNull
 	public String getArtifactId() {
-		return this.artifactId;
+		return artifactId;
 	}
 
 	@NotNull
 	public String getVersion() {
-		return this.version;
+		return version;
 	}
 
 	@NotNull
 	public String getRepository() {
-		return this.repository;
+		return repository;
 	}
 
 	@NotNull
 	public URL getDownloadUrl() throws MalformedURLException {
-		String url = this.repository;
+		String url = repository;
 		if(!url.endsWith("/")) {
 			url += "/";
 		}
-		return new URL(url + this.groupId.replace(".", "/") + "/" + this.artifactId + "/" + this.version + "/" + this.artifactId + "-" + this.version + ".jar");
+		return new URL(url + groupId.replace(".", "/") + "/" + artifactId + "/" + version + "/" + artifactId + "-" + version + ".jar");
 	}
 
 	@Override
@@ -91,24 +91,24 @@ public class Dependency {
 			return false;
 		}
 		Dependency that = (Dependency) object;
-		return Objects.equals(this.groupId, that.groupId) &&
-			Objects.equals(this.artifactId, that.artifactId) &&
-			Objects.equals(this.version, that.version) &&
-			Objects.equals(this.repository, that.repository);
+		return Objects.equals(groupId, that.groupId) &&
+			Objects.equals(artifactId, that.artifactId) &&
+			Objects.equals(version, that.version) &&
+			Objects.equals(repository, that.repository);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.groupId, this.artifactId, this.version, this.repository);
+		return Objects.hash(groupId, artifactId, version, repository);
 	}
 
 	@Override
 	public String toString() {
 		return "Dependency{" +
-			"groupId='" + this.groupId + "'" +
-			", artifactId='" + this.artifactId + "'" +
-			", version='" + this.version + "'" +
-			", repository=" + this.repository +
+			"groupId='" + groupId + "'" +
+			", artifactId='" + artifactId + "'" +
+			", version='" + version + "'" +
+			", repository=" + repository +
 			"}";
 	}
 }
