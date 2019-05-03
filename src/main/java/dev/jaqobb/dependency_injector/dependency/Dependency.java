@@ -24,47 +24,26 @@
 package dev.jaqobb.dependency_injector.dependency;
 
 import dev.jaqobb.dependency_injector.repository.Repositories;
-import dev.jaqobb.dependency_injector.repository.Repository;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
 public final class Dependency {
-  public static Dependency of(final String groupId, final String artifactId, final String version) {
-    return of(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
-  }
-
-  public static Dependency of(final String groupId, final String artifactId, final String version, final String repository) {
-    return of(groupId, artifactId, version, Repository.of(repository));
-  }
-
-  public static Dependency of(final String groupId, final String artifactId, final String version, final Repository repository) {
-    if(groupId == null) {
-      throw new NullPointerException("groupId");
-    }
-    if(artifactId == null) {
-      throw new NullPointerException("artifactId");
-    }
-    if(version == null) {
-      throw new NullPointerException("version");
-    }
-    if(repository == null) {
-      throw new NullPointerException("repository");
-    }
-    return new Dependency(groupId, artifactId, version, repository);
-  }
-
   private final String groupId;
   private final String artifactId;
   private final String version;
-  private final Repository repository;
+  private final String repository;
 
-  protected Dependency(final String groupId, final String artifactId, final String version, final Repository repository) {
-    this.groupId = groupId;
-    this.artifactId = artifactId;
-    this.version = version;
-    this.repository = repository;
+  public Dependency(final String groupId, final String artifactId, final String version) {
+    this(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
+  }
+
+  public Dependency(final String groupId, final String artifactId, final String version, final String repository) {
+    this.groupId = Objects.requireNonNull(groupId, "groupId");
+    this.artifactId = Objects.requireNonNull(artifactId, "artifactId");
+    this.version = Objects.requireNonNull(version, "version");
+    this.repository = Objects.requireNonNull(repository, "repository");
   }
 
   public String getGroupId() {
@@ -79,12 +58,12 @@ public final class Dependency {
     return this.version;
   }
 
-  public Repository getRepository() {
+  public String getRepository() {
     return this.repository;
   }
 
   public URL getDownloadUrl() throws MalformedURLException {
-    String url = this.repository.getUrl();
+    String url = this.repository;
     if(!url.endsWith("/")) {
       url += "/";
     }

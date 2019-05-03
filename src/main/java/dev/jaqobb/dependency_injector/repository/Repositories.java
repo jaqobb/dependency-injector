@@ -24,8 +24,8 @@
 package dev.jaqobb.dependency_injector.repository;
 
 public final class Repositories {
-  public static final Repository MAVEN_CENTRAL = Repository.of("https://repo1.maven.org/maven2/");
-  public static final Repository JCENTER = Repository.of("https://jcenter.bintray.com/");
+  public static final String MAVEN_CENTRAL = "https://repo1.maven.org/maven2/";
+  public static final String JCENTER = "https://jcenter.bintray.com/";
 
   private Repositories() {
   }
