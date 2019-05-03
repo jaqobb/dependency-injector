@@ -21,12 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 package dev.jaqobb.dependency_injector.dependency;
 
-public final class DependencyInjectException extends RuntimeException {
-  private static final long serialVersionUID = -203028534307178106L;
+public class DependencyInjectException extends RuntimeException {
 
-  public DependencyInjectException(String message, Throwable cause) {
-    super(message, cause);
-  }
+	private static final long serialVersionUID = -203028534307178106L;
+
+	public DependencyInjectException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

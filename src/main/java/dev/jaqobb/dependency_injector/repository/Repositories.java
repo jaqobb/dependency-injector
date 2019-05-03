@@ -21,12 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 package dev.jaqobb.dependency_injector.repository;
 
 public final class Repositories {
-  public static final String MAVEN_CENTRAL = "https://repo1.maven.org/maven2/";
-  public static final String JCENTER = "https://jcenter.bintray.com/";
 
-  private Repositories() {
-  }
+	public static final String MAVEN_CENTRAL = "https://repo1.maven.org/maven2/";
+	public static final String JCENTER = "https://jcenter.bintray.com/";
+
+	private Repositories() {
+	}
 }
