@@ -101,14 +101,4 @@ public class Dependency {
 	public int hashCode() {
 		return Objects.hash(_groupId, _artifactId, _version, _repository);
 	}
-
-	@Override
-	public String toString() {
-		return "Dependency{" +
-			"groupId='" + _groupId + "'" +
-			", artifactId='" + _artifactId + "'" +
-			", version='" + _version + "'" +
-			", repository=" + _repository +
-			"}";
-	}
 }
