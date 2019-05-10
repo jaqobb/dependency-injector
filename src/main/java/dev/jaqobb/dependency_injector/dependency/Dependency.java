@@ -34,52 +34,52 @@ import org.jetbrains.annotations.Nullable;
 public class Dependency {
 
 	@NotNull
-	private String _groupId;
+	private String groupId;
 	@NotNull
-	private String _artifactId;
+	private String artifactId;
 	@NotNull
-	private String _version;
+	private String version;
 	@NotNull
-	private String _repository;
+	private String repository;
 
 	public Dependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version) {
 		this(groupId, artifactId, version, Repositories.MAVEN_CENTRAL);
 	}
 
 	public Dependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull String repository) {
-		_groupId = groupId;
-		_artifactId = artifactId;
-		_version = version;
-		_repository = repository;
+		this.groupId = groupId;
+		this.artifactId = artifactId;
+		this.version = version;
+		this.repository = repository;
 	}
 
 	@NotNull
 	public String getGroupId() {
-		return _groupId;
+		return this.groupId;
 	}
 
 	@NotNull
 	public String getArtifactId() {
-		return _artifactId;
+		return this.artifactId;
 	}
 
 	@NotNull
 	public String getVersion() {
-		return _version;
+		return this.version;
 	}
 
 	@NotNull
 	public String getRepository() {
-		return _repository;
+		return this.repository;
 	}
 
 	@NotNull
 	public URL getDownloadUrl() throws MalformedURLException {
-		String url = _repository;
+		String url = this.repository;
 		if (!url.endsWith("/")) {
 			url += "/";
 		}
-		return new URL(url + _groupId.replace(".", "/") + "/" + _artifactId + "/" + _version + "/" + _artifactId + "-" + _version + ".jar");
+		return new URL(url + this.groupId.replace(".", "/") + "/" + this.artifactId + "/" + this.version + "/" + this.artifactId + "-" + this.version + ".jar");
 	}
 
 	@Override
@@ -91,14 +91,14 @@ public class Dependency {
 			return false;
 		}
 		Dependency that = (Dependency) object;
-		return Objects.equals(_groupId, that._groupId) &&
-			Objects.equals(_artifactId, that._artifactId) &&
-			Objects.equals(_version, that._version) &&
-			Objects.equals(_repository, that._repository);
+		return Objects.equals(this.groupId, that.groupId) &&
+			Objects.equals(this.artifactId, that.artifactId) &&
+			Objects.equals(this.version, that.version) &&
+			Objects.equals(this.repository, that.repository);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(_groupId, _artifactId, _version, _repository);
+		return Objects.hash(this.groupId, this.artifactId, this.version, this.repository);
 	}
 }
