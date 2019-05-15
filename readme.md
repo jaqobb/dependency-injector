@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-	implementation "dev.jaqobb:dependency-injector:<current version>"
+	implementation "dev.jaqobb:dependency-injector:{current version}"
 }
 ```
 
@@ -22,8 +22,26 @@ repository {
 }
 
 dependencies {
-	implementation("dev.jaqobb:dependency-injector:<current version>")
+	implementation("dev.jaqobb:dependency-injector:{current version}")
 }
+```
+
+Maven
+```xml
+<repositories>
+	<repository>
+		<url>https://repository.jaqobb.dev/maven-public/</url>
+	</repository>
+</repositories>
+
+<dependencies>
+	<dependency>
+		<groupId>dev.jaqobb</groupId>
+		<artifactId>dependency-injector</artifactId>
+		<version>{current version}</version>
+		<scope>compile</scope>
+	</dependency>
+</dependencies>
 ```
 
 ### Usage example
