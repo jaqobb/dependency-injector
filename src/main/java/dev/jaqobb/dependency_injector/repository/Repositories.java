@@ -27,7 +27,11 @@ package dev.jaqobb.dependency_injector.repository;
 public final class Repositories {
 
 	public static final String MAVEN_CENTRAL = "https://repo1.maven.org/maven2/";
+
 	public static final String JCENTER = "https://jcenter.bintray.com/";
+
+	public static final String JAQOBB_PUBLIC = "https://repository.jaqobb.dev/maven-public/";
+	public static final String JAQOBB_PRIVATE = "https://repository.jaqobb.dev/maven/";
 
 	private Repositories() {
 		throw new UnsupportedOperationException("Cannot create instance of utility class");

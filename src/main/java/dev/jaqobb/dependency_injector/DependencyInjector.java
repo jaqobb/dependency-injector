@@ -52,21 +52,24 @@ public final class DependencyInjector {
 		throw new UnsupportedOperationException("Cannot create instance of utility class");
 	}
 
-	public static void injectDependencies(@NotNull Dependency[] dependencies, @NotNull URLClassLoader classLoader) {
+	public static void injectDependencies(@NotNull Dependency[] dependencies, @NotNull ClassLoader classLoader) {
 		for (Dependency dependency : dependencies) {
 			injectDependency(dependency, classLoader);
 		}
 	}
 
-	public static void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull URLClassLoader classLoader) {
+	public static void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull ClassLoader classLoader) {
 		injectDependency(new Dependency(groupId, artifactId, version), classLoader);
 	}
 
-	public static void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull String repository, @NotNull URLClassLoader classLoader) {
+	public static void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull String repository, @NotNull ClassLoader classLoader) {
 		injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
-	public static void injectDependency(@NotNull Dependency dependency, @NotNull URLClassLoader classLoader) {
+	public static void injectDependency(@NotNull Dependency dependency, @NotNull ClassLoader classLoader) {
+		if (!(classLoader instanceof URLClassLoader)) {
+			throw new IllegalArgumentException("classLoader is not an instance of URLClassLoader");
+		}
 		String groupId = dependency.getGroupId();
 		String artifactId = dependency.getArtifactId();
 		String version = dependency.getVersion();
