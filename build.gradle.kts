@@ -47,7 +47,7 @@ publishing {
 		}
 	}
 	repositories {
-		maven(properties["jaqobb-repository-url"] as String) {
+		maven(properties["jaqobb-public-repository-url"] as String) {
 			credentials {
 				username = properties["jaqobb-repository-user"] as String
 				password = properties["jaqobb-repository-password"] as String
