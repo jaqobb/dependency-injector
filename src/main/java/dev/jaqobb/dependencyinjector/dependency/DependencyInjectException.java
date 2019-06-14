@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.jaqobb.dependency_injector.dependency;
+package dev.jaqobb.dependencyinjector.dependency;
 
 public class DependencyInjectException extends RuntimeException {
 

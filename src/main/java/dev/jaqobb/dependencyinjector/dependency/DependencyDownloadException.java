@@ -22,18 +22,17 @@
  * SOFTWARE.
  */
 
-package dev.jaqobb.dependency_injector.repository;
+package dev.jaqobb.dependencyinjector.dependency;
 
-public final class Repositories {
+public class DependencyDownloadException extends RuntimeException {
 
-	public static final String MAVEN_CENTRAL = "https://repo1.maven.org/maven2/";
+	private static final long serialVersionUID = -2362037442229682104L;
 
-	public static final String JCENTER = "https://jcenter.bintray.com/";
+	public DependencyDownloadException(String message) {
+		super(message);
+	}
 
-	public static final String JAQOBB_PUBLIC = "https://repository.jaqobb.dev/maven-public/";
-	public static final String JAQOBB_PRIVATE = "https://repository.jaqobb.dev/maven/";
-
-	private Repositories() {
-		throw new UnsupportedOperationException("Cannot create instance of utility class");
+	public DependencyDownloadException(String message, Throwable cause) {
+		super(message, cause);
 	}
 }

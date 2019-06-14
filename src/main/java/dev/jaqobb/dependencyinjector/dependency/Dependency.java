@@ -22,9 +22,9 @@
  * SOFTWARE.
  */
 
-package dev.jaqobb.dependency_injector.dependency;
+package dev.jaqobb.dependencyinjector.dependency;
 
-import dev.jaqobb.dependency_injector.repository.Repositories;
+import dev.jaqobb.dependencyinjector.repository.Repositories;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;

@@ -22,11 +22,11 @@
  * SOFTWARE.
  */
 
-package dev.jaqobb.dependency_injector;
+package dev.jaqobb.dependencyinjector;
 
-import dev.jaqobb.dependency_injector.dependency.Dependency;
-import dev.jaqobb.dependency_injector.dependency.DependencyDownloadException;
-import dev.jaqobb.dependency_injector.dependency.DependencyInjectException;
+import dev.jaqobb.dependencyinjector.dependency.Dependency;
+import dev.jaqobb.dependencyinjector.dependency.DependencyDownloadException;
+import dev.jaqobb.dependencyinjector.dependency.DependencyInjectException;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Method;

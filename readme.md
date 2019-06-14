@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-	implementation "dev.jaqobb:dependency-injector:{current version}"
+	implementation "dev.jaqobb:dependencyinjector:{current version}"
 }
 ```
 
@@ -22,7 +22,7 @@ repository {
 }
 
 dependencies {
-	implementation("dev.jaqobb:dependency-injector:{current version}")
+	implementation("dev.jaqobb:dependencyinjector:{current version}")
 }
 ```
 
@@ -37,7 +37,7 @@ Maven
 <dependencies>
 	<dependency>
 		<groupId>dev.jaqobb</groupId>
-		<artifactId>dependency-injector</artifactId>
+		<artifactId>dependencyinjector</artifactId>
 		<version>{current version}</version>
 		<scope>compile</scope>
 	</dependency>
