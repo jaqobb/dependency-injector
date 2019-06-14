@@ -1,1 +1,1 @@
-rootProject.name = "dependencyinjector"
+rootProject.name = "DependencyInjector"
