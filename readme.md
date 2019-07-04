@@ -5,43 +5,23 @@ Dependency Injector is a simple and easy to use Java library that will allow you
 Gradle
 ```groovy
 repositories {
-	maven {
-		url "https://repository.jaqobb.dev/maven-public/"
-	}
+	jcenter()
 }
 
 dependencies {
-	implementation "dev.jaqobb:dependencyinjector:{current version}"
+	implementation "dev.jaqobb:dependencyinjector:2.2.6"
 }
 ```
 
 Gradle Kotlin DSL
 ```kotlin
 repository {
-	maven("https://repository.jaqobb.dev/maven-public/")
+	jcenter()
 }
 
 dependencies {
-	implementation("dev.jaqobb:dependencyinjector:{current version}")
+	implementation("dev.jaqobb:dependencyinjector:2.2.6")
 }
-```
-
-Maven
-```xml
-<repositories>
-	<repository>
-		<url>https://repository.jaqobb.dev/maven-public/</url>
-	</repository>
-</repositories>
-
-<dependencies>
-	<dependency>
-		<groupId>dev.jaqobb</groupId>
-		<artifactId>dependencyinjector</artifactId>
-		<version>{current version}</version>
-		<scope>compile</scope>
-	</dependency>
-</dependencies>
 ```
 
 ### Usage example
