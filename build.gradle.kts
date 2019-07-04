@@ -65,6 +65,6 @@ configure<BintrayExtension> {
 		issueTrackerUrl = "$websiteUrl/issues"
 		vcsUrl = "$websiteUrl.git"
 		setLicenses("MIT")
-		setLabels("java", "library", "dependency", "injector")
+		setLabels("java", "library", "dependency-injector")
 	})
 }
