@@ -87,7 +87,7 @@ public class Dependency {
 		if (this == object) {
 			return true;
 		}
-		if (object == null || getClass() != object.getClass()) {
+		if (object == null || this.getClass() != object.getClass()) {
 			return false;
 		}
 		Dependency that = (Dependency) object;
