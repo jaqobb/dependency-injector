@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-	implementation "dev.jaqobb:dependencyinjector:2.2.6"
+	implementation "dev.jaqobb:dependencyinjector:2.2.7"
 }
 ```
 
@@ -20,7 +20,7 @@ repository {
 }
 
 dependencies {
-	implementation("dev.jaqobb:dependencyinjector:2.2.6")
+	implementation("dev.jaqobb:dependencyinjector:2.2.7")
 }
 ```
 

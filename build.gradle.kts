@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "dev.jaqobb"
-version = "2.2.6"
+version = "2.2.7"
 description = "Java library that allows to inject dependencies without increasing final jar file size"
 
 java {
