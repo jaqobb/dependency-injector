@@ -25,7 +25,7 @@ dependencies {
 ```
 
 ### Usage example
-Get the required information about the dependency you want to inject (group id, artifact id and version (and repository if the dependency is not located in the Maven Central Repository)).
+Get the required information about the dependency you want to inject (group id, artifact id and version (and repository if the dependency isn't located in the Maven Central Repository)).
 Construct a new `Dependency` object using:
 ```java
 Dependency dependency = new Dependency("groupId", "artifactId", "version");
@@ -48,4 +48,4 @@ dependencyInjector.injectDependency(dependency, classLoader);
 ```
 `classLoader` is usually your main class' class loader (`this.getClass().getClassLoader()`). However, the provided class loader must be an instance of `URLClassLoader`.
 
-You can also inject dependencies without having to use `Dependency` object. In that case use the method with the same name but replace `dependency` parameter with the dependency's information (group id, artifact id and version (and repository if the dependency is not located in the Maven Central Repository))
+You can also inject dependencies without having to use `Dependency` object. In that case use the method with the same name but replace `dependency` parameter with the dependency's information (group id, artifact id and version (and repository if the dependency isn't in the Maven Central Repository))
