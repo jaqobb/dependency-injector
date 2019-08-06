@@ -48,25 +48,47 @@ public final class DependencyInjector {
 		}
 	}
 
-	private DependencyInjector() {
-		throw new UnsupportedOperationException("Cannot create instance of utility class");
+	private File dependenciesFolder;
+
+	public DependencyInjector(File dependenciesFolder) {
+		if (dependenciesFolder == null) {
+			throw new IllegalArgumentException("dependenciesFolder cannot be null");
+		}
+		if (dependenciesFolder.isFile()) {
+			throw new IllegalArgumentException("dependenciesFolder is not a folder");
+		}
+		this.dependenciesFolder = dependenciesFolder;
 	}
 
-	public static void injectDependencies(@NotNull Dependency[] dependencies, @NotNull ClassLoader classLoader) {
+	public File getDependenciesFolder() {
+		return this.dependenciesFolder;
+	}
+
+	public void setDependenciesFolder(File folder) {
+		if (folder == null) {
+			throw new IllegalArgumentException("folder cannot be null");
+		}
+		if (folder.isFile()) {
+			throw new IllegalArgumentException("folder is not a folder");
+		}
+		this.dependenciesFolder = folder;
+	}
+
+	public void injectDependencies(@NotNull Dependency[] dependencies, @NotNull ClassLoader classLoader) {
 		for (Dependency dependency : dependencies) {
-			injectDependency(dependency, classLoader);
+			this.injectDependency(dependency, classLoader);
 		}
 	}
 
-	public static void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull ClassLoader classLoader) {
-		injectDependency(new Dependency(groupId, artifactId, version), classLoader);
+	public void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull ClassLoader classLoader) {
+		this.injectDependency(new Dependency(groupId, artifactId, version), classLoader);
 	}
 
-	public static void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull String repository, @NotNull ClassLoader classLoader) {
-		injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
+	public void injectDependency(@NotNull String groupId, @NotNull String artifactId, @NotNull String version, @NotNull String repository, @NotNull ClassLoader classLoader) {
+		this.injectDependency(new Dependency(groupId, artifactId, version, repository), classLoader);
 	}
 
-	public static void injectDependency(@NotNull Dependency dependency, @NotNull ClassLoader classLoader) {
+	public void injectDependency(@NotNull Dependency dependency, @NotNull ClassLoader classLoader) {
 		if (!(classLoader instanceof URLClassLoader)) {
 			throw new IllegalArgumentException("classLoader is not an instance of URLClassLoader");
 		}
@@ -75,9 +97,7 @@ public final class DependencyInjector {
 		String version = dependency.getVersion();
 		String name = artifactId + "-" + version;
 		String path = groupId.replace(".", File.separator) + File.separator + artifactId + File.separator + version;
-		File dependenciesFolder = new File(".dependencies");
-		File folder = new File(dependenciesFolder, path);
-		File destination = new File(folder, name + ".jar");
+		File destination = new File(new File(this.dependenciesFolder, path), name + ".jar");
 		if (!destination.exists()) {
 			try {
 				URL url = dependency.getDownloadUrl();
