@@ -100,7 +100,7 @@ public final class DependencyInjector {
 		File destination = new File(new File(this.dependenciesFolder, path), name + ".jar");
 		if (!destination.exists()) {
 			try {
-				URL url = dependency.getDownloadUrl();
+				URL url = dependency.getDownloadURL();
 				try (InputStream inputStream = url.openStream()) {
 					Files.copy(inputStream, destination.toPath());
 				}

@@ -74,7 +74,7 @@ public class Dependency {
 	}
 
 	@NotNull
-	public URL getDownloadUrl() throws MalformedURLException {
+	public URL getDownloadURL() throws MalformedURLException {
 		String url = this.repository;
 		if (!url.endsWith("/")) {
 			url += "/";
