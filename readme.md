@@ -1,5 +1,5 @@
 ## DependencyInjector
-DependencyInjector is a simple and easy to use Java library that will allow you to inject dependencies without increasing final jar file size.
+A simple and easy to use Java library that will allow you to inject dependencies without increasing final jar file size.
 
 ### Add to project
 Gradle
