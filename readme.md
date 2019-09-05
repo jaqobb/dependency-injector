@@ -1,6 +1,8 @@
 ## DependencyInjector
 A simple and easy to use Java library that allows you to inject dependencies without increasing final jar file size.
 
+##### This project will no longer receive any updates as of 9/5/2019 due to the fact that everything I wanted to add is already here and this project does not really need anything more.
+
 ### Add to project
 Gradle
 ```groovy
