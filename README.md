@@ -40,7 +40,9 @@ Construct a new `Dependency` object using:
 ```java
 Dependency dependency = new Dependency("groupId", "artifactId", "version");
 ```
+
 or:
+
 ```java
 Dependency dependency = new Dependency("groupId", "artifactId", "version", "repositoryUrl");
 ```
