@@ -1,7 +1,7 @@
 Dependency Injector
 =========
 
-Java library that allows to inject dependencies without increasing final jar file size
+Java library that allows to inject dependencies without increasing final jar file size.
 
 Project is not likely to receive any more changes.
 
