@@ -1,5 +1,4 @@
-Dependency Injector
-=========
+# Dependency Injector
 
 Java library that allows to inject dependencies without increasing final jar file size.
 
@@ -31,7 +30,7 @@ dependencies {
 }
 ```
 
-### Usage example
+### Usage
 
 Get the required information about the dependency you want to inject (group id, artifact id and version (and repository if the dependency isn't located in the Maven Central Repository)).
 
